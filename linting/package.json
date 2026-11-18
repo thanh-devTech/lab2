@@ -3,7 +3,7 @@
   "name": "ci-js-linting",
   "description": "JavaScript linting infrastructure for CI plugins (not a JS project)",
   "devDependencies": {
-    "eslint": "^9.0.0",
+    "eslint": "^10.15.0",
     "eslint-plugin-security": "^3.0.0",
     "eslint-plugin-no-unsanitized": "^4.1.0",
     "globals": "^15.0.0"
