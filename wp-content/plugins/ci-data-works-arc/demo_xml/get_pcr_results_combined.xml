@@ -1,0 +1,104 @@
+<xml>
+    <status>OK</status>
+    <msg></msg>
+    <total>146</total>
+    <rows_per_page>2</rows_per_page>
+    <total_page>73</total_page>
+    <paged>1</paged>
+    <count_results>2</count_results>
+    <datetime_from>2021-01-01</datetime_from>
+    <datetime_to>2021-06-06</datetime_to>
+    <results>
+        <result>
+            <result_status>Final</result_status>
+            <approve_date>2021-02-10 17:41:53</approve_date>
+            <accession_number>LIS0291929292</accession_number>
+            <type_of_specimen></type_of_specimen>
+            <clinic_name>Demo Clinic</clinic_name>
+            <clinic_street>115 Street</clinic_street>
+            <clinic_city>Fayetteville</clinic_city>
+            <clinic_state>GA</clinic_state>
+            <clinic_zip>30214</clinic_zip>
+            <clinic_phone>001-593-9800</clinic_phone>
+            <lab_name>LIS</lab_name>
+            <lab_dba>LIS Diagnostics</lab_dba>
+            <lab_dba_init>LIS</lab_dba_init>
+            <lab_address>33 Street</lab_address>
+            <lab_city>Fayetteville</lab_city>
+            <lab_state>GA</lab_state>
+            <lab_zip>30214</lab_zip>
+            <lab_phone>011-593-9800</lab_phone>
+            <lab_fax>011-593-9900</lab_fax>
+            <lab_clia>11D219333</lab_clia>
+            <lab_npi>#9192992</lab_npi>
+            <patient_name>Last Name, First Name</patient_name>
+            <patient_ssn>020-021-002</patient_ssn>
+            <patient_mrn>0393919</patient_mrn>
+            <patient_code>MDAwMDA4</patient_code>
+            <patient_phone>0015025081</patient_phone>
+            <patient_sex>M</patient_sex>
+            <patient_dob>1973-03-02</patient_dob>
+            <patient_address>999 Chaucer Parkway</patient_address>
+            <patient_city>Fayetteville </patient_city>
+            <patient_state>GA</patient_state>
+            <patient_zip>30214</patient_zip>
+            <doctor_name>Doctor Last, Doctor First</doctor_name>
+            <doctor_npi>0000000</doctor_npi>
+            <collection_date>2021-02-10 10:30:00</collection_date>
+            <pdf_url>url to pdf file</pdf_url>
+            <panel_tests>
+                <test>
+                    <pathogen>SARS-COV-2 PCR NUCLEIC ACID</pathogen>
+                    <pos-neg>Positive</pos-neg>
+                    <group>SARS-CoV-2 PCR Nucleic Acid</group>
+                </test>
+            </panel_tests>
+        </result>
+        <result>
+            <result_status>Final</result_status>
+            <approve_date>2021-02-10 17:41:53</approve_date>
+            <accession_number>LIS0291929233</accession_number>
+            <type_of_specimen></type_of_specimen>
+            <clinic_name>Demo Clinic</clinic_name>
+            <clinic_street>222 Street</clinic_street>
+            <clinic_city>Fayetteville</clinic_city>
+            <clinic_state>GA</clinic_state>
+            <clinic_zip>30214</clinic_zip>
+            <clinic_phone>001-593-9800</clinic_phone>
+            <lab_name>LIS</lab_name>
+            <lab_dba>LIS Diagnostics</lab_dba>
+            <lab_dba_init>LIS</lab_dba_init>
+            <lab_address>33 Street</lab_address>
+            <lab_city>Fayetteville</lab_city>
+            <lab_state>GA</lab_state>
+            <lab_zip>30214</lab_zip>
+            <lab_phone>011-593-9800</lab_phone>
+            <lab_fax>011-593-9900</lab_fax>
+            <lab_clia>11D219333</lab_clia>
+            <lab_npi>#9192992</lab_npi>
+            <patient_name>Last Name2, First Name2</patient_name>
+            <patient_ssn>020-021-222</patient_ssn>
+            <patient_mrn>0393999</patient_mrn>
+            <patient_code>MDAwMDA5</patient_code>
+            <patient_phone>0015028881</patient_phone>
+            <patient_sex>M</patient_sex>
+            <patient_dob>1988-03-11</patient_dob>
+            <patient_address>111 Chaucer Parkway</patient_address>
+            <patient_city>Fayetteville </patient_city>
+            <patient_state>GA</patient_state>
+            <patient_zip>30214</patient_zip>
+            <doctor_name>Doctor Last, Doctor First</doctor_name>
+            <doctor_npi>0000000</doctor_npi>
+            <collection_date>2021-02-10 10:30:00</collection_date>
+            <pdf_url>url to pdf file</pdf_url>
+            <pdf_base64>base64 encode of pdf</pdf_base64>
+            <panel_tests>
+                <test>
+                    <pathogen>SARS-COV-2 PCR NUCLEIC ACID</pathogen>
+                    <pos-neg>Negative</pos-neg>
+                    <group>SARS-CoV-2 PCR Nucleic Acid</group>
+                </test>
+            </panel_tests>
+        </result>
+    </results>
+</xml>

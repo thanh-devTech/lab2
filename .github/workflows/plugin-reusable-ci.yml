@@ -1,0 +1,250 @@
+# Reusable workflow for individual plugin submodule repos.
+#
+# Usage in each plugin repo (.github/workflows/ci.yml):
+#
+#   name: CI
+#   on:
+#     push:
+#       branches: [main, master, develop]
+#     pull_request:
+#       branches: [main, master]
+#
+#   jobs:
+#     ci:
+#       uses: Ignite-Medical-Tech/lab/.github/workflows/plugin-reusable-ci.yml@main
+#       with:
+#         plugin-slug: 'ci-billing-indep'
+#       secrets: inherit
+
+name: Plugin CI (Reusable)
+
+on:
+  workflow_dispatch:
+    inputs:
+      php-version:
+        description: 'PHP version'
+        type: string
+        default: '8.2'
+      plugin-slug:
+        description: 'Plugin directory name (e.g. ci-billing-indep)'
+        type: string
+        required: true
+  workflow_call:
+    inputs:
+      php-version:
+        description: 'PHP version'
+        type: string
+        default: '8.2'
+      plugin-slug:
+        description: 'Plugin directory name (e.g. ci-billing-indep)'
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  # ──────────────────────────────────────────
+  # PHP Syntax Check
+  # ──────────────────────────────────────────
+  php-lint:
+    name: PHP Syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ inputs.php-version }}
+          coverage: none
+
+      - name: Check PHP syntax
+        run: |
+          ERRORS=$(find . -name "*.php" \
+            -not -path "*/vendor/*" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/libraries/*" \
+            -print0 | xargs -0 -P8 -n1 php -l 2>&1 | grep -v "No syntax errors" | tee /tmp/lint-errors.txt | grep -c "Parse error" || true)
+          echo "## PHP Syntax Check" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${ERRORS:-0}" = "0" ]; then
+            echo "✅ No syntax errors found." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "🔴 **$ERRORS parse error(s) found:**" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            cat /tmp/lint-errors.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  # ──────────────────────────────────────────
+  # PHPCS - WordPress Standards + Security
+  # ──────────────────────────────────────────
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ inputs.php-version }}
+          coverage: none
+
+      - name: Cache PHPCS tools
+        uses: actions/cache@v4
+        with:
+          path: /tmp/phpcs-tools/vendor
+          key: phpcs-tools-${{ runner.os }}
+          restore-keys: phpcs-tools-
+
+      - name: Install PHPCS and standards
+        run: |
+          mkdir -p /tmp/phpcs-tools && cd /tmp/phpcs-tools
+          if [ ! -f composer.json ]; then
+            composer init --no-interaction --name=ci/phpcs-tools
+            composer config --no-interaction allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+            composer require --no-interaction \
+              squizlabs/php_codesniffer:"^3.9" \
+              wp-coding-standards/wpcs:"^3.0" \
+              phpcompatibility/phpcompatibility-wp:"*" \
+              dealerdirect/phpcodesniffer-composer-installer:"*" \
+              pheromone/phpcs-security-audit:"*"
+          fi
+
+      - name: Run PHPCS
+        run: |
+          /tmp/phpcs-tools/vendor/bin/phpcs \
+            --standard=WordPress,Security \
+            --extensions=php \
+            --ignore=*/vendor/*,*/node_modules/*,*/libraries/*,*/dompdf/*,*/dompdf8/* \
+            --report=summary \
+            --parallel=8 \
+            . 2>&1 | tee /tmp/phpcs-summary.txt || true
+
+          /tmp/phpcs-tools/vendor/bin/phpcs \
+            --standard=WordPress,Security \
+            --extensions=php \
+            --ignore=*/vendor/*,*/node_modules/*,*/libraries/*,*/dompdf/*,*/dompdf8/* \
+            --report=source \
+            --parallel=8 \
+            . 2>&1 | tee /tmp/phpcs-source.txt || true
+
+          # Strip ANSI codes
+          sed -i 's/\x1b\[[0-9;]*m//g' /tmp/phpcs-summary.txt /tmp/phpcs-source.txt 2>/dev/null || true
+
+          # Extract totals
+          ERRORS=$(grep -oP 'A TOTAL OF \K\d+' /tmp/phpcs-summary.txt | head -1 || echo "0")
+          WARNINGS=$(grep -oP '(?<=ERRORS AND )\d+' /tmp/phpcs-summary.txt | head -1 || echo "0")
+
+          echo "## PHPCS Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Metric | Count |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Errors | ${ERRORS:-0} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Warnings | ${WARNINGS:-0} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          echo "<details><summary><b>Top Violated Rules</b></summary>" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Rule | Count |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          grep -E '^\s*\[.\]\s+\S+' /tmp/phpcs-source.txt | head -10 | while read -r line; do
+            rule=$(echo "$line" | sed 's/^\s*\[.\]\s*//' | awk '{print $1}')
+            count=$(echo "$line" | awk '{print $NF}')
+            echo "| \`$rule\` | $count |" >> "$GITHUB_STEP_SUMMARY"
+          done
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "</details>" >> "$GITHUB_STEP_SUMMARY"
+
+  # ──────────────────────────────────────────
+  # Semgrep - Security Scan
+  # ──────────────────────────────────────────
+  semgrep:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        run: |
+          semgrep scan \
+            --config p/php \
+            --config p/javascript \
+            --config p/xss \
+            --config p/owasp-top-ten \
+            --config p/sql-injection \
+            --config p/security-audit \
+            --config p/phpcs-security-audit \
+            --json \
+            --output semgrep-results.json \
+            --exclude='*/vendor/*' \
+            --exclude='*/node_modules/*' \
+            --exclude='*/libraries/*' \
+            --exclude='*.min.js' \
+            . || true
+
+          # Generate summary
+          TOTAL=$(python3 -c "
+          import json
+          try:
+              data = json.load(open('semgrep-results.json'))
+              results = data.get('results', [])
+              print(len(results))
+          except: print('0')
+          ")
+
+          echo "## Semgrep SAST Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Findings:** $TOTAL" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          python3 -c "
+          import json
+          try:
+              data = json.load(open('semgrep-results.json'))
+              results = data.get('results', [])
+              if not results:
+                  print('> ✅ No security findings.')
+              else:
+                  # Severity breakdown
+                  by_sev = {}
+                  by_rule = {}
+                  for r in results:
+                      sev = r.get('extra', {}).get('severity', 'unknown').upper()
+                      by_sev[sev] = by_sev.get(sev, 0) + 1
+                      rule = r.get('check_id', 'unknown')
+                      short = '.'.join(rule.split('.')[-2:])
+                      if short not in by_rule: by_rule[short] = {'count': 0, 'severity': sev}
+                      by_rule[short]['count'] += 1
+                  print('| Severity | Count |')
+                  print('|----------|-------|')
+                  for sev in ['ERROR', 'WARNING', 'INFO']:
+                      if sev in by_sev:
+                          icon = '🔴' if sev == 'ERROR' else '🟡' if sev == 'WARNING' else '⚪'
+                          print(f'| {icon} {sev} | {by_sev[sev]} |')
+                  print()
+                  top = sorted(by_rule.items(), key=lambda x: -x[1]['count'])[:10]
+                  if top:
+                      print('<details><summary><b>Top Rules</b></summary>')
+                      print()
+                      print('| Rule | Severity | Count |')
+                      print('|------|----------|-------|')
+                      for rule, data in top:
+                          sev = data['severity']
+                          icon = '🔴' if sev == 'ERROR' else '🟡' if sev == 'WARNING' else '⚪'
+                          print(f'| \`{rule}\` | {icon} {sev} | {data[\"count\"]} |')
+                      print()
+                      print('</details>')
+          except Exception as e:
+              print(f'Could not parse: {e}')
+          " >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Semgrep results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-results
+          path: semgrep-results.json

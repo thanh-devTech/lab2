@@ -1,0 +1,478 @@
+@page {
+	margin: 0;
+}
+
+body {
+	margin: 0;
+	font-size: 18px;
+	color: #003f3c;
+	font-family: Helvetica;
+	background: #fffcf8;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+table {
+	border: 0;
+	width: 100%;
+}
+
+br {
+	height: 0;
+	margin-bottom: 10px;
+	line-height: 10px;
+}
+
+ul,
+ol {
+	margin: 10px 0;
+}
+
+ul li,
+ol li {
+	margin-bottom: 5px;
+}
+
+ul.limg10 li,
+ol.limg10 li {
+	margin-bottom: 10px;
+}
+
+.break {
+	page-break-before: always;
+	border: 0;
+	height: 0;
+}
+
+.fontDejavu {
+	font-family: "DejaVu Sans";
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.bottom {
+	vertical-align: bottom;
+}
+
+.pagefooter {
+	position: absolute;
+	bottom: 80px;
+	padding-top: 12px;
+	left: 1%;
+	width: 98%;
+	border-top: 1px solid #ddd;
+}
+
+.pagefooter td {
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.pagefooter td a {
+	color: #003f3c;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+.pagefooter td.logo {
+	width: 70px;
+	padding-left: 20px;
+}
+
+.pagefooter td.nav {
+	width: 70px;
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+.pagecontent {
+	margin: 30px 40px;
+}
+
+.staticpage {
+	margin: 0;
+	padding: 0;
+	height: 1056px;
+	width: 100%;
+	position: absolute;
+}
+
+.pageheader .logo,
+.pageheader .logo2 {
+	padding-top: 30px;
+	padding-left: 30px;
+}
+
+.pageheader .logo span {
+	font-size: 46px;
+	color: #fff;
+	line-height: 40px;
+}
+
+.pageheader .logo2 span {
+	font-size: 56px;
+	line-height: 50px;
+}
+
+.logo span,
+.logo2 span {
+	display: inline-block;
+	font-family: Arial;
+
+}
+
+.pageheader .title {
+	margin-top: 70px;
+	margin-bottom: 20px;
+	background: #003f3c;
+	padding: 20px 35px 20px 20px;
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	color: #fff;
+	display: inline-block;
+}
+
+.pageheader.smallheader .title {
+	margin-top: 30px;
+}
+
+.pageheader.smallheader2 .title {
+	margin-top: 20px;
+}
+
+.pageheader .title .t1 {
+	font-size: 32px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.pageheader .title .t2 {
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+
+}
+
+.content_title {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 30px;
+}
+
+.content_title span {
+	font-weight: normal;
+}
+
+.content_title2 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.content_title2.nomgin {
+	margin-bottom: 0;
+}
+
+.page1 .whitebg {
+	margin: 0;
+	padding: 0;
+	height: 1056px;
+	width: 100%;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.7);
+}
+.page1.staticpage{
+	height:977px;
+}
+
+
+.page2 .navigation td {
+	vertical-align: top;
+}
+
+.page2 .navigation table {
+	width: 100%;
+}
+
+.page2 .navigation table .grouphead {
+	font-weight: bold;
+	width: 30px;
+	white-space: nowrap;
+	padding-bottom: 0;
+}
+
+.page2 .navigation table .dots {
+	border-bottom: 2px dotted #003f3c;
+	padding-bottom: 0;
+}
+
+.page2 .navigation table .pagen {
+	width: 40px;
+	padding-bottom: 0;
+}
+
+.page2 .navigation ul,
+.page2 .navigation ol {
+	padding-left: 25px;
+}
+
+.page2 td.numb {
+	width: 70px;
+}
+
+.page2 .circle {
+	display: inline-block;
+	width: 46px;
+	height: 46px;
+	border-radius: 24px;
+	border: 2px solid #003f3c;
+	text-align: center;
+	line-height: 36px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
+.whitebox {
+	width: 380px;
+	margin: 60px auto 0 auto;
+	background: #fff;
+	padding: 20px 30px 30px 30px;
+	font-size: 18px;
+	line-height: 30px;
+	border-radius: 18px;
+}
+
+.whitebox div.wrow {
+	clear: both;
+}
+
+.whitebox div label {
+	font-weight: bold;
+}
+.whitebox div label.small{
+	font-size:14px;
+}
+
+.whitebox div span {
+	float: right;
+	text-align: right;
+	font-size:16px
+}
+.whitebox div span.small{
+	font-size:12px;
+	line-height: 14px;
+}
+
+ul.margin20 li {
+	margin-bottom: 20px;
+}
+
+.result_box {
+	border: 2px solid #003f3c;
+	border-radius: 30px;
+	padding: 20px;
+}
+
+
+.score_dot {
+	background: #003f3c;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	position: absolute;
+	margin-top: 8px;
+}
+
+.listcircle {
+	padding-bottom: 15px;
+	clear: both;
+}
+
+.listcircle::before {
+	content: "";
+	display: block;
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	float: left;
+	margin-right: 10px;
+}
+
+.listcircle.ccgreen::before,
+.rangecolor.ccgreen {
+	background: #dafcdb;
+}
+
+.listcircle.ccyellow::before,
+.rangecolor.ccyellow {
+	background: #f8df7e;
+}
+
+.listcircle.ccred::before,
+.rangecolor.ccred {
+	background: #f95556;
+}
+
+.listcircle::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.listcircle div {
+	float: left;
+}
+
+.headercharttbl {
+	width: 100%;
+}
+
+.hbuttontd {
+	width: 19%;
+}
+
+.buttontest {
+	display: inline-block;
+	width: 160px;
+	height: 34px;
+	background: #eeefe9;
+	border-radius: 15px;
+	color: #003f3c;
+	font-size: 14px;
+	line-height: 28px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.resultvalue {
+	font-weight: bold;
+	color: #003f3c;
+	font-size: 15px;
+	text-align: center;
+}
+
+.rangereftext,
+.rangevalue {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.scorewrap_box {
+	width: 440px;
+	margin-left: 154px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.rangecolortbl td {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 5px 0 0 0;
+	text-align: center;
+	width: 33.33% !important;
+}
+
+.rangecolor {
+	margin-top: 5px;
+	height: 14px;
+	border-radius: 7px;
+}
+
+.scoreheader {
+	background-color: #d9d9d9;
+	height: 28px;
+	font-size:14px;
+	line-height: 23px;
+	font-weight: bold;
+	color: #000;
+	padding: 0px 15px;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+
+.sumchartbox {
+	clear: both;
+	margin-bottom:4px;
+}
+
+.sumchartbox .scorenumber {
+	width: 22%;
+	text-align: center;
+}
+
+.sumchartbox .scorenumber span {
+	border: 1px solid #333;
+	width: 60px;
+	height: 60px;
+	line-height: 44px;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.sumchartbox .mainchart {
+	width: 78%;
+	text-align: center;
+}
+
+.sumchartbox .result_box {
+	padding: 8px;
+}
+
+.sumchartbox .hbuttontd {
+	width: 10%;
+}
+
+.sumchartbox .rangereftext,
+.sumchartbox .rangevalue {
+	font-size: 12px;
+}
+.sumchartbox .buttontest{
+	height:28px;
+	line-height:22px;
+	font-size:12px;
+}
+.sumchartbox .scorewrap_box{
+	margin-bottom:4px;
+	margin-left:90px;
+}
+.sumchartbox .rangecolortbl td{
+	font-size:12px;
+	padding-top:2px;
+}
+.sumchartbox .score_dot{
+	margin-top:6px;
+}
+.fontsmall1{
+	font-size:12px;
+}
+.footerinfo p{
+	margin: 0;
+}

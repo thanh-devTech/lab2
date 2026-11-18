@@ -1,0 +1,583 @@
+html {
+  margin-top: 0 !important;
+}
+
+#wpadminbar {
+  display: none !important;
+}
+
+.wc-block-components-checkout-return-to-cart-button,
+.wp-block-woocommerce-checkout-order-summary-cart-items-block.wc-block-components-totals-wrapper {
+  display: none;
+}
+
+.wp-block-woocommerce-checkout {
+  font-size: 13px !important;
+  padding-top: 5px !important;
+}
+
+.wc-block-components-main {
+  font-size: 15px !important;
+  font-family: "arial";
+}
+
+.wc-block-checkout__add-note {
+  display: none;
+}
+
+.wc-block-checkout__terms.wc-block-checkout__terms--with-separator {
+  display: none;
+}
+
+.wc-block-components-form .wc-block-checkout__order-notes.wc-block-components-checkout-step {
+  display: none;
+}
+
+/* Tiêu đề */
+.wc-block-components-main h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+/* Ô input */
+.wc-block-components-main input.input-text,
+.wc-block-components-main select,
+.wc-block-components-main textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.wc-block-components-main input.input-text:focus,
+.wc-block-components-main select:focus,
+.wc-block-components-main textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/* Label */
+.wc-block-components-main label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+  color: #334155;
+}
+
+/* Form layout 2 cột */
+#customer_details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Các hàng form */
+.wc-block-components-main p.form-row {
+  margin-bottom: 16px;
+}
+
+/* Bảng đơn hàng */
+.wc-block-components-main table.shop_table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wc-block-components-main table.shop_table th,
+.wc-block-components-main table.shop_table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  font-size: 14px;
+}
+
+.wc-block-components-main table.shop_table th {
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 600;
+}
+
+.wc-block-components-main tfoot tr:last-child th,
+.wc-block-components-main tfoot tr:last-child td {
+  border-bottom: none;
+}
+
+/* Nút */
+.wc-block-components-main button.button,
+.wc-block-components-main .button.alt {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.wc-block-components-main button.button:hover,
+.wc-block-components-main .button.alt:hover {
+  background-color: #2563eb;
+}
+
+/* Radio payment */
+.wc-block-components-main .wc_payment_methods li {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.wc-block-components-main .wc_payment_methods li:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #customer_details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === WooCommerce Thank You Page Styling === */
+
+.container .woocommerce-order {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 32px 28px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #333;
+}
+
+/* Tiêu đề cảm ơn */
+.woocommerce-thankyou-order-received {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0b6cf0;
+  text-align: center;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* Icon check tròn trước tiêu đề */
+.woocommerce-thankyou-order-received::before {
+  content: "✓";
+  display: inline-block;
+  background: #e9f6ff;
+  color: #0b6cf0;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* --- Thông tin tổng quan đơn hàng --- */
+.woocommerce-order-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.woocommerce-order-overview li {
+  list-style: none;
+  background: #f7f9ff;
+  padding: 14px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(11, 108, 240, 0.05);
+  min-width: 180px;
+  text-align: center;
+  transition: transform 0.1s ease;
+}
+
+.woocommerce-order-overview li:hover {
+  transform: translateY(-2px);
+}
+
+.woocommerce-order-overview li strong {
+  display: block;
+  font-weight: 700;
+  color: #111;
+  margin-top: 4px;
+}
+
+/* --- Bảng chi tiết sản phẩm --- */
+.woocommerce-order-details {
+  margin-top: 30px;
+}
+
+.woocommerce-order-details__title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0b6cf0;
+  margin-bottom: 18px;
+}
+
+.woocommerce-table--order-details {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.woocommerce-table--order-details th,
+.woocommerce-table--order-details td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.woocommerce-table--order-details a {
+  color: #0b6cf0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.woocommerce-table--order-details a:hover {
+  text-decoration: underline;
+}
+
+/* Tổng cộng cuối bảng */
+.woocommerce-table--order-details tfoot tr:last-child th,
+.woocommerce-table--order-details tfoot tr:last-child td {
+  background: #0b6cf0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border-bottom: none;
+  border-radius: 8px;
+}
+
+/* --- Billing Address --- */
+.woocommerce-customer-details {
+  margin-top: 36px;
+  padding: 24px;
+  background: #f9fbff;
+  border-radius: 10px;
+}
+
+.woocommerce-column__title {
+  color: #0b6cf0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.woocommerce-customer-details address {
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.woocommerce-customer-details--email {
+  margin-top: 6px;
+  color: #0b6cf0;
+  font-weight: 600;
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 680px) {
+  .woocommerce-order {
+    margin: 20px 10px;
+    padding: 20px;
+  }
+
+  .woocommerce-order-overview {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .woocommerce-order-overview li {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .woocommerce-table--order-details th,
+  .woocommerce-table--order-details td {
+    font-size: 14px;
+  }
+}
+
+
+
+
+/* ================================
+   STYLE: MODERN CHECKOUT PAGE
+   ================================ */
+
+
+/* Main container */
+.wc-block-checkout {
+  font-size: 13px !important;
+}
+
+.wc-block-checkout__form {
+  font-size: 13px !important;
+}
+
+.wc-block-components-sidebar-layout.wc-block-checkout {
+  display: block !important;
+}
+
+.wc-block-components-sidebar-layout {
+  display: block !important;
+}
+
+/* ======= WooCommerce Checkout Modern Style ======= */
+body.woocommerce-checkout {
+  background: #f9fafb;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: #222;
+}
+
+/* Container layout */
+.wc-block-components-sidebar-layout.wc-block-checkout {
+  display: flex !important;
+  gap: 10px;
+  max-width: 1100px;
+  width: 100% !important;
+  margin: 0px auto !important;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 10px;
+}
+
+/* Main form */
+.wc-block-components-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.wc-block-components-radio-control--highlight-checked .wc-block-components-radio-control-accordion-option--checked-option-highlighted,
+.wc-block-components-radio-control--highlight-checked label.wc-block-components-radio-control__option--checked-option-highlighted {
+  border-radius: 0px;
+  box-shadow: unset !important;
+  border: solid 2px #0271c5;
+}
+
+.wc-block-components-sidebar-layout .wc-block-components-main {
+  padding: 0px !important;
+}
+
+.wc-block-components-form .wc-block-components-checkout-step {
+  background: none;
+  border: none;
+  margin: 0 0 10px !important;
+  padding: 0;
+  position: relative;
+}
+
+.wc-block-components-sidebar {
+  width: 100%;
+}
+
+.wc-block-checkout__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+/* Titles */
+.wc-block-components-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.wc-block-components-checkout-step__description {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* Input fields */
+.wc-block-components-text-input input,
+.wc-blocks-components-select__select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.wc-block-components-text-input input:focus,
+.wc-blocks-components-select__select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.wc-block-components-text-input label,
+.wc-blocks-components-select__label {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Express checkout (PayPal/Stripe) */
+.wc-block-components-express-payment {
+  border: 1.5px dashed #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  background: #f9fafb;
+}
+
+.wc-block-components-express-payment__title {
+  font-size: 1.25rem;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+/* Buttons */
+button,
+input[type="submit"],
+.wc-block-components-button {
+  background-color: #2563eb !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+button:hover,
+input[type="submit"]:hover,
+.wc-block-components-button:hover {
+  background-color: #1d4ed8 !important;
+  transform: translateY(-1px);
+}
+
+/* Address cards */
+.wc-block-components-address-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 15px;
+  background: #f8fafc;
+}
+
+.wc-block-components-address-card__edit {
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.wc-block-components-address-card__edit:hover {
+  color: #1e40af;
+}
+
+div#ppcp-checkout-paylater-messages {
+  padding: 10px;
+}
+
+/* Sidebar (order summary) */
+.wc-block-components-sidebar {
+  width: 350px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid #e5e7eb;
+}
+
+.wc-block-checkout__actions .wc-block-checkout__actions_row .wc-block-components-checkout-place-order-button {
+  height: auto;
+  padding: 1em;
+  width: 50%;
+  font-size: 20px;
+  margin: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .wc-block-components-sidebar-layout.wc-block-checkout {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .wc-block-components-sidebar {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@container (max-width: 699px) {
+  body .wp-block-woocommerce-checkout-order-summary-block .wc-block-components-checkout-order-summary__title {
+    padding: 10px 0;
+  }
+
+  .wp-block-woocommerce-checkout-order-summary-block .wc-block-components-checkout-order-summary__title .wc-block-components-checkout-order-summary__title-text {
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .wc-block-components-sidebar-layout.wc-block-checkout {
+    display: block;
+  }
+
+  .message__headline {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .wp-block-woocommerce-checkout {
+    padding-top: 5px !important;
+  }
+
+  span.wc-block-components-totals-item__label {
+    padding: 5px;
+  }
+
+  span.wc-block-formatted-money-amount.wc-block-components-formatted-money-amount.wc-block-components-totals-item__value {
+    padding: 5px;
+  }
+
+  span.wc-block-formatted-money-amount.wc-block-components-formatted-money-amount.wc-block-components-totals-footer-item-tax-value {
+    padding: 10px;
+  }
+
+  .wp-block-woocommerce-checkout-order-summary-coupon-form-block.wc-block-components-totals-wrapper {
+    padding: 5px;
+  }
+
+  .wc-block-components-order-summary .wc-block-components-order-summary__content {
+    display: table;
+    width: 98%;
+  }
+
+  .wc-block-components-order-summary-item {
+    padding: 10px;
+  }
+
+}

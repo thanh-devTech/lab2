@@ -1,0 +1,738 @@
+.abxstylev2 table {
+	width: 100%;
+}
+
+.abxstylev2 .reporttblstyle2 td {
+	border: 3px solid #efefef;
+	font-size: 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .header td {
+	background: #d1d0d5;
+	border-top-color: #d1d0d5;
+	border-left-color: #d1d0d5;
+	border-right-color: #d1d0d5;
+	line-height: 14px;
+	vertical-align: top;
+	height: 24px;
+	padding: 0;
+}
+
+.abxstylev2 .reporttblstyle2.separate_rowtbl .header td.ttwicon {
+	border-bottom: none;
+}
+
+.abxstylev2 .reporttblstyle2 .header1 td,
+.abxstylev2 .reporttblstyle2 div.header1 {
+	background: #fff;
+	border-bottom-color: #f5f5f5;
+	color: #3D3A56;
+	font-size: 10px;
+	font-weight: bold;
+	height: 22px;
+	line-height: 14px;
+	padding: 0 0 0 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .header2 td,
+.abxstylev2 .reporttblstyle2 div.header2 {
+	background: #f5f5f5;
+	border-top: 2px solid #f5f5f5;
+	border-bottom: 2px solid #efefef;
+	color: #66667A;
+	height: 20px;
+	font-size: 9px;
+	line-height: 13px;
+	padding: 0 0 0 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .bacterialoadhead {
+	background: #fff;
+	border-top: 2px solid #f5f5f5;
+	font-size: 9px;
+	color: #66667A;
+}
+
+.abxstylev2 .reporttblstyle2 .content td {
+	padding: 5px 10px;
+	border-bottom: none;
+}
+
+.abxstylev2 .reporttblstyle2 .content2 td {
+	padding: 5px 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .content td *,
+.abxstylev2 .reporttblstyle2 .content2 td * {
+	font-size: 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .footertext td {
+	padding: 5px 10px;
+	border-top: none;
+	background: #f6f6f6;
+}
+
+.abxstylev2 .reporttblstyle2 .footertext td * {
+	font-size: 10px;
+}
+
+
+.abxstylev2.clinic2lines body {
+	margin-top: 3.4cm !important;
+}
+
+
+.abxstylev2 .reporttblstyle2 .header1 .ttwicon,
+.abxstylev2 .reporttblstyle2 div.ttwicon {
+	padding-left: 5px;
+	background: #fff;
+	font-size: 10px;
+	line-height: 16px;
+}
+
+.abxstylev2 .reporttblstyle2 div.ttwicon {
+	margin-bottom: 5px;
+	line-height: 16px;
+	height: 22px;
+}
+
+.abxstylev2 .ttwicon img {
+	width: 18px;
+	height: auto;
+	position: relative;
+	top: 5px;
+	margin-right: 10px;
+}
+
+.abxstylev2 .reporttblstyle2 td.nopadding {
+	padding: 0;
+	vertical-align: top;
+}
+
+.abxstylev2 .reporttblstyle2 td.listitems {
+	padding: 4px 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .header td {
+	padding-left: 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .header2 td.bvriskheader,
+.abxstylev2 .reporttblstyle2 .header2.bvriskheader {
+	font-size: 10px;
+	font-weight: bold;
+	height: 22px;
+	line-height: 15px;
+	color: #3D3A56;
+}
+
+
+.abxstylev2 .healthy_bar {
+	padding: 10px 0;
+}
+
+.abxstylev2 td ul {
+	margin: 0;
+}
+
+.abxstylev2 td ul li {
+	list-style: disc;
+	margin-bottom: 3px;
+}
+
+.abxstylev2 td b,
+.abxstylev2 td strong {
+	font-weight: bold;
+}
+
+.abxstylev2 .healthy_text,
+.abxstylev2 .batdesc,
+.abxstylev2 .legend_text {
+	padding: 3px 10px;
+}
+
+.abxstylev2 .healthy_text,
+.abxstylev2 .healthy_text div,
+.abxstylev2 .healthy_text li,
+.abxstylev2 .healthy_text b,
+.abxstylev2 .healthy_text * {
+	font-size: 10px;
+	color: #3D3A56;
+}
+
+.abxstylev2 .treatmentcontent *,
+.abxstylev2 .bvbottom td,
+.abxstylev2 .legend_text {
+	font-size: 10px;
+	color: #3D3A56;
+}
+
+.abxstylev2 .batdesc,
+.abxstylev2 .batdesc * {
+	font-size: 10px;
+}
+
+.abxstylev2 .batheader {
+	background: #f6f6f6;
+	padding-left: 10px;
+	min-height: 18px;
+	line-height: 16px;
+	vertical-align: middle;
+	font-size: 11px;
+}
+
+.abxstylev2 .batheader td {
+	min-height: 22px;
+}
+
+.abxstylev2 .batheader ul {
+	margin: 2px 0;
+}
+
+.abxstylev2 .batheader ul li {
+	font-size: 11px;
+}
+
+.abxstylev2 .batdesc ul {
+	margin: 0;
+}
+
+.abxstylev2 .batdesc li {
+	list-style: disc;
+	margin-left: 0;
+	margin-bottom: 0;
+}
+
+.abxstylev2 .paddingabx {
+	padding: 0;
+	vertical-align: top;
+	background: #f6f6f6
+}
+
+.abxstylev2 .treatmentcontent {
+	background: #f6f6f6;
+}
+
+.abxstylev2 table.abxtoptbl {
+	margin: 0;
+	width: 100%;
+}
+
+.abxstylev2 .abxtoptbl td {
+	width: 50%;
+	border: none;
+	padding: 2px 5px;
+	vertical-align: middle;
+	text-align: left;
+	border: 2px solid #efefef;
+	font-size: 9px;
+}
+
+
+.abxstylev2 .abxtoptbl td.coli_1 {
+	border-left: none;
+}
+
+.abxstylev2 .abxtoptbl td.coli_2 {
+	border-right: none;
+}
+
+.abxstylev2 .reporttblstyle2 tr.header {
+	border: none;
+}
+
+.abxstylev2 .reporttblstyle2 td.coli_1 {
+	border-right: 3px solid #efefef;
+	width: 50%;
+}
+
+.abxstylev2 .reporttblstyle2 td.colr1 {
+	width: 50%;
+	border-right: none;
+}
+
+.abxstylev2 .abxtoptbl .header td {
+	text-align: left;
+	background: #fff;
+	padding: 0px 5px;
+	line-height: 10px;
+	height: 20px;
+	text-transform: uppercase;
+	vertical-align: middle;
+	border-color: #efefef;
+	border-top: 2px solid #D1D0D5;
+	border-bottom: 2px solid #efefef;
+	position: relative;
+}
+
+.abxstylev2 .thawngabx {
+	font-weight: bold;
+	font-size: 25px !important;
+	font-family: smooth;
+	vertical-align: middle;
+	padding: 0px 10px 0;
+}
+
+.abxstylev2 .treatmentcontent,
+.abxstylev2 .treatmentcontent td {
+	vertical-align: middle;
+}
+
+.abxstylev2 .treatmentcontent .legenditem {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+.abxstylev2 .treatmentcontent .legenditem img {
+	position: relative;
+	top: 2px;
+}
+
+.abxstylev2 .separate_rowtbl {
+	border-collapse: separate;
+	border-spacing: 0 3px;
+}
+
+.abxstylev2 .checkmarkdose {
+	width: 8px;
+	height: auto;
+	margin-left: 5px;
+}
+
+.abxstylev2 .abxtoptbl .checkmarkdose {
+	float: right;
+}
+
+.abxstylev2 .bvbottom td {
+	background: #efefef;
+}
+
+.abxstylev2 .bvbottom td img {
+	margin-left: 15px;
+	margin-right: 5px;
+}
+
+.abxstylev2 .abxdenote {
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	background: #ddd;
+	margin-left: 8px;
+	margin-top: 3px;
+
+}
+
+.abxstylev2 .abxdenote_1 {
+	background: #4994cb;
+}
+
+.abxstylev2 .abxdenote_2 {
+	background: #b286c6;
+}
+
+.abxstylev2 .abxdenote_3 {
+	background: #c3bf62;
+}
+
+.abxstylev2 .abxdenote_4 {
+	background: #7acb4e;
+}
+
+.abxstylev2 .abxdenote_5 {
+	background: #d42ab2;
+}
+
+.abxstylev2 .abxstylev2 .charticonstbl {
+	width: 90%;
+	margin: 2px auto;
+}
+
+.abxstylev2 .abxstylev2 .charticonstbl td {
+	text-align: center;
+	font-size: 9px;
+	color: #3D3A56;
+}
+
+.abxstylev2 .abxroundcic {
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	background: #75bf42;
+	top: 1px;
+	margin-right: 3px;
+	position: relative;
+	border-radius: 4px;
+}
+
+.abxstylev2 .abxroundcic.abxround_av {
+	background: #ec8b1a;
+}
+
+.abxstylev2 .abxroundcic.abxround_bv {
+	background: #f04e13;
+	border-radius: 5px;
+}
+
+
+.abxstylev2 img.abxroundcic {
+	width: 10px;
+	height: 10px;
+	background: none;
+}
+
+.abxstylev2 .abxroundcic.abxround_lbi {
+	background: #bbd63f;
+}
+
+.abxstylev2 .abxround_ur {
+	width: 0 !important;
+	height: 0 !important;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 8px solid #ffcf29;
+	background: none;
+}
+
+.abxstylev2 .abxroundcic.fright {
+	top: 6px;
+	margin-right: 5px;
+}
+
+.abxstylev2 .abxroundcic.abxround_ur.fright {
+	top: 5px;
+	margin-right: 3px;
+}
+
+
+.abxstylev2 .healthy_bar .indicator_wrap {
+	padding-top: 14px;
+	position: relative;
+	margin: 0 auto;
+	width: 340px;
+}
+
+.abxstylev2 .healthy_bar .bar_image {
+	width: 360px;
+	margin: 0 auto;
+}
+
+.abxstylev2 .indicator {
+	text-align: left;
+	position: absolute;
+	top: 0px;
+	z-index: 999;
+}
+
+.abxstylev2 .indicator img {
+	width: 16px;
+	height: auto;
+	position: relative;
+}
+
+.abxstylev2 .wrap_infection {
+	padding: 6px 0;
+	background: #f6f6f6;
+}
+
+.abxstylev2 .bv_bar_tbl {
+	width: 360px;
+	margin: 0 auto;
+}
+
+.abxstylev2 .bv_bar_tbl td {
+	width: 7.1428%;
+	border-left: 1px solid transparent !important;
+	border-right: 1px solid transparent !important;
+	font-size: 9px;
+}
+
+.abxstylev2 .bv_bar_tbl .bg1 {
+	background: #59b53e;
+	height: 18px;
+}
+
+.abxstylev2 .bv_bar_tbl .bg2 {
+	background: #75bf44;
+}
+
+.abxstylev2 .bv_bar_tbl .bg3 {
+	background: #9bcb41;
+}
+
+.abxstylev2 .bv_bar_tbl .bg4 {
+	background: #bbd53e;
+}
+
+.abxstylev2 .bv_bar_tbl .bg5 {
+	background: #dfdf31;
+}
+
+.abxstylev2 .bv_bar_tbl .bg6 {
+	background: #ebeb30;
+}
+
+.abxstylev2 .bv_bar_tbl .bg7 {
+	background: #f4da2b;
+}
+
+.abxstylev2 .bv_bar_tbl .bg8 {
+	background: #fecf29;
+}
+
+.abxstylev2 .bv_bar_tbl .bg9 {
+	background: #fbb927;
+}
+
+.abxstylev2 .bv_bar_tbl .bg10 {
+	background: #fba22a;
+}
+
+.abxstylev2 .bv_bar_tbl .bg11 {
+	background: #fa952b;
+}
+
+.abxstylev2 .bv_bar_tbl .bg12 {
+	background: #f5812a;
+}
+
+.abxstylev2 .bv_bar_tbl .bg13 {
+	background: #f26225;
+}
+
+.abxstylev2 .bv_bar_tbl .bg14 {
+	background: #f04726;
+}
+
+.abxstylev2 .wrap_load_composition {
+	position: relative;
+	width: 180px;
+	margin: 0 auto;
+	z-index: 9;
+}
+
+.abxstylev2 .load_composition {
+	border: 1px dotted #dcdcef;
+	position: absolute;
+	border-radius: 50%;
+	background: none transparent !important;
+}
+
+.abxstylev2 .load_composition .text {
+	color: #464552;
+	font-size: 6px;
+	position: relative;
+	padding-top: 2px;
+}
+
+.abxstylev2 .load_composition.very_low .text {
+	top: 6px;
+}
+
+.abxstylev2 .load_composition.very_high {
+	left: 0;
+	top: 0;
+	width: 178px;
+	height: 178px;
+}
+
+.abxstylev2 .load_composition.high {
+	left: 17px;
+	top: 17px;
+	width: 144px;
+	height: 144px;
+}
+
+.abxstylev2 .load_composition.medium,
+.abxstylev2 .load_composition.med {
+	left: 34px;
+	top: 34px;
+	width: 110px;
+	height: 110px;
+}
+
+.abxstylev2 .load_composition.low {
+	left: 51px;
+	top: 51px;
+	width: 76px;
+	height: 76px;
+}
+
+.abxstylev2 .load_composition.very_low {
+	left: 69px;
+	top: 69px;
+	width: 40px;
+	height: 40px;
+}
+
+.abxstylev2 .mgtop15 {
+	margin-top: 15px;
+}
+
+.abxstylev2 .mgb10 {
+	margin-bottom: 10px;
+}
+
+.abxstylev2 .bvkey {
+	font-weight: normal;
+	font-size: 10px;
+}
+
+.abxstylev2 .abxtoptbl .abxroundcic {
+	margin-right: 5px;
+}
+
+.abxstylev2 .abxtoptbl .fright .abxroundcic {
+	margin-right: 0px;
+	margin-left: 5px;
+}
+
+.abxstylev2 .abxiconh1 {
+	margin-top: 5px;
+}
+
+.abxstylev2 .abxtoptbl.asummary td {
+	padding: 4px 1px;
+	background: #fff;
+	width: auto;
+	text-align: center;
+}
+
+.abxstylev2 .abxtoptbl.asummary .header td {
+	text-align: left;
+	font-weight: bold;
+	border: 0;
+	text-transform: none;
+	background: #f5f5f5;
+}
+
+.abxstylev2 .abxtoptbl.asummary .subheader td {
+	border-top: 0;
+}
+
+.abxstylev2 table.noborder td,
+.abxstylev2 table.noborder th,
+.abxstylev2 .nopadding table td {
+	border: none;
+}
+
+.abxstylev2 .noborderleft {
+	border-left: none !important;
+}
+
+.abxstylev2 .noborderright {
+	border-right: none !important;
+}
+
+.abxstylev2 .abxfdaimg {
+	width: 12px;
+	height: 12px;
+	margin-left: 5px;
+	top: 2.2px;
+	position: relative;
+}
+
+.abxstylev2 .abxcdcimg {
+	width: 8px;
+	margin-left: 5px;
+	top: 0.8px;
+	position: relative;
+}
+
+.abxstylev2 .abxfda {
+	font-size: 8px;
+	color: #008000;
+}
+
+.abxstylev2 .abxfda2 {
+	color: #e5ae1b;
+}
+
+.abxstylev2 .batpercent {
+	font-size: 8px;
+	padding-left: 5px;
+	color: #aaa;
+}
+
+.abxstylev2 .excludedabx {
+	position: relative;
+	overflow: hidden;
+}
+
+.abxstylev2 .excludedabx::after {
+	background: #eee;
+	opacity: 0.6;
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+.abxstylev2 .righticons {
+	padding-top: 5px;
+}
+
+.abxstylev2 .minus_icon {
+	width: 10px;
+	height: auto;
+	margin-left: 5px;
+	position: relative;
+	top: 2px;
+}
+
+.abxstylev2 .pathogentbl {
+	page-break-inside: avoid;
+}
+
+.abxstylev2 .reporttblstyle2.pathogentbl .header2 td {
+	border-top: 3px solid #efefef;
+	font-size: 11px;
+}
+
+.abxstylev2 .pathogentbl td.w50 {
+	width: 50%;
+}
+
+.fleft {
+	float: left;
+}
+
+.fright {
+	float: right;
+}
+
+.pathogenicity_desc {
+	color: #3D3A56;
+}
+
+.bvrisktext {
+	font-weight: normal;
+	font-size: 10px;
+	padding-left: 8px;
+	color: #888;
+}
+
+.abxbatname {
+	font-weight: normal;
+	font-size: 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .headerline td {
+	border-bottom: 1px solid #eee;
+	font-size: 8.4px;
+	line-height: 10px;
+	color: #777;
+	padding: 0 0 0 10px;
+}
+
+.abxstylev2 .reporttblstyle2 .headerline td.center {
+	padding: 0;
+	border-left: 1px solid #efefef;
+}
+
+.abxstylev2 .reporttblstyle2 .headerline.rowbg_grey td {
+	background: #f3f3f3;
+}

@@ -1,0 +1,110 @@
+.cireport_tbl{
+    width:100%;
+}
+.cireport_tbl td{
+    font-size:11px;
+    line-height:1.5;
+}
+#dashboard-widgets .postbox-container .postbox_wrap{
+    padding:20px;
+    box-sizing: border-box;
+}
+#dashboard-widgets .postbox-container .postbox.full{
+    width:98.5%;
+}
+.cireport_tbl tr .aleft{
+    text-align: left;
+}
+.cireport_tbl tr .acenter{
+    text-align: center;
+}
+.abx_numbers span.numberbox{
+    margin-right:30px;
+    color:#777;
+}
+.abx_numbers span.dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border-radius: 50%;
+    background:#555;
+    overflow: hidden;
+    margin-right:12px;
+    -webkit-print-color-adjust: exact;
+}
+.abx_numbers span.dot.green{
+    background-color: green;
+}
+.abx_numbers span.dot.blue{
+    background-color: #2980b9;
+}
+.abx_numbers span.dot.red{
+    background-color: #e74c3c;
+}
+.abx_numbers span.tnumber{
+    font-size:20px;
+    color:#000;
+    margin-right:5px;
+}
+.cireport_tbl tr:nth-child(2n+1) td{
+    background:#eee;
+}
+#dashboard-widgets h2 span.selectmonth, #dashboard-widgets h3 span.selectmonth{
+    line-height: 24px;
+    font-size:12px;
+    border:1px solid #ddd;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding:0 15px;
+    cursor: pointer;
+}
+#dashboard-widgets h2 span.selectmonth:before, #dashboard-widgets h3 span.selectmonth:before,
+#dashboard-widgets span.displaymonth:before{
+    display:none;
+}
+.abxreport .postbox .hndle{
+    cursor: default;
+    line-height: 26px;
+}
+
+#dashboard-widgets span.displaymonth{
+    display:inline !important;
+    text-align: left !important;
+}
+#dashboard-widgets span.selectmonth select{
+    border:none;
+    outline:0px;
+    scroll-behavior: smooth;
+    line-height: 22px;
+    height:22px;
+    min-height:22px;
+    min-width:50px;
+    box-shadow: none !important;
+}
+#dashboard-widgets span.selectmonth:after{
+    content:"";
+    display: inline-block;
+
+}
+#dashboard-widgets .postbox-container .postbox{
+    width:48.6%;
+    margin:0.6%;
+}
+#dashboard-widgets .postbox-container  .postbox2{
+    margin-right:0;
+}
+#dashboard-widgets .nomargin{
+    margin:0;
+}
+tr[data-slug="ci_patients"]{
+    display:none;
+}
+@media print{
+    
+    .dontprint{
+        display: none !important;
+    }
+    span.selectmonth{
+        display: none !important;
+    }
+}

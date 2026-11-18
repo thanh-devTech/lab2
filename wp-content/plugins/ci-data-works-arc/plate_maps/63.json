@@ -1,0 +1,26 @@
+{
+	"name":"PCR -96-384(61patients) UTI",
+	"lab":"myhometownuc.com",
+	"is_wide":1,
+	"type":96,
+	"rack":96,
+	"rackabc":1,
+	"wellperpatient":1,
+	"nextwellbycol":1,
+	"nextwellbyrow":1,
+	"subwellsplate":0,
+	"max": 29,
+	"ntc": 2,
+	"pos":1,
+	"nec":3,
+	"blank":0,
+	"target":1,
+	"add384":1,
+	"add384map":{
+		"precol":0,
+		"odd_even":1,
+		"nextwellbycol":12,
+		"nextwellbyrow":1,
+		"blank_cols":11
+	}
+}

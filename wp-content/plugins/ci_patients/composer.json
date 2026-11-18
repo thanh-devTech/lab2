@@ -1,0 +1,25 @@
+{
+    "name": "ignite-medical/ci-patients",
+    "description": "Managed external dependencies for the ci_patients plugin (replaces hard-copied inc/phpqrcode; FullCalendar is a JS asset, noted separately).",
+    "require": {
+        "php": ">=8.1",
+        "endroid/qr-code": "^5.1"
+    },
+    "autoload": {
+        "files": [
+            "inc/qrcode-compat.php"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        }
+    },
+    "extra": {
+        "imt-dependency-notes": {
+            "_status": "endroid MIGRATED via inc/qrcode-compat.php shim (inc/phpqrcode deleted). FullCalendar UPGRADED v5.3.2 -> v6.1.21 (vendored JS bundle swap). Both done 2026-06-30.",
+            "endroid/qr-code": "MIGRATED 2026-06-30. Replaced abandoned inc/phpqrcode (frozen ~2010). A compat shim (inc/qrcode-compat.php, files-autoloaded) provides the legacy static QRcode::png() so inc/functions_qr.php is unchanged.",
+            "fullcalendar": "UPGRADED 2026-06-30 to v6.1.21 (not Composer — JS asset). The v5.3.2 files were replaced by the single global bundle fullcalendar/index.global.min.js; js/front.js uses initialView (was defaultView); the 3 enqueue sites drop the separate stylesheet (v6 injects CSS via JS). Needs browser verification of the scheduling calendar + its POST events feed."
+        }
+    }
+}

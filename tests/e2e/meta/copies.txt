@@ -1,0 +1,48 @@
+# EXACT-STATEMENT COPY COUNTS -- the Type-B half of the pass-3 register (52-PASS-3-PLAN Part 2.2).
+#
+# WHAT THIS IS FOR. The LIS implements the same rule many times over. A fix
+# applied to one copy and not its siblings is the failure mode; so is a
+# submodule bump that adds a NEW copy nobody tested. Neither is visible to a
+# test suite -- the untouched copies keep passing. This file makes the
+# POPULATION a checked-in number, so the count moving is a red build with a
+# name attached.
+#
+# WHY IT IS NOT A HAND-MAINTAINED TABLE. `env/lint.sh` re-runs every pattern
+# below against wp-content/plugins and diffs. The pattern lives HERE, not in
+# the script, so the counts can never be stale relative to the thing that
+# produces them and adding a family is one line with no code change. That is
+# the whole reason `fixtures/dual-impl.ts` was killed (D424's reversal
+# condition is met at the pin: 5 of the 6 families below exceed 5 copies).
+#
+# WHAT IS DELIBERATELY *NOT* HERE.
+#   - Symbol greps (`_ms_clinic_ids` 55, `ba.doc_ID` 153, `covid_pos` 189).
+#     Too noisy to diff; every unrelated read moves them. D424's SECOND
+#     reversal fires on exactly these.
+#   - Branch-arm coverage ("which arm of this if/else has a test"). Grep cannot
+#     tell; only running the code can. That is the discriminator table's job,
+#     and it lives in the consuming spec (Part 1.2), not here.
+#   - Untested single implementations. Nothing greppable to say. The mutation
+#     nightly (D426) is the only instrument that finds those.
+#
+# WHEN THE BUILD REDS. Read the diff, then EITHER fix the new copy's siblings
+# or edit the count here IN THE SAME COMMIT as a line saying which submodule
+# bump added it. Editing the number to make the build green, with no such line,
+# is the failure this file exists to catch.
+#
+# FORMAT: <count><TAB><name><TAB><grep -E pattern>   ('#' and blank lines skipped)
+# SCOPE:  wp-content/plugins/**/*.php, counting EVERY occurrence (grep -oh), at
+#         the submodule pins.
+18	wsdl-type-gate	in_array\(\$keyobj\['wsdl_type'\]
+8	assen-01-suffix	\$batch\['assen'\] = \$batch\['assen'\] \. '-01';
+19	batch-billings-upsert	wpdb->(insert|update)\('ci_batch_billings'
+17	fax-optin	cli_faxres = '1'
+12	doc-scope	ba\.doc_ID = \{?\$doctor_id
+85	clinic-manager-scope	select ma_cli_ID from ci_clinic_manager
+# ADDED PASS 3, from a survivor. Mutating ci_load_test_results.php:18's copy of
+# this clause survived the full suite (F01): a requisition the laboratory
+# DELETED is tombstoned `is_saved = 2` rather than removed
+# (inc/functions.php:4082), and this clause is what keeps the tombstone off
+# every listing. rev.spec.ts:1618 and xtw.spec.ts:189 both drive that delete
+# and both read the ROW back -- neither asks a SCREEN whether the specimen
+# left it. 48 copies, larger than four of the five families above.
+48	soft-delete-tombstone	ba\.is_saved = 0

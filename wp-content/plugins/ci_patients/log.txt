@@ -1,0 +1,19 @@
+= 4.544 - 2026-06-25 =
+* Update - Sort help support.
+* Update - Always show new login.
+* Fix - Order help support.
+* Fix - Errors.
+* Update - Disable rest wp.
+* Add - Log.txt.
+* Add - Action git auto create log.txt file.
+* Update - Ultra login style.
+* Update - Chore: auto-generate changelog.
+* Fix - Patient login form.
+* Update - Redirect /patient.
+* Fix - Patient login form otp style and logout redirect.
+* Add - Verify patient name.
+* Update - Patient ui.
+* Fix - Ui.
+* Fix - Sms log.
+* Update - Disable username/email login for patient role.
+* Update - Disable comment.

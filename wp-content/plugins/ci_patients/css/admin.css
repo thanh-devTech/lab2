@@ -1,0 +1,608 @@
+.frow {
+    clear: both;
+    margin-bottom: 6px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.frow [required],
+.foutrow [required],
+.signature_canvas.required canvas,
+a.button.required,
+.frow [aria-required="true"],
+.frow .yellowbg,
+.frow select[required]+.select2 .select2-selection--single,
+.frow select[required]+.select2 .select2-selection--multiple {
+    background-color: rgba(255, 255, 153, 0.7);
+}
+
+.frow input[type="radio"][required],
+.foutrow input[type="radio"][required],
+.frow input[type="checkbox"][required],
+.foutrow input[type="checkbox"][required] {
+    outline: 1px solid yellow;
+    margin-left: 2px;
+}
+
+.frow input[type="checkbox"],
+.frow input[type="radio"] {
+    margin-right: 2px;
+}
+
+input.readonly,
+input[readonly],
+textarea.readonly,
+textarea[readonly] {
+    background: #fff;
+}
+
+.frow h4,
+.frow.hlabel>div>label:first-child {
+    margin: 10px 0;
+    line-height: 35px;
+    padding-left: 15px;
+    margin-right: 1px;
+}
+
+.frow h4 span {
+    font-size: 11px;
+}
+
+.frow h4.mr20 {
+    margin-right: 20px;
+}
+
+.frow h4.mr10 {
+    margin-right: 10px;
+}
+
+.frow>[class*="col"] {
+    float: left;
+    margin-right: 1%;
+}
+
+.frow>[class*="col"] img {
+    max-width: 98%;
+    width: 98%;
+    height: auto;
+}
+
+.frow>[class*="col"]:last-child {
+    margin-right: 0;
+}
+
+.frow .col3:nth-child(3n),
+.frow .col4:nth-child(4n),
+.frow .col5:nth-child(5n) {
+    margin-right: 0;
+    float: right;
+}
+
+.frow .col9 {
+    width: 10.2%;
+}
+
+.frow .col8 {
+    width: 12%;
+}
+
+.frow .col7 {
+    width: 13.4%;
+}
+
+.frow .col6 {
+    width: 15.8%;
+}
+
+.frow .col5 {
+    width: 19.2%;
+}
+
+.frow .col4 {
+    width: 24.2222%;
+}
+
+.frow .col14 {
+    width: 73%;
+}
+
+.frow .col3 {
+    width: 32.6%;
+}
+
+.frow .col32 {
+    width: 66%;
+}
+
+.frow .col2 {
+    width: 49.5%;
+    margin-right: 0.5%;
+}
+
+.frow .col23 {
+    width: 64.5%;
+}
+
+.frow .col13 {
+    width: 34.5%;
+}
+
+.frow .col25 {
+    width: 39.4%;
+}
+
+.frow .col34 {
+    width: 74.2%;
+}
+
+.blabel label:not(.inline) {
+    display: block;
+}
+
+.blabel label.rcb span {
+    width: 91%;
+    float: left;
+}
+
+.blabel label.rcb:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.frow .ilabel label,
+.ilabel label,
+.row .ilabel label {
+    display: inline;
+    float: none;
+    margin-right: 5px;
+    line-height: 25px;
+}
+
+.frow.rowline textarea {
+    height: 46px;
+}
+
+.frow input,
+.frow select {
+    padding: 4px 1%;
+}
+
+.frow .button,
+.frow .button-primary,
+.frow input[type="submit"] {
+    min-height: 36px;
+    line-height: 34px;
+    min-width: 30px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+select#use_current_clinic_id {
+    line-height: 28px;
+    min-height: 28px;
+}
+
+.select2-container,
+.select2-container .select2-selection--single {
+    min-height: 30px;
+}
+
+.select2-container {
+    margin-top: -2px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-weight: normal;
+}
+
+body #requisition_form .select2-container .select2-selection--single,
+body #requisition_form .select2-container--default .select2-selection--single .select2-selection__arrow,
+body .need_validate .select2-container .select2-selection--single,
+body .need_validate .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 36px;
+}
+
+body #requisition_form .select2-container--default .select2-selection--single .select2-selection__rendered,
+body .need_validate .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 36px;
+}
+
+
+.tbl_results td input[type="text"],
+.tbl_results td select,
+.tbl_results td textarea,
+.frow input[type="text"],
+.frow input[type="number"],
+.frow input[type="date"],
+.frow input[type="email"],
+.frow select {
+    width: 99%;
+    height: 36px;
+    box-sizing: border-box;
+    border-color: #ccc;
+}
+
+form .row input[type="text"],
+form .row input[type="number"],
+form .row input[type="date"],
+form .row input[type="email"],
+form .row select {
+    height: 36px;
+}
+
+.frow textarea {
+    width: 99%;
+    height: 78px;
+    border-color: #ccc;
+}
+
+body div#adminmenuback {
+    position: fixed !important;
+}
+
+body #adminmenuwrap .logo-overlay,
+body #adminmenuwrap:before,
+body .folded #adminmenuwrap:before {
+    background-position: center;
+    background-size: cover;
+}
+
+.bubbles {
+    margin: 40px auto;
+}
+
+.bubbles:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.bubbles .bubble {
+    width: 20%;
+    float: left;
+}
+
+.bubbles .bubble .bwrap {
+    margin: 0 20px;
+}
+
+.bubbles .circle {
+    width: 80%;
+    padding-top: 80%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: #e8e8e8;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+.bubbles .active .circle {
+    background: #d83d00;
+}
+
+.bubbles .circle .step {
+    position: absolute;
+    color: #fff;
+    font-size: 50px;
+    top: 50%;
+    left: 0;
+    margin-top: -20px;
+    width: 100%;
+    text-align: center;
+}
+
+.bubbles .bubble .tt {
+    text-align: center;
+    color: #aaa;
+    font-size: 16px;
+    margin: 15px 0;
+
+}
+
+.bubbles .bubble.active .tt {
+    color: #000;
+}
+
+.bubbles .bubble .desc {
+    text-align: center;
+    color: #ccc;
+    margin: 5px 0;
+}
+
+.bubbles .bubble.active .desc {
+    color: #888;
+}
+
+.outtbl.nodatars table.widefat thead tr,
+.outtbl.nodatars table.widefat tfoot tr {
+    background: #e8e8e8;
+    color: #555;
+}
+
+.outtbl.nodatars table.widefat thead tr th,
+.outtbl.nodatars table.widefat tfoot tr th,
+.outtbl.nodatars table.widefat td {
+    color: #555;
+}
+
+.outtbl.nodatars .tablenav.topnav {
+    display: none;
+}
+
+.outtbl.nodatars table tr td.notfound {
+    color: #555;
+}
+
+.woocommerce-billing-fields label {
+    float: left;
+    width: 150px;
+}
+
+.woocommerce-billing-fields input[type="text"],
+.woocommerce-billing-fields input[type="tel"],
+.woocommerce-billing-fields input[type="email"],
+.woocommerce-billing-fields select {
+    width: 300px;
+    max-width: 100%;
+}
+
+p#billing_company_field,
+#billing_address_2,
+#billing_address_2_field {
+    display: none;
+}
+
+.dropd3 select {
+    width: 32% !important;
+    margin-right: 1% !important;
+    ;
+}
+
+.dropd3 select:last-child {
+    margin-right: 0 !important;
+}
+
+.accordion-section-content .button:hover {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.fc .fc-daygrid-event {
+    padding: 0;
+    line-height: 13px;
+}
+
+.plugins tr[data-slug="wp-estore-for-lab"],
+.plugins tr[data-slug="extra-shortcodes-for-wp-estore"],
+.plugins tr[data-slug="ci-specimen-billing-s"] {
+    display: none;
+}
+
+.no_admin_role li#collapse-menu,
+.no_admin_role tr.show-admin-bar {
+    display: none;
+}
+
+.update-nag.notice.notice-warning,
+.vc_license-activation-notice {
+    display: none;
+}
+
+.wrap h2 .nav-tab {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.dob_required select {
+    height: 26px;
+    line-height: 26px;
+}
+
+h2.tabs2 .nav-tab {
+    color: green;
+}
+
+h2.tabs2 .nav-tab.nav-tab-active {
+    color: grey;
+}
+
+tr[data-slug="ci-lab-client"],
+tr[data-slug="ci-dompdf"] {
+    display: none !important;
+}
+
+a#activate-ci-dompdf {
+    display: none;
+}
+
+tr[data-slug="ci-lab-addon"] {
+    display: none !important;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.form-pay-woo {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    margin-bottom: 36px;
+    display: inline-table;
+}
+
+.form-pay-woo th,
+.form-pay-woo td {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.form-pay-woo th {
+    font-weight: 600;
+    color: #222;
+    border-bottom: 2px solid #e2e6ea;
+}
+
+.form-pay-woo th.title_row {
+    font-weight: normal;
+}
+
+.form-pay-woo tr {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.form-pay-woo tr:nth-child(even) {
+    background: #f9fbfc;
+}
+
+.form-pay-woo tr:hover {
+    background: #eef6ff;
+    transition: background 0.2s ease;
+}
+
+.cip-toggle-btn {
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.cip-toggle-btn.on {
+    background: #2271b1;
+    color: #fff;
+}
+
+.cip-toggle-btn.off {
+    background: #ccc;
+    color: #333;
+}
+
+@media(max-width:680px) {
+    a.button.addnewkid {
+        float: right;
+        margin-top: 12px;
+    }
+
+    .bubbles .bubble {
+        float: none;
+        width: 100%;
+    }
+
+    body .bubbles .circle {
+        width: 60px;
+        padding-top: 50px;
+    }
+
+    .bubbles .circle .step {
+        font-size: 30px;
+        margin-top: -12px;
+    }
+
+    .bubbles .bubble .desc {
+        margin: 0;
+    }
+
+    .bubbles .bubble .bwrap {
+        margin: 0 0 25px 0;
+    }
+
+    .bubbles .bubble .tt {
+        margin: 10px 0 0 0;
+    }
+
+    .wraptbl {
+        overflow: auto;
+        width: 100%;
+        clear: both;
+    }
+
+    #TB_window {
+        width: 98% !important;
+        left: 1% !important;
+        top: 50px !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        position: absolute !important;
+    }
+
+    #TB_ajaxContent {
+        width: 100% !important;
+    }
+
+    .button.resetbtn {
+        margin-top: 12px;
+        margin-right: 10px;
+        float: right;
+    }
+
+}
+
+@media(max-width:480px) {
+    .wraptbl.mobileview table {
+        min-width: 0 !important;
+        display: block !important;
+        background: transparent !important;
+        border: none;
+    }
+
+    .wraptbl.mobileview table thead {
+        display: none;
+        background: transparent !important;
+    }
+
+    .wraptbl.mobileview table tbody,
+    body .wraptbl.mobileview table.report_tbl tr,
+    body .wraptbl.mobileview table.report_tbl td {
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    body .wraptbl.mobileview table.report_tbl td:before {
+        content: attr(data-colname);
+        display: inline-block;
+        margin-right: 20px;
+        float: left;
+        position: relative !important;
+        font-weight: bold;
+    }
+
+    body .wraptbl.mobileview table.report_tbl tr {
+        margin-bottom: 20px;
+        background: #fff;
+    }
+
+    body .button.resetbtn {
+        margin: 0;
+    }
+
+    body .button,
+    body a.button.addnewkid,
+    body .button.resetbtn {
+        float: none;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box !important;
+        margin-bottom: 10px;
+    }
+}

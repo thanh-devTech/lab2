@@ -1,0 +1,27 @@
+# Spec ownership for the E2E suite.
+#
+# The flake policy in QUARANTINE.md names owners from HERE, not from prose:
+# a quarantine row with no resolvable owner is an orphan, and orphans never
+# expire. Scoped to tests/e2e/ and evaluated relative to this file.
+#
+# TODO(owner): the placeholders below must be replaced with real GitHub handles
+# or team slugs before the CI gate is switched to blocking. Left explicit rather
+# than guessed -- an invented owner is worse than a visible gap.
+
+*                       @IGNITE-OWNER-PLACEHOLDER
+
+env/                    @IGNITE-OWNER-PLACEHOLDER
+fixtures/               @IGNITE-OWNER-PLACEHOLDER
+setup/                  @IGNITE-OWNER-PLACEHOLDER
+
+specs/ord.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/acc.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/tst.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/rev.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/dst.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/bil.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/sta.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/por.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/hub.spec.ts       @IGNITE-OWNER-PLACEHOLDER
+specs/serial.spec.ts    @IGNITE-OWNER-PLACEHOLDER
+specs/auth.spec.ts      @IGNITE-OWNER-PLACEHOLDER

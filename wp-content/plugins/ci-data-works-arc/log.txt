@@ -1,0 +1,342 @@
+= 2.4.7.66 - 2026-06-09 =
+* Add - Export pdf processed sample.
+* Add - Export section.
+* Fix - Btype filter.
+* Update - To new report.
+* Update - DX code autofill.
+* Fix - Log user and user role.
+* Fix - Abx 2 panels.
+* Fix - Instruments:update new value issue.
+* Fix - Arrow function.
+* Fix - Process sample.
+* Update - Log.
+* Fix - Build result pdf.
+* Add - Setting autofill dx code.
+* Fix - Autofill dx code.
+* Update - Stop deleting duplicate logs.
+* Add - Update processed sample.
+* Fix - Ui.
+* Fix - Genetica api fix log result fix abxv.
+* Fix - On-file signature.
+* Fix - Text in signature text.
+* Add - Upload log.
+* Fix - Load log.
+* Update - Button to Logs.
+* Fix - Some issue.
+* Fix - Write file permission.
+* Fix - Genetica api.
+* Update - Upload logs.
+* Fix - Chart volume trend.
+* Fix - Results upload log.
+* Fix - Gene logs.
+* Update - Old note for pcr pdf.
+* Update - User completely.
+* Fix - Notes in pcr pdf.
+* Fix - Abx2 notes.
+* Update - Waring Printer.
+* Fix - Today batch.
+* Fix - Warning Printer.
+* Update - Disable successful popup.
+* Add - Setting disable successful print popup.
+* Update - Apply successful print popup setting.
+* Fix - Receiving.
+
+= 2.4.7.65 - 2026-06-01 =
+* Add - User log for export patients.
+* Fix - Log.
+* Update - Log data.
+* Update - Pos/neg report.
+* Add - Phase and medication filter.
+* Update - Ref lab in clinic form.
+* Add - Sweet alert for change ref lab.
+* Update - Apply lab results logo to panel demo PDF preview.
+* Fix - Posneg filter.
+* Fix - Lab information viewdemopdf.
+* Fix - Filter posneg report.
+* Fix - Erors.
+* Fix - Site closed access.
+* Fix - Genetica api.
+* Update - Antibiogram.
+* Fix - Style pdf.
+* Update - PDF portrait format.
+* Update - Antibiogram - Keep pathogen names on one line pdf.
+* Update - Antibiogram Fix PDF table font size.
+* Update - Antibiogram - Fix PDF note text size.
+* Update - Antibiogram - Restore genotypic antibiogram feature flag.
+* Update - Antibiogram - Show full pathogen names and include molecular summary in main exports.
+* Fix - Tooltip, export csv and pdf.
+* Update - Hipaa Export.
+* Fix - Gene short form fix gnetica api.
+* Update - Hipaa Export Fix cap install roles.
+* Fix - Download all pdfs in test results.
+* Fix - Rejected pdf.
+* Fix - Pdf Notes for Tox.
+* Add - Plates for new panels.
+* Add - Cap Data Export.
+* Fix - CAR Molecular UTI and Wound plate layout.
+* Fix - Abx low load percent.
+* Fix - Sftp api.
+* Update - Medications edit.
+* Fix - Abx header.
+* Add - Lab name to export file.
+
+= 2.4.7.64 - 2026-05-25 =
+* Add - Log user for labs.
+* Fix - Athena Indeterminate.
+* Add - Total row for tox stats.
+* Add - Sticky for head tox stats.
+* Fix - Address in pdf.
+* Fix - Tox report pdf.
+* Fix - Tox result #8.
+* Fix - Genetical json api.
+* Add - Plate maps.
+* Update - Plate Layout Group Active.
+* Fix - Panel error.
+* Add - Plate map.
+* Fix - Error log.
+* Add - Button history lab.
+* Add - History for old lab ui.
+* Tweak - "Add button history lab".
+* Fix - History lab.
+* Add - Setting report to state for labs old.
+* Fix - Style report to state for labs old.
+* Fix - Genetical api Fix bugs.
+* Fix - Centrallab api- correct clinic.
+* Fix - Custody chain - show wrong approved.
+* Add - Import/export for req setting/result setting.
+* Fix - Genetica json api.
+* Add - Results Logo to labs.
+* Add - Results logo upload support to new Labs UI.
+
+= 2.4.7.63 - 2026-05-12 =
+* Update - No Delete where Client Server Enable.
+* Update - Genetics reqs and others.
+* Add - Auto reflex medications.
+* Update - Dont reflex screening when resulted.
+* Add - "No Results" tab in Sample Manife.
+* Fix - User logs.
+* Add - "No Results" tab in Sample Manifest.
+* Add - Plate Layout for Panels.
+* Fix - No results.
+* Update - Log history for wsdl client.
+* Update - No Result for new style Sample Manifest report.
+* Add - Plate layouts.
+* Fix - Report pathogen.
+* Add - Required for temperature in tox.
+* Update - Show Source in pdf by AOE.
+* Fix - Exoprt QC in batches fix instruments.
+* Fix - Input naxleng for form labs.
+* Fix - Instruments auto reverse when approved.
+
+= 2.4.7.62 - 2026-05-06 =
+* Fix - Reflex tox.
+* Add - Reverse to Wsdl sync Add lab_name to footer shortcode.
+* Add - Plate maps for this lab for all panels.
+* Fix - Tox pdf.
+* Add - Action Send Request WebServices.
+* Add - Log button for Server WebServices.
+* Fix - Sync wsdl screening Add readonly for screening.
+* Fix - Sysmexn530 ins.
+* Fix - Log Instrument.
+* Update - Changes log.
+* Fix - Result tox.
+* Fix - Change log.
+* Add - QC for Immtox 120 ins.
+* Update - Tox results edit form.
+* Add - Migrate role cat for LIS Capabilities.
+* Fix - Screeing report.
+* Fix - State reporting cap.
+* Add - Test type for ref lab.
+* Fix - Reflex screening by new 2 rules.
+* Add - Site map PHI.
+* Fix - Reflex screening.
+* Update - Batch stats fix.
+* Fix - Log user.
+* Fix - Medications.
+* Update - Dashboard LIS Cap,sitemap.
+* Add - Option to move Test to top if positive in PDF.
+* Update - IgniteABX - LIS Cap,sitemap.
+* Fix - Reflex screening & medications.
+* Add - Related Medications field to Screening tests.
+* Add - Related-Medications-field-to-Screening-tests.
+* Fix - Immtox 120 fix result pdf tox #8.
+* Fix - Screening.
+* Add - List Install Folders.
+* Update - LIS Capabilities for Group Users.
+* Fix - Other settings page.
+* Update - Auto-generate changelog.
+* Update - Install Folders.
+* Update - LIS Capabilities for Group Reports.
+* Update - Close lab setting.
+* Fix - Where batch_id.
+* Fix - Hl7 parser error.
+* Fix - Study req form.
+* Update - LIS Capabilities for group Forms.
+* Fix - CI_Api_centrallab_orchard.
+* Update - Restore Role old (PHI Visibility in LIS ).
+* Fix - Centrallab orchard api.
+* Add - Search for select input.
+* Add - Upload of multiple result pdfs and merge PDF.
+* Tweak - "Add upload of multiple result pdfs and merge PDF".
+* Fix - Duplicate in batch tbl.
+
+= 2.4.7.61 - 2026-04-24 =
+* Fix - Wsdl client count.
+* Fix - Not rerun when any test detected.
+* Fix - Athena intralab api.
+* Fix - Urine validity settings.
+* Add - Log field for lab old.
+* Fix - Width ThickBox WebServices Client.
+* Fix - Reflex by screening.
+
+= 2.4.7.60 - 2026-04-23 =
+* Update - Issue with Crumbs.
+* Update - Log move batch when save req form.
+* Add - Custom header text to pdf.
+* Fix - Style #8 for tox.
+* Add - An order for blood req.
+* Fix - Disable role.
+* Fix - Pdf notes fix blood style #6.
+* Tweak - "fix disable role".
+* Fix - Import tox.
+* Fix - Results tox.
+* Tweak - "Revert "fix disable role"".
+* Tweak - "Revert "Revert "fix disable role""".
+* Fix - Roles.
+* Add - Labs.
+* Fix - Wsdl api.
+* Tweak - "New Labs".
+* Fix - Edit results.
+* Update - New labs log footer.
+* Fix - Miss install new labs.
+* Tweak - "Update new labs log footer".
+* Update - New Labs.
+
+= 2.4.7.59 - 2026-04-22 =
+* Add - Order drchrono.
+* Update - Upload result to drchrono.
+* Add - Get result.
+* Fix - Status in standing orders.
+* Add - Aoe.
+* Fix - Immtox 120 ins.
+* Update - Dont send empty to athena api.
+* Fix - Aoe ui.
+* Fix - Req settings.
+* Fix - Format file name and ui pdf.
+* Fix - Reflex from screening.
+* Fix - Urine/screening pdf style.
+* Fix - Style #7 tox pdf.
+* Add - Header text to pdf add style #8 for tox.
+
+= 2.4.7.58 - 2026-04-16 =
+* Update - Layout Report to State.
+* Fix - List select2 width.
+* Fix - List select2 state.
+* Add - Centrallab orchard api.
+* Fix - Roles &statuses.
+
+= 2.4.7.57 - 2026-04-14 =
+* Fix - Error log sys 08/04.
+* Add - Auto Reject List for new style.
+* Update - Show Settings menu for $is_ci_admin.
+* Update - Show AoE in print for blood.
+* Fix - Questions.
+* Update - Report to state.
+* Fix - Report to state filter.
+* Add - Cache for LOINC api.
+* Add - History and Import.
+* Fix - Count for modmed api.
+* Fix - Edit abx panel for ci_user.
+* Update - Old abx.
+* Update - Always log to error_log.log.
+* Update - HL7 Viewer Paser.
+* Fix - Get IP function.
+* Fix - Parser hl7.
+* Add - Drchrono.
+* Fix - Enable api.
+* Fix - Tox form.
+* Fix - Base sftp api.
+* Add - Count to report to state.
+* Fix - Export and add username for item history.
+* Update - Check Report to State (in labs).
+* Fix - Api drchrono.
+* Fix - Immtox 120 ins.
+* Fix - Chrono setting.
+* Fix - Select grnder.
+* Update - Back.
+* Add - Highlight for tests picked.
+* Fix - Background color highlight tests.
+* Add - View/hide buttons for hl7-parse viewer.
+* Fix - Signature box.
+* Add - Responsive column layout for blood requisition test options.
+* Tweak - "Add responsive column layout for blood requisition test options".
+* Fix - Auto response blood.
+* Update - Hl7 viewer.
+
+= 2.4.7.56 - 2026-04-09 =
+* Add - Loading for Import Data Panels.
+* Update - Color for AOE Questions action button.
+* Add - Edit name Urine Chemistry Panel table.
+* Fix - Abx export.
+* Fix - Show import dropzone Group Data.
+* Add - Subtitle for abx pdf.
+* Add - Link for name column Urine Chemistry.
+* Fix - Api settings page.
+* Fix - Layout-blood test.
+* Fix - Layout panel.
+* Fix - Urine screening api code.
+* Fix - Edit lab.
+* Update - State report in dashboard.
+* Fix - Abx pdf no marker error fix AOE in blood form.
+
+= 2.4.7.55 - 2026-04-07 =
+* Add - Ins immtox 120.
+* Fix - Experity api & barcode without lab Init.
+* Fix - Results search pcr.
+* Fix - Edit cutoff : AMP/CQ.
+* Fix - Test control pos.
+* Fix - Quick view arc.
+* Fix - Quick view Arc , checkbox- Radio not Disabled.
+* Fix - Ins - Immtox_120.
+* Add - QG_HM to abx.
+* Update - When adding condition test.
+* Update - Make the dropdowns same.
+* Fix - Import cutoff.
+* Update - When deleting a test.
+* Update - When adding a test & show Panel.
+* Add - Export csv for Report to State.
+* Fix - Aoe not show in blood req.
+* Fix - Breadcrumbs and new section.
+* Fix - Aegis api.
+* Fix - Xygene api.
+* Fix - Aegis api fix pagination in pdf.
+
+= 2.4.7.54 - 2026-04-02 =
+* Add - Sync panel types.
+* Fix - Get panel types.
+* Add - Log.txt.
+* Add - Standing status.
+* Fix - Old status.
+* Fix - Batch status.
+* Fix - Old status for standing orders.
+* Update - Log file.
+* Update - Hide Auto Change Colors by type when not enabled.
+* Fix - Group color.
+* Fix - Panel type & color.
+* Fix - Panel type (STI).
+* Update - Script run create log.
+* Update - Automatically generate a log.txt git actions.
+* Fix - Role color.
+* Fix - Reflex by tests.
+* Add - Export ES, LS for abx.
+* Fix - Log login fail.
+* Add - Statuses to the roles editor.
+* Add - Update abx.
+* Fix - CLINICAL PHARMACY GUIDANCE pdf.
+* Fix - Roles statuses.
+
+= 2.4.7.53 - 2026-03-29 =
+* Fix - New batch status.
+* Update - Message after submitting.
+* Update - New_batch_status.
+* Fix - Rejected pdf.

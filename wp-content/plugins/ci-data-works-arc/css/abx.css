@@ -1,0 +1,451 @@
+.iconpill {
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.iconpill.notactive,
+.charicon.notactive {
+    opacity: 0.24;
+}
+
+.aleft {
+    text-align: left;
+}
+
+.vtop {
+    vertical-align: top;
+}
+
+.vmiddle {
+    vertical-align: middle;
+}
+
+table.reportabx_tbl {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.reportabx_tbl th {
+    background: #ddd;
+    line-height: 32px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.reportabx_tbl th:last-child {
+    border: none;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td {
+    background: #eee;
+    border-color: #ddd;
+}
+
+.reportabx_tbl td {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-size: 11px;
+}
+
+.reportabx_tbl td:last-child {
+    border: none;
+}
+
+.reportabx_tbl .noborder {
+    border: none;
+}
+
+.reportabx_tbl .noborderleft {
+    border-left: none;
+}
+
+.reportabx_tbl .pathogencity th {
+    background: #e5e5e5;
+    padding: 0;
+    line-height: 8px;
+    height: 8px;
+    font-size: 8px;
+    line-height: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.reportabx_tbl th.ricktext {
+    background: #e5e5e5;
+}
+
+table {
+    font-size: 12px;
+}
+
+.background_red {
+    background: #EE311A !important;
+}
+
+.riskbg.background_red {
+    border-color: #EE311A !important;
+}
+
+.background_orange {
+    background: #E9913F !important;
+}
+
+.riskbg.background_orange {
+    border-color: #E9913F !important;
+}
+
+.background_yellow {
+    background: #F8C747 !important;
+}
+
+.riskbg.background_yellow {
+    border-color: #F8C747 !important;
+}
+
+.background_yellow_dask {
+    background: #F8C747 !important;
+}
+
+.riskbg.background_yellow_dask {
+    border-color: #F8C747 !important;
+}
+
+.background_yellow_light {
+    background: #F6E3A4 !important;
+}
+
+.riskbg.background_yellow_light {
+    border-color: #F6E3A4 !important;
+}
+
+.background_grey {
+    background: #f3efd6 !important;
+}
+
+.abx_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.legend {
+    padding: 5px 0;
+    margin-top: 5px;
+    page-break-inside: avoid;
+}
+
+.legend img {
+    padding: 0px;
+}
+
+.legend .legenditem {
+    color: #666;
+}
+
+.legend .legendtitle {
+    font-size: 9px;
+}
+
+.legend .legenditem.legendtitle {
+    margin-left: 0 !important;
+}
+
+.legend .legen_dna_red .legendtitle {
+    padding-right: 40px;
+}
+
+.legend .legen_dna_orange .legendtitle {
+    padding-right: 39px;
+}
+
+.bold,
+b,
+strong {
+    font-weight: normal;
+}
+
+.pathogenicity_desc strong {
+    font-weight: bold;
+}
+
+.leitemboxs td,
+.leitemboxs td b {
+    vertical-align: top;
+    padding: 0;
+    color: #666;
+    font-size: 9px;
+}
+
+.leitemboxs .colleitembox {
+    width: 16px;
+    padding-top: 2px;
+}
+
+.leitemboxs .leitembox {
+    width: 9px;
+    height: 9px;
+}
+
+.leitemtt {
+    font-weight: bold;
+    font-size: 10px;
+    color: #444;
+}
+
+.pairicon {
+    width: 6px;
+    height: 6px;
+    display: block;
+    border-radius: 3px;
+    background: #ddd;
+    margin-left: 1px;
+    margin-top: 3px;
+    float: right;
+}
+
+.pairicon_1 {
+    background: #4994cb;
+}
+
+.pairicon_2 {
+    background: #b286c6;
+}
+
+.pairicon_3 {
+    background: #c3bf62;
+}
+
+.abxheader th {
+    line-height: 9px;
+}
+
+.smalltext1 {
+    font-size: 9px;
+    color: #555;
+}
+
+.dompdf_new .rotate:after {
+    margin-left: 3px;
+}
+
+.dompdf_new .legend img {
+    float: left;
+}
+
+.dompdf_new .legend .legendtitle {
+    margin-left: 20px;
+}
+
+.topabxtbl ul li {
+    position: relative;
+}
+
+.thawngicon {
+    color: #EE311A;
+}
+
+.thawngicongreen {
+    color: green;
+}
+
+.reporttblstyle2 h2 {
+    margin: 4px 0;
+}
+
+.reporttblstyle2 td {
+    border: 3px solid #efefef;
+}
+
+.reporttblstyle2 .header td {
+    background: #efefef;
+    height: 16px;
+    line-height: 14px;
+    padding-left: 10px;
+}
+
+.reporttblstyle2 .header2 td {
+    background: #f5f5f5;
+    border-bottom-color: #f5f5f5;
+    height: 18px;
+    line-height: 14px;
+    padding-left: 10px;
+}
+
+.reporttblstyle2 .content td {
+    padding: 5px 10px;
+    border-bottom: none;
+}
+
+.reporttblstyle2 .content td * {
+    font-size: 9px;
+}
+
+.reporttblstyle2 .footertext td {
+    padding: 5px 10px;
+    border-top: none;
+    background: #f6f6f6;
+}
+
+.reporttblstyle2 .footertext td * {
+    font-size: 9px;
+}
+
+td.isexclude {
+    opacity: 0.6;
+    background: #e0e0e0;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td.isexclude {
+    background: #d0d0d0;
+}
+
+body table th.rotate {
+    text-align: left !important;
+    position: relative;
+    vertical-align: bottom;
+    padding: 0;
+}
+
+.rotate span {
+    display: none;
+}
+
+.rotate:after {
+    width: 8px;
+    font-size: 8px;
+    line-height: 9px;
+    margin-left: -3px;
+    margin-top: 15px;
+    position: absolute;
+    content: attr(title);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.legend_notes {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.legend_notes .note_item {
+    font-size: 9px;
+    color: #555;
+}
+
+h2 {
+    color: #333;
+}
+
+h2.pdf_title {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #555;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.nopadding table td {
+    border: none;
+}
+
+.clinic2lines body {
+    margin-top: 3.4cm !important;
+}
+
+.warningrisk6 {
+    position: absolute;
+    height: 100%;
+    top: 38px;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.warningrisk6 img {
+    max-width: 70%;
+    width: 40px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.warningrisk6 div {
+    line-height: 18px;
+}
+
+td.isexclude.batrisk_6 {
+    opacity: 1;
+    background: #fff;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td.isexclude.batrisk_6 {
+    background: #eee;
+
+}
+
+.overtableabxmain {
+    position: relative;
+    overflow: hidden;
+    page-break-inside: avoid;
+}
+
+.textgrey {
+    color: #555;
+}
+
+.legendorphan {
+    padding-top: 5px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    border-top: 3px solid #dedede;
+    text-align: left;
+}
+
+.legendorphan span {
+    margin-right: 20px;
+    font-size: 9px;
+    color: #666;
+}
+
+table.noborder td,
+table.noborder th {
+    border: none;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.pathogens_notes {
+    font-size: 9px;
+    color: #888;
+}
+
+.shownoteinbottom {
+    padding-top: 10px;
+}
+
+h2.pdf_title {
+    font-size: 15px;
+}

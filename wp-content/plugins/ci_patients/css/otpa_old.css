@@ -1,0 +1,95 @@
+body .otpa-form {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+body .otpa-inner {
+    background-image: url(../images/bg.jpg) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body .otpa-logo {
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.otpa-form .message {
+    color: #000;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form > .btns {
+    order: 6;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form > h1 {
+    order: 2;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form > .message {
+    order: 3;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form > form {
+    order: 4;
+    width: 100%;
+}
+
+body.otpa-passwordless.otpa-page #otpa_otp_form .button{
+    vertical-align: baseline;
+    color: #0071a1;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #ececec;
+    border: 1px solid #0071a1;
+    text-transform: uppercase;
+}
+.otpa-form .moretext a{
+    color:#000;
+    font-size:14px;
+    text-decoration: none;
+}
+.otpa-form .message a:hover,
+.otpa-form .moretext a:hover{
+    color:#fa8564;
+}
+
+.itipred{
+    display: inline-block;
+}
+.itipred:before{
+    display: inline-block;
+    content:"i";
+    background:#ff0000ba;
+    color:#fff;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    line-height: 20px;
+    font-style: italic;
+    font-size:12px;
+    margin-right:4px;
+}

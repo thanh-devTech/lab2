@@ -1,0 +1,32 @@
+[submodule "wp-content/plugins/ci_patients"]
+	path = wp-content/plugins/ci_patients
+	url = https://github.com/Ignite-Medical-Tech/ci_patients.git
+	branch = master
+[submodule "wp-content/plugins/ci-data-works-arc"]
+	path = wp-content/plugins/ci-data-works-arc
+	url = https://github.com/Ignite-Medical-Tech/ci-data-works-arc.git
+	branch = master
+[submodule "wp-content/plugins/ci-lab-client"]
+	path = wp-content/plugins/ci-lab-client
+	url = https://github.com/Ignite-Medical-Tech/ci-lab-client.git
+	branch = master
+[submodule "wp-content/plugins/ci-barcode-qrcode-generator"]
+	path = wp-content/plugins/ci-barcode-qrcode-generator
+	url = https://github.com/Ignite-Medical-Tech/ci-barcode-qrcode-generator.git
+	branch = main
+[submodule "wp-content/plugins/ci-billing-indep"]
+	path = wp-content/plugins/ci-billing-indep
+	url = https://github.com/Ignite-Medical-Tech/ci-billing-indep.git
+	branch = master
+[submodule "wp-content/plugins/ci-otp-authenticator"]
+	path = wp-content/plugins/ci-otp-authenticator
+	url = https://github.com/Ignite-Medical-Tech/ci-otp-authenticator.git
+	branch = master
+[submodule "wp-content/plugins/ci-dompdf"]
+	path = wp-content/plugins/ci-dompdf
+	url = https://github.com/Ignite-Medical-Tech/ci-dompdf.git
+	branch = master
+[submodule "wp-content/plugins/ci-cache-and-security"]
+	path = wp-content/plugins/ci-cache-and-security
+	url = https://github.com/Ignite-Medical-Tech/ci-cache-and-security.git
+	branch = master

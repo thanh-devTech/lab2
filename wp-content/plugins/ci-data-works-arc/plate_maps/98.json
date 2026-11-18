@@ -1,0 +1,21 @@
+{
+	"name": "PCR -384(14patients) Wound",
+	"lab": "thefootandankleclinicofwestmonroe.com",
+	"type": 384,
+	"rack": 384,
+	"rackabc": 1,
+	"wellperpatient": 12,
+	"nextwellbycol": 12,
+	"nextwellbyrow": 1,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 28,
+	"ntc": 16,
+	"ntc_text": "NTC",
+	"pos": 15,
+	"pos_text": "POS",
+	"nec": 0,
+	"blank": 0,
+	"controlcols":24,
+	"target": 0
+}

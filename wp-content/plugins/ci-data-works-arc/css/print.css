@@ -1,0 +1,730 @@
+@page {
+    margin: 0;
+}
+
+body {
+    font-size: 11px;
+    font-family: arial, helvetica, sans-serif;
+    margin: 0.6cm;
+    color: #555;
+}
+
+h2 {
+    font-size: 12px;
+}
+
+.masonry {
+    margin: 1em auto;
+    column-gap: 1em;
+}
+
+/* The Masonry Brick */
+.masonry .item {
+    margin: 0 0 5px;
+    break-inside: avoid;
+}
+
+.masonry .item .frow {
+    overflow: inherit;
+    padding-left: 2px;
+}
+
+.printsmall {
+    font-size: 9px;
+}
+
+table td,
+table th {
+    font-size: 11px;
+    font-family: arial, helvetica, sans-serif;
+}
+
+.wrap_fixed th,
+.wrap_fixed td {
+    width: 15%;
+}
+
+.wrap_fixed th:first-child,
+.wrap_fixed td:first-child {
+    width: 20%;
+}
+
+a.change_status {
+    cursor: pointer;
+}
+
+a.change_status.vl_yes {
+    color: #008000;
+}
+
+a.change_status.vl_no {
+    color: red;
+}
+
+.wrap_db {
+    min-height: 452px;
+}
+
+tr.center td {
+    text-align: center;
+}
+
+.frow {
+    clear: both;
+    margin-bottom: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frow:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.frow h4,
+.frow.hlabel>div>label:first-child {
+    margin: 3px 0;
+    line-height: 14px;
+    padding: 5px;
+    margin-right: 1px;
+    font-size: 10px;
+    background: #4f4f67;
+    color: #fff;
+    -webkit-print-color-adjust: exact;
+}
+
+.frow h4 span {
+    font-size: 10px;
+}
+
+.frow h4.mr20 {
+    margin-right: 20px;
+}
+
+.frow h4.mr10 {
+    margin-right: 10px;
+}
+
+.frow div[class*="col"] {
+    margin-right: 0.5%;
+    display: inline-block;
+    float: left;
+    white-space-collapsing: discard;
+}
+
+.frow div[class*="col"]>label,
+.frow>label {
+    display: block;
+    font-weight: bold;
+}
+
+.frow div[class*="col"] img {
+    max-width: 98%;
+    width: 98%;
+    height: auto;
+}
+
+.frow div[class*="col"]:last-child,
+.frow div.col2:nth-child(2n+2) {
+    margin-right: 0 !important;
+}
+
+.frow .col3:nth-child(3n) {
+    margin-right: 0;
+    float: right;
+}
+
+.frow .col12 {
+    width: 7.9%;
+    margin-right: 0.5%;
+}
+
+.frow .col11 {
+    width: 8.8%;
+    margin-right: 0.5%;
+}
+
+.frow .col10 {
+    width: 9.8%;
+    margin-right: 0.5%;
+}
+
+.frow .col9 {
+    width: 10.2%;
+}
+
+.frow .col8 {
+    width: 12%;
+    margin-right: 0.5%;
+}
+
+.frow .col7,
+.frow .col7print {
+    width: 13.4%;
+}
+
+.frow .col6,
+.frow .col6print {
+    width: 15.8%;
+}
+
+.frow .col5 {
+    width: 19.2%;
+}
+
+.frow .col4 {
+    width: 24.5%;
+}
+
+.frow .col3 {
+    width: 32.6%;
+}
+
+.frow .col2 {
+    width: 49.75%;
+    margin-right: 0.5%;
+}
+
+.frow .col23 {
+    width: 64.5%;
+}
+
+.frow .col13 {
+    width: 34.5%;
+}
+
+.frow .col25 {
+    width: 39.4%;
+}
+
+.blabel label {
+    display: block;
+}
+
+label.inline,
+span.inline {
+    display: inline !important;
+}
+
+label.inlineblock * {
+    display: inline-block !important;
+}
+
+.binline {
+    display: inline-block !important;
+}
+
+.blabel label.rcb:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+.ilabel label {
+    display: inline;
+    margin-right: 2px;
+}
+
+.frow textarea {
+    height: 78px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.frow select {
+    background: #fff;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.frow input,
+.frow select {
+    padding: 4px 1%;
+}
+
+body .frow input[type="text"],
+.frow input[type="date"],
+.frow input[type="email"],
+.frow select,
+.frow textarea,
+span.text {
+    width: -webkit-fill-available;
+    max-width: 99%;
+    display: block;
+    padding: 0;
+    height: 17px;
+    line-height: 14px;
+    font-size: 11px;
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    box-sizing: border-box;
+    text-align: left !important;
+}
+
+body.testpdf .frow input[type="text"],
+body.testpdf .frow input[type="email"],
+body.testpdf span.text {
+    border: 1px solid #ddd;
+}
+
+.ilabel [class*="col"] input[type="text"],
+.ilabel [class*="col"] input[type="date"],
+.ilabel [class*="col"] input[type="email"] {
+    width: 40%;
+}
+
+.frow input[type="radio"],
+.frow input[type="checkbox"] {
+    display: inline !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 11.5px;
+}
+
+.percent.ilabel label {
+    width: 50%;
+    float: left;
+}
+
+.percent input[type="text"],
+.percent input[type="date"],
+.percent input[type="email"] {
+    width: 60px;
+}
+
+.percent textarea {
+    width: 80%;
+    height: 50px;
+}
+
+#insurance_network input[type="text"] {
+    width: 96%;
+    float: right;
+}
+
+.frow.ilabel>input,
+.frow.ilabel>textarea {
+    width: 30%;
+}
+
+.frow.ilabel>label {
+    float: left;
+    width: 250px;
+}
+
+.frow.iblabel label {
+    float: left;
+    margin-right: 30px;
+}
+
+.frow>textarea {
+
+    height: 100px;
+}
+
+div.small {
+    font-size: 11px;
+}
+
+.signature_canvas canvas {
+    border: 1px solid #000;
+    background: #fff;
+}
+
+.wrap_tabs {
+    margin-right: 15px;
+}
+
+.label2 div label,
+.label2d label {
+    width: 46%;
+    float: left;
+}
+
+.lable4cl label {
+    width: 25%;
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.checkboxright input[type="checkbox"] {
+    float: right;
+}
+
+.checkboxright label {
+    clear: both;
+    padding-bottom: 10px;
+}
+
+.tbl_2box table {
+    width: 45%;
+}
+
+ol#doctors_dv {
+    margin-left: 0;
+}
+
+ol#doctors_dv li.frow {
+    list-style: none;
+    overflow: inherit;
+}
+
+ol#doctors_dv li.frow:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+img.sign_img {
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.card_file {
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.card_file input {
+    position: absolute;
+    left: -9999px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.mtop15 {
+    margin-top: 15px;
+}
+
+select .hidden {
+    display: none;
+}
+
+.form-wrap select,
+.form-wrap input[type="text"] {
+    display: block;
+    font-size: 20px;
+    margin: 0 auto 15px;
+    padding: 2px 7px;
+    width: 500px;
+    font-size: 16px;
+}
+
+.settings-form {
+    font-size: 16px;
+    margin: 0 auto;
+    padding-bottom: 65px;
+    text-align: left;
+    width: 500px;
+}
+
+.form-wrap h3 {
+    font-size: 25px;
+    margin-bottom: 25px;
+    margin-top: 0;
+    text-align: center;
+}
+
+img.img_absolute {
+    height: 50px;
+    position: absolute;
+    right: 50px;
+    top: 0;
+    width: 50px;
+}
+
+.printbreak,
+.print_newpage {
+    page-break-before: always;
+    padding-top: 15px;
+}
+
+.insidebreak {
+    page-break-inside: avoid;
+}
+
+.group_label {
+    background: #797474;
+    display: block;
+    line-height: 19px;
+    color: #fff;
+}
+
+.group_label,
+.specimens label.title,
+.groupparent {
+    -webkit-print-color-adjust: exact;
+}
+
+.panel_requests {
+    font-size: 10px !important;
+    column-count: 3 !important;
+}
+
+.wraptoxform .panel_requests {
+    column-count: inherit !important;
+}
+
+.panel_requests .item {
+    float: none;
+    overflow: hidden;
+}
+
+.panel_requests .item label.lcb {
+    font-weight: normal !important;
+}
+
+.flag {
+    background: url(../images/flag-solid.svg) no-repeat;
+}
+
+.print_button,
+.submitdiv,
+.dontprint,
+.add-new-h2,
+a.add_new_group,
+.card_file .button,
+.card_file input {
+    display: none !important;
+}
+
+#list_dagnostic_codes {
+    padding-left: 12px;
+}
+
+#managers_dv,
+#doctors_dv,
+#coll_dv {
+    padding: 0;
+}
+
+.scircle {
+    display: inline-block !important;
+    width: 22px !important;
+    height: 22px !important;
+    line-height: 22px !important;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #fff;
+    background: #000;
+    padding: 0 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+}
+
+.scircle.greencircle {
+    background: green;
+    color: #fff;
+}
+
+.scircle.redcircle {
+    background: red;
+    color: #fff;
+}
+
+.assen .scircle,
+.sscircle {
+    float: right;
+    width: 18px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+}
+
+.fright {
+    float: right;
+}
+
+.small2 {
+    font-size: 9px;
+}
+
+.signatureimgbox,
+.notesarea {
+    min-height: 50px;
+}
+
+.wraptoxform .panel_requests .groupparent.item {
+    width: 100% !important;
+    display: block;
+    margin-bottom: 1px;
+}
+
+.wraptoxform .panel_requests .item label.lcb {
+    width: 45% !important;
+    display: inline-block !important;
+}
+
+.wraptoxform .tbl_2box td {
+    padding: 1px;
+}
+
+.dompdf .frow div[class*="col"] {
+    float: none;
+    margin-right: 0.4%;
+    border: 0 !important;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.dompdf .frow div[class*="col"]:last-child {
+    margin-right: -4px !important;
+}
+
+.dompdf .use_required_ins {
+    overflow: hidden;
+}
+
+.dompdf .frow div[class*="col"] h4 {
+    padding: 4px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.dompdf .frow {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.dompdf .right {
+    float: none;
+    text-align: right;
+}
+
+.dompdf .left {
+    float: none;
+    text-align: left;
+}
+
+div.printw100 {
+    width: 100% !important;
+    margin-right: 0 !important;
+    display: block !important;
+}
+
+.dompdf .frow .col2 {
+    width: 49.3%;
+}
+
+.dompdf .frow div[class*="col"] .col2 {
+    width: 49%;
+}
+
+.dompdf .frow .col4 .col2 {
+    width: 47%;
+}
+
+.dompdf .frow div[class*="col"] div[class*="col"] .col2 {
+    width: 46%;
+}
+
+.dompdf .frow .col4 {
+    width: 24.2%;
+}
+
+.dompdf .frow div[class*="col"] .col5 {
+    width: 18.7%;
+}
+
+.dompdf .frow .col6 {
+    width: 15.8%;
+}
+
+.dompdf .frow .col8 {
+    width: 11.8%;
+}
+
+.dompdf .frow .frow .col3 {
+    width: 31.8%;
+}
+
+.dompdf .frow .frow .col23 {
+    width: 63.5%;
+}
+
+.dompdf .frow .col13 {
+    width: 34%;
+}
+
+.dompdf .group_radio label {
+    font-size: 10px;
+}
+
+.dompdf span.text,
+.dompdf .frow input[type="email"] {
+    height: 22px;
+    line-height: 20px;
+}
+
+.dompdf .frow.iblabel label,
+.dompdf .frow.ilabel>label {
+    display: inline-block;
+    float: none;
+}
+
+.dompdf .panel_requests .item {
+    width: 33% !important;
+    float: none;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.dompdf .group_label {
+    line-height: 12px;
+    padding-left: 5px;
+}
+
+.dompdf .wraptoxform .masonry {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.dompdf .wraptoxform .groupparent .frow {
+    margin-bottom: 0;
+}
+
+.dompdf .printnopaddingtop {
+    padding-top: 0 !important;
+}
+
+form.emptyform .textarea.text {
+    height: 100px;
+}
+
+form.emptyform .text {
+    position: relative;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+.medication_area .col4 label {
+    font-size: 8px;
+}
+
+#screening_div label {
+    font-weight: normal !important;
+}
+
+@media print {
+    body.print {
+        zoom: 80%;
+    }
+}

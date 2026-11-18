@@ -1,0 +1,61 @@
+{
+	"name": "PCR - 96(6 patients) Vaginosis(new)",
+	"lab": "wellnow",
+	"type": 96,
+	"rack": 96,
+	"rackabc": 1,
+	"wellperpatient": 8,
+	"nextwellbycol": 2,
+	"nextwellbyrow": 8,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 6,
+	"ntc": 0,
+	"ntcfix": [
+		86,
+		88,
+		90,
+		92,
+		94,
+		96
+	],
+	"ntc_text": "Negative Control",
+	"pos": 0,
+	"posfix": [
+		74,
+		76,
+		78,
+		80,
+		82,
+		84
+	],
+	"pos_text": "Positive Control",
+	"nec": 0,
+	"blank": 0,
+	"blankfix": [
+		62,
+		64,
+		66,
+		68,
+		70,
+		72
+	],
+	"target": 1,
+	"ntctarget": 0,
+	"targets": [
+		"BVAB-2 / Meg. Type 2",
+		"L. iners/ M. mulieris",
+		"A. vaginae / G. vaginalis / M. curtisii",
+		"L. jensenii",
+		"C. albicans / C. dubliniensis / C. glabrata / C. krusei / C. lusitaniae / C. parapsilosis / C. tropicalis",
+		"Meg. Type 1",
+		"C. trachomatis / N. gonorrhoeae / T. vaginalis",
+		"T. pallidum",
+		"H. ducreyi",
+		"U. urealyticum/ M. genitalium (CFO)/ M. hominis (CFR)",
+		"HSV-1",
+		"HSV-2",
+		"L. gasseri / L. crispatus"
+	]
+}

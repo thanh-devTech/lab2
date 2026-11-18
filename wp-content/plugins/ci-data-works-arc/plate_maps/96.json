@@ -1,0 +1,20 @@
+{
+	"name": "PCR -96(22patients) UTI",
+	"lab": "prdxlab.com",
+	"type": 96,
+	"rack": 96,
+	"rackabc": 1,
+	"wellperpatient": 3,
+	"nextwellbycol": 3,
+	"nextwellbyrow": 1,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 30,
+	"ntc": 31,
+	"ntc_text": "NC",
+	"pos": 32,
+	"pos_text": "PC",
+	"nec": 0,
+	"blank": 0,
+	"target": 1
+}

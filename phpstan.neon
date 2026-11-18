@@ -1,0 +1,28 @@
+includes:
+    - /tmp/phpstan-tools/vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 5
+    paths:
+        - wp-content/plugins/ci-barcode-qrcode-generator
+        - wp-content/plugins/ci-billing-indep
+        - wp-content/plugins/ci-cache-and-security
+        - wp-content/plugins/ci-data-works-arc
+        - wp-content/plugins/ci-dompdf
+        - wp-content/plugins/ci-lab-client
+        - wp-content/plugins/ci-otp-authenticator
+        - wp-content/plugins/ci_patients
+    excludePaths:
+        - '*/vendor/*'
+        - '*/node_modules/*'
+        - '*/libraries/*'
+        - '*/dompdf/*'
+        - '*/dompdf8/*'
+        - '*/phpqrcode.php'
+    scanDirectories:
+        - wp-includes
+        - wp-admin
+    parallel:
+        maximumNumberOfProcesses: 4
+    # Start with a generous baseline - tighten over time
+    reportUnmatchedIgnoredErrors: false

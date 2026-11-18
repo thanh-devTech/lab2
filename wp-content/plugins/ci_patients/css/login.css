@@ -1,0 +1,175 @@
+
+body .otpa-wrapper{
+    display: block;
+}
+body.login div h1 a{
+    height:120px;
+    width:340px !important;
+}
+.user-admin-bar-front-wrap{
+    display:none;
+}
+body #login form p.submit{
+    margin:0;
+}
+body.login #nav{
+    margin:0
+}
+#backtoblog{
+    display: none !important;
+}
+#login form p.btns{
+    margin-bottom:15px;
+}
+.button.bluebtn{
+    width:100%;
+    height: 40px !important;
+    line-height: 40px !important;
+    text-align: center;
+    color: #fff;
+    background: #2a5cff;
+    border:1px solid #2a5cff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.login-action-register p.message.register{
+    display:none;
+}
+body #adminmenuwrap .logo-overlay, body #adminmenuwrap:before, body .folded #adminmenuwrap:before{
+    height:96px;
+}
+.itip{
+    background:url(../images/i.png) no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    text-indent: -999px;
+    overflow: hidden;
+    width: 16px;
+    height:16px;
+    display: inline-block;
+    margin-left:5px;
+    cursor: pointer;
+    position: absolute;
+}
+form select{
+    line-height:32px;
+    height:32px;
+    color: #666;
+}
+
+body.login form select{
+    background:rgba(255,255,255,0.7);
+    height: 44px;
+    line-height: 40px;
+    margin-top: 4px;
+    padding:0 8.2px;
+}
+form #captcha_code{
+    width:160px;
+}
+
+form label[for="captcha_code"] img{
+    margin-top:10px;
+}
+body.login form .input, body.login input[type=text]{
+    font-size:16px;
+}
+.login form .forgetmenot label{
+    width:auto;
+}
+body .birthdaydrop label{
+    float:left;
+    line-height:45px;
+    width:73px;
+    text-transform: none;
+}
+body .birthdaydrop .date-dropdowns select{
+    margin-right:10px;
+}
+body .birthdaydrop .date-dropdowns select:last-child{
+    margin-right:0;
+}
+body .birthdaydrop .date-dropdowns{
+    margin-bottom:10px;
+}
+body .birthdaydrop .date-dropdowns:after{
+    content:"";
+    display: block;
+    clear: both;
+}
+.login #login_error, .login .message{
+    color:#666;
+}
+body, #wp-auth-check-wrap #wp-auth-check{
+    background-image:url("../images/bg.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+body.login form{
+    background: transparent;
+}
+body.login h1 a{
+    padding:0;
+    background-repeat: no-repeat;
+}
+
+body.login #registerform #reg_passmail{
+    order: 2;
+    margin: 10px 0;
+}
+
+body.login #rememberme{
+    border: 1px solid #1e8cbe!important;
+}
+body.login #loginform{
+    display: flex;
+    flex-wrap: wrap;
+}
+body.login #loginform > *{
+    width: 100%;
+}
+body.login #loginform > a{
+    order: 2;
+    margin-top: 10px;
+}
+body.login.login-action-register #registerform > a:hover,
+body.login #loginform > a:hover,
+body.login #nav a:hover{
+    color: #006799;
+}
+body.login.login-action-register #registerform > a{
+    order: 2;
+    margin: 10px 0 0;
+}
+body #login form{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.2), 0 5px 5px 0 rgba(0,0,0,.24);
+}
+.itipred{
+    display: inline-block;
+}
+.itipred:before{
+    display: inline-block;
+    content:"i";
+    background:#ff0000ba;
+    color:#fff;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+    line-height: 20px;
+    font-style: italic;
+    font-size:12px;
+    margin-right:4px;
+}
+.login-action-rp .otpa-passwordless-login-form-link{
+    display: none;
+}
+
+@media(max-width: 400px){
+    body .birthdaydrop label{
+        display: block;
+        float:none;
+    }
+}

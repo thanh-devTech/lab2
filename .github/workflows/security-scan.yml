@@ -1,0 +1,389 @@
+name: Security Scanning
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # Weekly Monday 6am UTC
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ──────────────────────────────────────────
+  # Semgrep SAST - PHP + JS
+  # ──────────────────────────────────────────
+  semgrep:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Run Semgrep
+        run: |
+          semgrep scan \
+            --config p/php \
+            --config p/javascript \
+            --config p/xss \
+            --config p/owasp-top-ten \
+            --config p/sql-injection \
+            --config p/security-audit \
+            --config p/phpcs-security-audit \
+            --json \
+            --output semgrep-results.json \
+            --exclude='*/vendor/*' \
+            --exclude='*/node_modules/*' \
+            --exclude='*/libraries/*' \
+            --exclude='wp-admin/*' \
+            --exclude='wp-includes/*' \
+            --exclude='*.min.js' \
+            wp-content/plugins/ci-barcode-qrcode-generator/ \
+            wp-content/plugins/ci-billing-indep/ \
+            wp-content/plugins/ci-cache-and-security/ \
+            wp-content/plugins/ci-data-works-arc/ \
+            wp-content/plugins/ci-dompdf/ \
+            wp-content/plugins/ci-lab-client/ \
+            wp-content/plugins/ci-otp-authenticator/ \
+            wp-content/plugins/ci_patients/ \
+            || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-results
+          path: semgrep-results.json
+
+  # ──────────────────────────────────────────
+  # Retire.js - Known JS library vulnerabilities
+  # ──────────────────────────────────────────
+  retirejs:
+    name: Retire.js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install and run Retire.js
+        run: |
+          npm install -g retire
+          retire \
+            --path wp-content/plugins/ \
+            --outputformat json \
+            --outputpath retire-results.json \
+            --severity medium \
+            --ignore wp-content/plugins/*/vendor \
+            --ignore wp-content/plugins/*/node_modules \
+            || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retirejs-results
+          path: retire-results.json
+
+  # ──────────────────────────────────────────
+  # Trivy - Filesystem vulnerability scan
+  # ──────────────────────────────────────────
+  trivy:
+    name: Trivy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: 'wp-content/plugins/'
+          severity: 'CRITICAL,HIGH'
+          format: 'json'
+          output: 'trivy-results.json'
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-results
+          path: trivy-results.json
+
+  # ──────────────────────────────────────────
+  # Report
+  # ──────────────────────────────────────────
+  report:
+    name: Report
+    if: always()
+    needs: [semgrep, retirejs, trivy]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: results
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            function readJSON(p) {
+              try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }
+            }
+
+            function icon(count) {
+              if (count === 0) return '✅';
+              return '⚠️';
+            }
+
+            function sevIcon(sev) {
+              sev = (sev || '').toUpperCase();
+              if (sev === 'CRITICAL' || sev === 'ERROR') return '🔴';
+              if (sev === 'HIGH') return '🟠';
+              if (sev === 'WARNING' || sev === 'MEDIUM') return '🟡';
+              return '⚪';
+            }
+
+            // ── Parse Semgrep ──
+            const semgrepData = readJSON('results/semgrep-results/semgrep-results.json');
+            const findings = semgrepData?.results || [];
+
+            // Group by severity
+            const bySeverity = {};
+            findings.forEach(r => {
+              const sev = (r.extra?.severity || 'unknown').toUpperCase();
+              bySeverity[sev] = (bySeverity[sev] || 0) + 1;
+            });
+
+            // Group by rule
+            const byRule = {};
+            findings.forEach(r => {
+              const rule = r.check_id || 'unknown';
+              const sev = (r.extra?.severity || 'unknown').toUpperCase();
+              if (!byRule[rule]) byRule[rule] = { count: 0, severity: sev };
+              byRule[rule].count++;
+            });
+            const topRules = Object.entries(byRule)
+              .sort((a, b) => b[1].count - a[1].count)
+              .slice(0, 20);
+
+            // Group by plugin
+            const byPlugin = {};
+            findings.forEach(r => {
+              const m = (r.path || '').match(/plugins\/(ci[-_][^/]+)/);
+              const plugin = m ? m[1] : 'other';
+              if (!byPlugin[plugin]) byPlugin[plugin] = { error: 0, warning: 0, info: 0 };
+              const sev = (r.extra?.severity || 'info').toLowerCase();
+              if (sev === 'error') byPlugin[plugin].error++;
+              else if (sev === 'warning') byPlugin[plugin].warning++;
+              else byPlugin[plugin].info++;
+            });
+
+            // ── Parse Retire.js ──
+            const retireData = readJSON('results/retirejs-results/retire-results.json');
+            const vulns = [];
+            if (Array.isArray(retireData)) {
+              retireData.forEach(item => {
+                (item.results || []).forEach(r => {
+                  (r.vulnerabilities || []).forEach(v => {
+                    vulns.push({
+                      lib: r.component || 'unknown',
+                      version: r.version || '?',
+                      severity: (v.severity || 'unknown').toUpperCase(),
+                      cve: (v.identifiers?.CVE || []).join(', ') || (v.identifiers?.summary || ''),
+                      file: (item.file || '').split('/').slice(-2).join('/')
+                    });
+                  });
+                });
+              });
+            }
+
+            // ── Parse Trivy ──
+            const trivyData = readJSON('results/trivy-results/trivy-results.json');
+            const trivyVulns = [];
+            (trivyData?.Results || []).forEach(r => {
+              (r.Vulnerabilities || []).forEach(v => {
+                trivyVulns.push({
+                  id: v.VulnerabilityID || '?',
+                  pkg: v.PkgName || '?',
+                  version: v.InstalledVersion || '?',
+                  fixed: v.FixedVersion || 'n/a',
+                  severity: v.Severity || '?',
+                  title: (v.Title || '').substring(0, 80)
+                });
+              });
+            });
+            const trivyCritical = trivyVulns.filter(v => v.severity === 'CRITICAL').length;
+            const trivyHigh = trivyVulns.filter(v => v.severity === 'HIGH').length;
+
+            // ── Build Report ──
+            let report = '';
+            report += '# Security Scan Report\n\n';
+
+            // Overview table
+            report += '## Overview\n\n';
+            report += '| Scanner | Status | Findings |\n';
+            report += '|---------|--------|----------|\n';
+            report += `| Semgrep SAST | ${icon(bySeverity['ERROR'] || 0)} | ${findings.length.toLocaleString()} findings`;
+            if (bySeverity['ERROR']) report += ` (${bySeverity['ERROR']} errors)`;
+            report += ' |\n';
+            report += `| Retire.js | ${icon(vulns.length)} | ${vulns.length === 0 ? 'Clean' : vulns.length + ' vulnerable libraries'} |\n`;
+            report += `| Trivy | ${icon(trivyCritical)} | ${trivyCritical} critical, ${trivyHigh} high |\n`;
+            report += '\n';
+
+            // Semgrep severity breakdown
+            report += '---\n\n';
+            report += '## Semgrep — Findings by Severity\n\n';
+            const sevOrder = ['ERROR', 'WARNING', 'INFO'];
+            report += '| Severity | Count |\n';
+            report += '|----------|-------|\n';
+            sevOrder.forEach(sev => {
+              if (bySeverity[sev]) {
+                report += `| ${sevIcon(sev)} ${sev} | ${bySeverity[sev].toLocaleString()} |\n`;
+              }
+            });
+            report += '\n';
+
+            // Top rules
+            report += '### Top Rules Triggered\n\n';
+            report += '| # | Rule | Severity | Count |\n';
+            report += '|---|------|----------|-------|\n';
+            topRules.forEach(([rule, data], i) => {
+              const shortRule = rule.split('.').slice(-2).join('.');
+              report += `| ${i + 1} | \`${shortRule}\` | ${sevIcon(data.severity)} ${data.severity} | ${data.count.toLocaleString()} |\n`;
+            });
+            report += '\n';
+
+            // Per plugin breakdown
+            const pluginEntries = Object.entries(byPlugin).sort((a, b) =>
+              (b[1].error + b[1].warning) - (a[1].error + a[1].warning));
+            if (pluginEntries.length > 0) {
+              report += '<details><summary><b>Semgrep — Breakdown by Plugin</b></summary>\n\n';
+              report += '| Plugin | 🔴 Error | 🟡 Warning | ⚪ Info |\n';
+              report += '|--------|----------|------------|--------|\n';
+              pluginEntries.forEach(([name, counts]) => {
+                report += `| ${name} | ${counts.error} | ${counts.warning} | ${counts.info} |\n`;
+              });
+              report += '\n</details>\n\n';
+            }
+
+            // Retire.js
+            report += '---\n\n';
+            report += '## Retire.js — Vulnerable Libraries\n\n';
+            if (vulns.length > 0) {
+              report += '| Library | Version | Severity | CVE |\n';
+              report += '|---------|---------|----------|-----|\n';
+              vulns.forEach(v => {
+                report += `| ${v.lib} | ${v.version} | ${sevIcon(v.severity)} **${v.severity}** | ${v.cve} |\n`;
+              });
+            } else {
+              report += '> ✅ No known vulnerabilities in bundled JS libraries.\n';
+            }
+            report += '\n';
+
+            // Trivy
+            report += '---\n\n';
+            report += '## Trivy — Filesystem Vulnerabilities\n\n';
+            if (trivyVulns.length > 0) {
+              report += '| CVE | Package | Installed | Fixed | Severity | Title |\n';
+              report += '|-----|---------|-----------|-------|----------|-------|\n';
+              trivyVulns
+                .sort((a, b) => {
+                  const order = { CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3 };
+                  return (order[a.severity] ?? 4) - (order[b.severity] ?? 4);
+                })
+                .slice(0, 30)
+                .forEach(v => {
+                  report += `| ${v.id} | ${v.pkg} | ${v.version} | ${v.fixed} | ${sevIcon(v.severity)} **${v.severity}** | ${v.title} |\n`;
+                });
+              if (trivyVulns.length > 30) {
+                report += `| *...and ${trivyVulns.length - 30} more* | | | | | |\n`;
+              }
+            } else {
+              report += '> ✅ No critical or high vulnerabilities found in vendored libraries.\n';
+            }
+            report += '\n';
+
+            // ── Write Job Summary ──
+            core.summary.addRaw(report);
+            await core.summary.write();
+
+            // ── PR Comment ──
+            if (context.eventName === 'pull_request') {
+              let comment = '## Security Scan Results\n\n';
+              comment += '| Scanner | Status | Findings |\n';
+              comment += '|---------|--------|----------|\n';
+              comment += `| Semgrep SAST | ${icon(bySeverity['ERROR'] || 0)} | ${findings.length.toLocaleString()} total`;
+              if (bySeverity['ERROR']) comment += ` (🔴 ${bySeverity['ERROR']} errors)`;
+              comment += ' |\n';
+              comment += `| Retire.js | ${icon(vulns.length)} | ${vulns.length === 0 ? 'Clean' : vulns.length + ' vulnerable libs'} |\n`;
+              comment += `| Trivy | ${icon(trivyCritical)} | ${trivyCritical} critical, ${trivyHigh} high |\n`;
+              comment += '\n';
+
+              // Top 5 security rules
+              const errorRules = topRules.filter(([_, d]) => d.severity === 'ERROR');
+              if (errorRules.length > 0) {
+                comment += '**Top Semgrep errors:**\n';
+                errorRules.slice(0, 5).forEach(([rule, data], i) => {
+                  const short = rule.split('.').slice(-2).join('.');
+                  comment += `${i + 1}. \`${short}\` — ${data.count.toLocaleString()}\n`;
+                });
+                comment += '\n';
+              }
+
+              if (trivyVulns.length > 0) {
+                const crits = trivyVulns.filter(v => v.severity === 'CRITICAL');
+                if (crits.length > 0) {
+                  comment += '**Critical Trivy findings:**\n';
+                  crits.slice(0, 5).forEach(v => {
+                    comment += `- 🔴 **${v.id}** ${v.pkg} ${v.version}\n`;
+                  });
+                  comment += '\n';
+                }
+              }
+
+              if (vulns.length > 0) {
+                comment += '**Vulnerable JS libraries:**\n';
+                vulns.slice(0, 5).forEach(v => {
+                  comment += `- ⚠️ **${v.lib}** ${v.version} — ${v.severity} ${v.cve ? '(' + v.cve + ')' : ''}\n`;
+                });
+                comment += '\n';
+              }
+
+              comment += `> 📋 [Full report with all details](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})\n`;
+
+              fs.writeFileSync('pr-comment.md', comment);
+            }
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: security-scan
+          path: pr-comment.md

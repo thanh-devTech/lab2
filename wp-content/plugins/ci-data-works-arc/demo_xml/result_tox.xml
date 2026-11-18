@@ -1,0 +1,26 @@
+<result>
+    <assen>ARK123T</assen>
+
+    <chemistry>
+        <test>
+            <name>CR</name>
+            <value>44</value>
+            <comments>comment here</comments>
+        </test>
+        <test>
+            <name>SG</name>
+            <value>22</value>
+            <comments>comment here</comments>
+        </test>
+    </chemistry>
+
+
+
+    <drugs>
+        <test>
+            <name>ZALEPLON</name>
+            <value>0.4</value>
+            <comments>comment here</comments>
+        </test>
+    </drugs>
+</result>

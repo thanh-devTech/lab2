@@ -1,0 +1,428 @@
+name: PHP Analysis
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+    paths:
+      - '**.php'
+      - 'phpcs.xml.dist'
+      - 'phpstan.neon'
+      - '.github/workflows/php-analysis.yml'
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: php-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ──────────────────────────────────────────
+  # PHPCS - WordPress Coding Standards + Security
+  # ──────────────────────────────────────────
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: cs2pr
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: /tmp/phpcs-tools/vendor
+          key: phpcs-${{ hashFiles('.github/workflows/php-analysis.yml') }}
+          restore-keys: phpcs-
+
+      - name: Install PHPCS and standards
+        run: |
+          mkdir -p /tmp/phpcs-tools && cd /tmp/phpcs-tools
+          if [ ! -f composer.json ]; then
+            composer init --no-interaction --name=ci/phpcs-tools
+            composer config --no-interaction allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+            composer require --no-interaction \
+              squizlabs/php_codesniffer:"^3.9" \
+              wp-coding-standards/wpcs:"^3.0" \
+              phpcompatibility/phpcompatibility-wp:"*" \
+              dealerdirect/phpcodesniffer-composer-installer:"*" \
+              pheromone/phpcs-security-audit:"*"
+          fi
+
+      - name: Run PHPCS
+        run: |
+          /tmp/phpcs-tools/vendor/bin/phpcs \
+            --standard=${{ github.workspace }}/phpcs.xml.dist \
+            --report=checkstyle \
+            --report-file=phpcs-checkstyle.xml \
+            --parallel=8 \
+            || true
+
+          /tmp/phpcs-tools/vendor/bin/phpcs \
+            --standard=${{ github.workspace }}/phpcs.xml.dist \
+            --report=summary \
+            --parallel=8 \
+            2>&1 | tee phpcs-summary.txt || true
+
+          /tmp/phpcs-tools/vendor/bin/phpcs \
+            --standard=${{ github.workspace }}/phpcs.xml.dist \
+            --report=source \
+            --parallel=8 \
+            2>&1 | tee phpcs-source.txt || true
+
+      - name: Parse PHPCS results
+        run: |
+          # Strip ANSI codes from text files
+          sed -i 's/\x1b\[[0-9;]*m//g' phpcs-summary.txt phpcs-source.txt 2>/dev/null || true
+
+          # Extract totals from summary
+          ERRORS=$(grep -oP 'A TOTAL OF \K\d+' phpcs-summary.txt | head -1 || echo "0")
+          WARNINGS=$(grep -oP '(?<=ERRORS AND )\d+' phpcs-summary.txt | head -1 || echo "0")
+
+          # Extract top rules from source report: format is "[x] Rule.Name  COUNT"
+          # Parse lines matching [x] or [ ] followed by a rule name and count
+          TOP_RULES=$(grep -E '^\s*\[.\]\s+\S+' phpcs-source.txt | head -15 | while read -r line; do
+            rule=$(echo "$line" | sed 's/^\s*\[.\]\s*//' | awk '{print $1}')
+            count=$(echo "$line" | awk '{print $NF}')
+            echo "{\"rule\":\"$rule\",\"count\":$count}"
+          done | paste -sd',' -)
+
+          # Extract per-plugin from summary: lines with plugin paths and error/warning counts
+          PER_PLUGIN=$(grep -E 'plugins/ci[-_]' phpcs-summary.txt | while read -r line; do
+            plugin=$(echo "$line" | grep -oE 'ci[-_][a-z_-]+' | head -1)
+            nums=$(echo "$line" | grep -oE '[0-9]+' | tail -2)
+            errs=$(echo "$nums" | head -1)
+            warns=$(echo "$nums" | tail -1)
+            echo "{\"plugin\":\"$plugin\",\"errors\":$errs,\"warnings\":$warns}"
+          done | sort | uniq | paste -sd',' -)
+
+          cat > phpcs-stats.json << EOJSON
+          {
+            "errors": ${ERRORS:-0},
+            "warnings": ${WARNINGS:-0},
+            "topRules": [${TOP_RULES}],
+            "perPlugin": [${PER_PLUGIN}]
+          }
+          EOJSON
+
+      - name: Setup reviewdog
+        if: github.event_name == 'pull_request'
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: PHPCS inline annotations (PR only)
+        if: github.event_name == 'pull_request'
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sed 's/[\x00-\x08\x0B\x0C\x0E-\x1F]//g' phpcs-checkstyle.xml | reviewdog \
+            -f=checkstyle \
+            -name="PHPCS" \
+            -reporter=github-pr-review \
+            -level=warning \
+            -fail-on-error=false \
+            || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpcs-results
+          path: |
+            phpcs-checkstyle.xml
+            phpcs-summary.txt
+            phpcs-source.txt
+            phpcs-stats.json
+
+  # ──────────────────────────────────────────
+  # PHPStan - Static Analysis
+  # ──────────────────────────────────────────
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Cache PHPStan tools
+        uses: actions/cache@v4
+        with:
+          path: /tmp/phpstan-tools/vendor
+          key: phpstan-${{ hashFiles('.github/workflows/php-analysis.yml') }}
+          restore-keys: phpstan-
+
+      - name: Install PHPStan
+        run: |
+          mkdir -p /tmp/phpstan-tools && cd /tmp/phpstan-tools
+          if [ ! -f composer.json ]; then
+            composer init --no-interaction --name=ci/phpstan-tools
+            composer require --no-interaction \
+              phpstan/phpstan:"^1.10" \
+              szepeviktor/phpstan-wordpress:"^1.3"
+          fi
+
+      - name: Run PHPStan
+        run: |
+          /tmp/phpstan-tools/vendor/bin/phpstan analyse \
+            --configuration=${{ github.workspace }}/phpstan.neon \
+            --error-format=github \
+            --no-progress \
+            2>&1 | tee phpstan-github.txt || true
+
+          /tmp/phpstan-tools/vendor/bin/phpstan analyse \
+            --configuration=${{ github.workspace }}/phpstan.neon \
+            --error-format=json \
+            --no-progress \
+            > phpstan-results.json 2>/dev/null || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phpstan-results
+          path: |
+            phpstan-github.txt
+            phpstan-results.json
+
+  # ──────────────────────────────────────────
+  # PHP Syntax Check
+  # ──────────────────────────────────────────
+  php-lint:
+    name: PHP Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Check PHP syntax
+        run: |
+          find wp-content/plugins/ci-* wp-content/plugins/ci_* \
+            -name "*.php" \
+            -not -path "*/vendor/*" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/libraries/*" \
+            -print0 | xargs -0 -P8 -n1 php -l 2>&1 | grep -v "No syntax errors" > php-lint-errors.txt || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phplint-results
+          path: php-lint-errors.txt
+
+  # ──────────────────────────────────────────
+  # Report - Unified summary + PR comment
+  # ──────────────────────────────────────────
+  report:
+    name: Report
+    if: always()
+    needs: [phpcs, phpstan, php-lint]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: results
+
+      - name: Generate report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            function readFile(p) {
+              try { return fs.readFileSync(p, 'utf8'); } catch { return ''; }
+            }
+            function readJSON(p) {
+              try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }
+            }
+
+            // ── Parse PHPCS from pre-built stats ──
+            const phpcsStats = readJSON('results/phpcs-results/phpcs-stats.json') || {};
+            const totalPhpcsErrors = phpcsStats.errors || 0;
+            const totalPhpcsWarnings = phpcsStats.warnings || 0;
+            const topRules = (phpcsStats.topRules || []).filter(r => r && r.rule);
+            const perPluginArr = (phpcsStats.perPlugin || []).filter(p => p && p.plugin);
+
+            // Aggregate per-plugin (may have multiple entries per plugin from summary lines)
+            const perPlugin = {};
+            for (const p of perPluginArr) {
+              if (!perPlugin[p.plugin]) perPlugin[p.plugin] = { errors: 0, warnings: 0 };
+              perPlugin[p.plugin].errors += p.errors || 0;
+              perPlugin[p.plugin].warnings += p.warnings || 0;
+            }
+
+            // ── Parse PHPStan ──
+            let phpstanErrors = 0;
+            let phpstanTopErrors = [];
+            const phpstanData = readJSON('results/phpstan-results/phpstan-results.json');
+            if (phpstanData) {
+              phpstanErrors = phpstanData.totals?.errors || 0;
+              const msgCount = {};
+              for (const [file, fileData] of Object.entries(phpstanData.files || {})) {
+                for (const err of fileData.messages || []) {
+                  let msg = err.message || '';
+                  if (msg.includes('undefined property')) msg = 'Access to undefined property';
+                  else if (msg.includes('PHPDoc')) msg = 'Invalid PHPDoc annotation';
+                  else if (msg.includes('not found')) msg = 'Symbol/constant not found';
+                  else if (msg.includes('does not accept')) msg = 'Type mismatch (assignment)';
+                  else if (msg.includes('should return')) msg = 'Return type mismatch';
+                  else if (msg.includes('always evaluate to')) msg = 'Redundant condition';
+                  else if (msg.includes('might not be defined')) msg = 'Possibly undefined variable';
+                  else if (msg.includes('expects')) msg = 'Parameter type mismatch';
+                  else msg = msg.substring(0, 60);
+                  msgCount[msg] = (msgCount[msg] || 0) + 1;
+                }
+              }
+              phpstanTopErrors = Object.entries(msgCount)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10)
+                .map(([msg, count]) => ({ msg, count }));
+            }
+            if (phpstanErrors === 0) {
+              const ghTxt = readFile('results/phpstan-results/phpstan-github.txt');
+              phpstanErrors = (ghTxt.match(/^::error/gm) || []).length;
+            }
+
+            // ── Parse PHP Lint ──
+            const lintOutput = readFile('results/phplint-results/php-lint-errors.txt');
+            const parseErrors = (lintOutput.match(/Parse error/gi) || []).length;
+
+            // ── Status icons ──
+            function icon(count, threshold = 0) {
+              if (count === 0) return '✅';
+              if (count > threshold) return '🔴';
+              return '⚠️';
+            }
+
+            // ── Build Report ──
+            let report = '';
+
+            report += '# PHP Analysis Report\n\n';
+            report += '## Overview\n\n';
+            report += '| Check | Status | Findings |\n';
+            report += '|-------|--------|----------|\n';
+            report += `| PHP Syntax | ${icon(parseErrors)} | ${parseErrors === 0 ? 'No errors' : parseErrors + ' parse errors'} |\n`;
+            report += `| PHPCS | ${icon(totalPhpcsErrors, 1000)} | ${totalPhpcsErrors.toLocaleString()} errors, ${totalPhpcsWarnings.toLocaleString()} warnings |\n`;
+            report += `| PHPStan | ${icon(phpstanErrors, 500)} | ${phpstanErrors.toLocaleString()} errors |\n`;
+            report += '\n';
+            report += '> All checks run in monitoring mode — findings are reported but do not block merges.\n\n';
+
+            // PHPCS details
+            report += '---\n\n';
+            report += '## PHPCS — Top Violated Rules\n\n';
+            if (topRules.length > 0) {
+              report += '| # | Rule | Violations |\n';
+              report += '|---|------|------------|\n';
+              topRules.forEach((r, i) => {
+                report += `| ${i + 1} | \`${r.rule}\` | ${r.count.toLocaleString()} |\n`;
+              });
+            } else {
+              report += 'No rule breakdown available.\n';
+            }
+            report += '\n';
+
+            // PHPCS per plugin
+            const pluginEntries = Object.entries(perPlugin).sort((a, b) => b[1].errors - a[1].errors);
+            if (pluginEntries.length > 0) {
+              report += '<details><summary><b>PHPCS — Breakdown by Plugin</b></summary>\n\n';
+              report += '| Plugin | Errors | Warnings |\n';
+              report += '|--------|--------|----------|\n';
+              pluginEntries.forEach(([name, counts]) => {
+                report += `| ${name} | ${counts.errors.toLocaleString()} | ${counts.warnings.toLocaleString()} |\n`;
+              });
+              report += '\n</details>\n\n';
+            }
+
+            // PHPStan details
+            report += '---\n\n';
+            report += '## PHPStan — Top Error Categories\n\n';
+            if (phpstanTopErrors.length > 0) {
+              report += '| Category | Count |\n';
+              report += '|----------|-------|\n';
+              phpstanTopErrors.forEach(e => {
+                report += `| ${e.msg} | ${e.count.toLocaleString()} |\n`;
+              });
+            } else {
+              report += `${phpstanErrors.toLocaleString()} errors found. Install PHPStan JSON output for detailed breakdown.\n`;
+            }
+            report += '\n';
+
+            // PHP Lint
+            if (parseErrors > 0) {
+              report += '---\n\n';
+              report += '## PHP Syntax Errors\n\n';
+              report += '```\n' + lintOutput.trim().substring(0, 2000) + '\n```\n\n';
+            }
+
+            // ── Write Job Summary ──
+            core.summary.addRaw(report);
+            await core.summary.write();
+
+            // ── PR Comment (concise version) ──
+            if (context.eventName === 'pull_request') {
+              let comment = '## PHP Analysis Results\n\n';
+              comment += '| Check | Status | Findings |\n';
+              comment += '|-------|--------|----------|\n';
+              comment += `| PHP Syntax | ${icon(parseErrors)} | ${parseErrors === 0 ? 'Clean' : parseErrors + ' parse errors'} |\n`;
+              comment += `| PHPCS | ${icon(totalPhpcsErrors, 1000)} | ${totalPhpcsErrors.toLocaleString()} errors, ${totalPhpcsWarnings.toLocaleString()} warnings |\n`;
+              comment += `| PHPStan | ${icon(phpstanErrors, 500)} | ${phpstanErrors.toLocaleString()} errors |\n`;
+              comment += '\n';
+
+              if (topRules.length > 0) {
+                comment += '**Top PHPCS violations:**\n';
+                topRules.slice(0, 5).forEach((r, i) => {
+                  comment += `${i + 1}. \`${r.rule}\` — ${r.count.toLocaleString()}\n`;
+                });
+                comment += '\n';
+              }
+
+              if (phpstanTopErrors.length > 0) {
+                comment += '**Top PHPStan errors:**\n';
+                phpstanTopErrors.slice(0, 5).forEach((e, i) => {
+                  comment += `${i + 1}. ${e.msg} — ${e.count.toLocaleString()}\n`;
+                });
+                comment += '\n';
+              }
+
+              comment += `> 📋 [Full report with details](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) · `;
+              comment += `Inline annotations on changed files from PHPCS reviewdog + PHPStan\n`;
+
+              // Write for the sticky comment step
+              fs.writeFileSync('pr-comment.md', comment);
+            }
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: php-analysis
+          path: pr-comment.md

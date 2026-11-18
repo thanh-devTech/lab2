@@ -1,0 +1,47 @@
+{
+	"name": "UTI 386-2",
+	"lab": "",
+	"type": 384,
+	"rack": 384,
+	"rackabc": 1,
+	"noplaterack": 1,
+	"wellperpatient": 10,
+	"nextwellbycol": 0,
+	"nextwellbyrow": 0,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 32,
+	"ntc": 0,
+	"ntc_text": "NTC",
+	"pos": 0,
+	"pos_text": "PC",
+	"nec": 0,
+	"blank": 0,
+	"target": 1,
+	"ntctarget": 0,
+	"patient_blocks": [
+		{
+			"start": 1,
+			"end": 32,
+			"row": 1,
+			"patients_per_row": 2,
+			"column_blocks": [
+				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+				[13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+			]
+		}
+	],
+	"targets": [
+		"Bacteroides fragilis / Group A Streptococcus Progenies / Citrobacter freundii/braakii / Citrobacter koseri",
+		"Enterobacter cloacae / Enterobacter Hormaechei / Enterobacter Kobei / Enterobacter roggenkampii",
+		"Proteus vulgaris / Esherichia coli / Morganella morganii / Acinetobacter baumannii",
+		"Klebsiella aerogenes (frm Enterobacter aerogenes) / Klebsiella oxytoca/michiganensis / Klebsiella pneumoniae",
+		"Proteus mirabilis / Providecia stuartii / Pseudomonas aeruginosa / Serratia marcescens",
+		"Enterococcus faecalis / Enterococcus faecaium",
+		"Group B Streptococcus (GBS) agalactiae / Staphylococcus aureus / Staphylococcus lugdunensis / Staphylococcus saprophyticus",
+		"Candida albicans / Nakseomyces Galbratus (Frm: Candida glabrata) / Candida krusei (Pichia Kudriavzevii)",
+		"Candida Parapsilosis / Candida tropicalis / Human RNAse P",
+		"Mycoplasma genitalium / Mycoplasma hominis / Ureaplasma Parvum / Ureaplasma urealyticum"
+	]
+}

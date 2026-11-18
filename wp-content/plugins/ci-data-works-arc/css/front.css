@@ -1,0 +1,104 @@
+.frow{
+    clear:both;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.center{
+    text-align: center;
+}
+.frow label{
+    display: inline-block;
+    line-height: 1.25em;
+    text-align: right;
+    vertical-align: top;
+    width: 30%;
+}
+.frow label {
+    box-sizing: border-box;
+    padding: 0 1%;
+}
+.frow  input[type="text"],.frow  input[type="email"],.frow  input[type="tel"], .frow  textarea {
+    -moz-appearance: none;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: inline;
+    min-height: 1.4em;
+    padding: 0.05em 0.4%;
+    resize: vertical;
+    width: 68%;
+    line-height:25px;
+}
+.frow.blabel label, .frow.actions{
+    margin-left: 29%;
+    display:block;
+    text-align: left;
+}
+table.order_listing{
+    width:80%;
+    margin:10px auto;
+}
+table.order_listing th, table.order_listing td{
+    text-align: left;
+}
+.frow [class*="col"]{
+    float:left;
+    margin-right:1%;
+}
+.frow [class*="col"] img{
+    max-width: 98%;
+    width:98%;
+    height:auto;
+}
+.frow [class*="col"]:last-child{
+    margin-right:0;
+}
+.frow .col3:nth-child(3n){
+    margin-right:0;
+    float:right;
+}
+.frow .col9{
+    width:10.2%;
+}
+.frow .col8{
+    width:12%;
+}
+.frow .col7{
+    width:13.4%;
+}
+.frow .col6{
+    width:15.8%;
+}
+.frow .col5{
+    width:19.2%;
+}
+.frow .col4{
+    width:24.2222%;
+}
+.frow .col3{
+    width:32.6%;
+}
+.frow .col32{
+    width:66%;
+}
+.frow .col2{
+    width:49.5%;
+    margin-right:0.5%;
+}
+.frow .col23{
+    width:64.5%;
+}
+.frow .col13{
+    width:34.5%;
+}
+.frow .col25{
+    width:39.4%;
+}
+input#captcha_code{
+    width:100px;
+}
+
+@media(max-width:920px){
+    table.order_listing{width:100%}
+}

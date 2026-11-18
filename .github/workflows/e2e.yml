@@ -1,0 +1,259 @@
+name: E2E
+
+# Playwright end-to-end gate for the Ignite Medical LIS.
+#
+# GATING MODEL (D173, user decision): the SAFETY GATE blocks, the TEST RESULTS
+# do not. Those are two separate steps on purpose. Routing containment checks
+# through Playwright cannot work: the test step carries `continue-on-error:
+# true` (repo policy D025 -- every analyser here ends `|| true`), so a PHI or
+# egress leak detected inside it would be reported green. Split, a leak fails
+# the run while a red test stays advisory.
+#
+# Revisit blocking the test step after ~2 weeks of a stable full suite plus a
+# green-when-healthy / red-when-broken nightly fault-injection pass.
+#
+# Budget (D155, re-measured on the full suite, run 32765008731): job wall-clock
+# 6m08s, of which the test step is 2m15s for 120 tests. The cost is fixed, not
+# per-test -- boot alone is 113s. Well inside the ~14 min of headroom in the PR
+# gate's shadow (PHP Analysis is the critical path at 19m21s, D026/D027).
+#
+# Tallies are read from the STEP LOG -- never from the job conclusion, because
+# the test step below carries continue-on-error and the job is green with a red
+# suite (D173). At the previous tip, `Running 120 tests using 2 workers`:
+#   32769472783 (dd8c447)  96 passed, 0 failed, 24 skipped, 2.3m
+#   32770142951 (8347601)  95 passed, 1 failed, 24 skipped, 2.4m
+#   32770943980 (840d5f6)  96 passed, 0 failed, 24 skipped, 2.3m
+# The one failure was S-DST-07: two ci_reports_blood rows for one accession
+# where the test asserts one. Root-caused (D376/D377) to a PRODUCT defect --
+# the reference-lab connector's insert omits the two columns
+# `UNIQUE KEY patient_batch` is built on, so nothing stops two overlapping cron
+# passes from releasing the same accession twice. Filed as DWA-E13. The suite
+# side was the two dst tests firing that global cron on two workers; the
+# describe is now `describe.serial` (D378) and carries a third test that pins
+# the guard with `shared.fail()`. Neither the assertion nor the parallelism of
+# any other spec changed, and nothing was retried or quarantined.
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    name: E2E Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      E2E_BASE_URL: http://localhost
+      # D114: 2 on a 2-core runner.
+      PW_WORKERS: 2
+      # Not a secret. The E2E database is built from the repo's own
+      # wp-content/default.sql, whose person-shaped rows env/sql/30-strip-pii.sql
+      # truncates before any test runs, and the stack is egress-denied
+      # (D014-D018). There is nothing here to protect.
+      E2E_ADMIN_USER: Administrat0r
+      E2E_ADMIN_PASS: e2e-admin-pw
+      # R12/R18: storageState + baseline.sql outside the checkout, because the
+      # checkout IS the webroot (../../../:/var/www/html).
+      E2E_STATE_DIR: /tmp/lis-e2e-state
+
+    steps:
+      # The app is 8 git submodules of ci-* plugins; without them the WordPress
+      # root has no plugins to test. Same checkout contract as php-analysis.yml.
+      - name: Checkout (with plugin submodules)
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: tests/e2e/package-lock.json
+
+      - name: Install test runner
+        working-directory: tests/e2e
+        run: npm ci --no-audit --no-fund
+
+      # 554 MB extracted / ~180 MB downloaded. The cache saves the download, not
+      # the apt step. The key moves with the pin in package.json.
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-1.62.1
+
+      - name: Install Chromium (+ system deps)
+        working-directory: tests/e2e
+        run: |
+          if [ "${{ steps.pw-cache.outputs.cache-hit }}" = "true" ]; then
+            npx playwright install-deps chromium
+          else
+            npx playwright install --with-deps chromium
+          fi
+
+      # No docker layer cache on purpose (D123): the image's RUN layers build in
+      # 24.0 s on two cores, so exporting and re-importing a 1.27 GB cache costs
+      # more than the build it replaces. All four base images are @sha256-pinned
+      # in docker-compose.yml / env/Dockerfile (D156), so a rate-limited or
+      # changed base image is a reproducible infra red, not a product failure.
+      - name: Boot the E2E environment
+        working-directory: tests/e2e/env
+        run: ./up.sh
+
+      # Installer + schema-manifest gate + PII strip + lab pool + personas + one
+      # requisition through the app's own saver (D085).
+      - name: Seed
+        working-directory: tests/e2e/env
+        run: ./seed.sh
+
+      # D139/D158: MINT BEFORE SNAPSHOT. reset.sh restores whatever
+      # wp_usermeta.session_tokens the baseline holds, so a snapshot taken first
+      # logs every persona out on the first reset. Re-minting every run also
+      # sidesteps the 14-day hard token expiry (D159) for free.
+      - name: Mint persona sessions
+        working-directory: tests/e2e
+        # Delegates to the Makefile so there is ONE persona list, not two.
+        # This step previously inlined its own 13-name loop while
+        # setup/env.setup.ts required 29. The setup project then hard-failed on
+        # the missing storageStates, every test was skipped, and the job still
+        # reported success because the test step carries continue-on-error.
+        # Two "green" runs executed no tests at all.
+        run: make mint
+
+      - name: Snapshot the baseline
+        working-directory: tests/e2e/env
+        run: ./reset.sh --snapshot
+
+      # ============================ BLOCKING ============================
+      # No continue-on-error. This is the only step in this workflow that can
+      # fail the run, and it is deliberately the one that checks containment
+      # rather than correctness (D149/D173).
+      - name: Safety gate (BLOCKING)
+        working-directory: tests/e2e/env
+        run: ./safety-gate.sh
+      # ==================================================================
+
+      # Advisory. The suite is never subsetted (D079): side effects fire on GET
+      # so ordering is load-bearing state, the tr_action dispatcher enforces no
+      # capability check, and running every scenario is the only thing that
+      # makes a rotted path->scenario mapping visible. `--only-changed` is
+      # unused: it is a no-op for this app and throws on a shallow clone (D062).
+      #
+      # The @smoke tier is gone from CI: measured fixed cost is ~180 s (boot
+      # 110 s, checkout 38 s, chromium 12 s, seed 11 s, mint 11 s, setup 10 s)
+      # against 31 s for 13 smoke tests, so the tier bought ~1 min and cost
+      # coverage -- notably the two tenancy tests, one of which pins a live
+      # cross-tenant read via a posted lab_id.
+      # BLOCKING, and deliberately NOT folded into safety-gate.sh: that script
+      # is the PHI/egress control of record (D148/D149/D173), so a selector lint
+      # failing there would report as a compliance failure.
+      #
+      # The data-testid attributes live in two UNMERGED PRs
+      # (ci-data-works-arc#1197, ci_patients#110). CI checks out the PINNED
+      # submodule commits, where they do not exist, so a literal getByTestId()
+      # passes locally and returns 0 here (D383). getByTestId(<variable>) stays
+      # legal: `testIdAttribute` is the comma list data-testid,data-mid,
+      # data-btype and the latter two DO exist at the pin.
+      - name: Selector policy -- no literal getByTestId (BLOCKING)
+        working-directory: tests/e2e
+        run: |
+          if grep -rnE "getByTestId\(\s*['\"\`]" specs fixtures; then
+            echo "FAIL: getByTestId with a literal -- PR #1197 testids do not exist at the submodule pin (D383)"
+            exit 1
+          fi
+          echo "ok: no literal getByTestId"
+
+      # Playwright transpiles with esbuild and NEVER type-checks. D394: a commit
+      # carried a staged revert (`git checkout <sha> -- <path>` writes the INDEX,
+      # not just the worktree) that dropped `export` from BEFORE_BOUNCE_MS. The
+      # import resolved to `undefined`, every `{ timeout: BEFORE_BOUNCE_MS }`
+      # silently fell back to the 5 s default -- reopening the race D392 closes
+      # -- and THREE CI runs reported 99 passed / 0 failed against that build.
+      # Verified to catch exactly that: removing the export produces 4 TS2459
+      # errors naming the symbol. Blocks, because a suite that does not compile
+      # cannot have tested anything.
+      - name: Type-check the suite (BLOCKING)
+        working-directory: tests/e2e
+        run: npx tsc --noEmit
+
+      # The copy-family register (52-PASS-3-PLAN Part 2.2). The LIS implements the
+      # same rule many times over -- the clinic-manager scope clause exists 85
+      # times -- so a fix applied to one copy, or a submodule bump that adds an
+      # untested one, is invisible to every test: the other copies keep passing.
+      # meta/copies.txt pins the POPULATION and lint.sh re-derives it, so the
+      # count moving reds with the family named.
+      #
+      # This step also RE-RUNS the two checks above, on purpose. They exist only
+      # here, and GitHub Actions has been down account-wide -- so `make e2e` was
+      # shipping a suite nobody type-checked. lint.sh is the single body both
+      # paths call; the two steps above stay because their comments are the
+      # measured history of why each check exists (D382, add-never-replace).
+      # ponytail: ~4 s of duplicated tsc, against editing a file whose comments
+      # are load-bearing. Fold them in when someone is touching this file anyway.
+      - name: Static gate -- copy families, selectors, types (BLOCKING)
+        working-directory: tests/e2e
+        run: env/lint.sh
+
+      - name: Environment setup (BLOCKING)
+        working-directory: tests/e2e
+        # The setup project is infrastructure, not a test: it resets to the
+        # baseline and proves every persona's storageState authenticates. If it
+        # fails, no test can have run, so a green job would be a lie. It blocks;
+        # only the test RESULTS below are advisory (D173).
+        run: npx playwright test --project=setup
+
+      - name: Run full E2E suite
+        id: tests
+        continue-on-error: true
+        working-directory: tests/e2e
+        run: npx playwright test --workers="$PW_WORKERS"
+
+      # Query strings are the actual PHI channel in Apache access lines (W5), so
+      # they are stripped rather than the whole log dropped -- a CI failure has
+      # to stay debuggable (R16).
+      - name: Environment logs on failure
+        if: steps.tests.outcome == 'failure'
+        working-directory: tests/e2e/env
+        run: |
+          docker compose logs --no-color --tail=200 | sed -E 's/\?[^ ]*//'
+          # Who `docker compose exec` is, and whether it may write the intercept
+          # log. `fs.protected_regular` is the whole story: in a sticky
+          # world-writable /tmp it refuses an O_CREAT open of a file owned by
+          # neither the caller nor the directory owner, whatever the mode and
+          # whatever the uid. env/seed.sh step 0 makes the file root-owned to
+          # satisfy it. Print the sysctl and the ownership, not just the mode.
+          docker compose exec -T wordpress sh -c \
+            'id; ls -ld /tmp; ls -l /tmp/e2e-http-intercepts.log;
+             echo "fs.protected_regular=$(cat /proc/sys/fs/protected_regular)"' || true
+
+      # PHI-AWARE RETENTION. Playwright 1.62.1 has NO trace/snapshot redaction:
+      # `snapshots:{dom:false}` still leaves `aria:true`, carrying the same
+      # accessible names (D063). Capture is therefore off entirely and this is
+      # only the backstop. ONE DAY. Do not raise it, and never add
+      # $E2E_STATE_DIR (storageState = bearer credentials; baseline.sql = 8 MB
+      # of database).
+      - name: Upload failure artifacts
+        if: steps.tests.outcome == 'failure'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: e2e-failure-${{ github.run_id }}
+          path: tests/e2e/test-results/
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Tear down
+        if: always()
+        working-directory: tests/e2e/env
+        run: ./down.sh

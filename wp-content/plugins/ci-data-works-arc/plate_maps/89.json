@@ -1,0 +1,31 @@
+{
+	"name": "PCR -384(30patients) STI",
+	"lab": "helix-dx",
+	"type": 384,
+	"rack": 384,
+	"rackabc": 1,
+	"wellperpatient": 6,
+	"nextwellbycol": 6,
+	"nextwellbyrow": 1,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 30,
+	"ntc": 34,
+	"ntc_text": "NTC",
+	"pos": 33,
+	"pos_text": "PC",
+	"nec": 32,
+	"nec_text": "NEC",
+	"blank": 31,
+	"blank_text": "INF BLOOD",
+	"target": 1,
+	"targets": [
+		"CHLTRA",
+		"RNASEP",
+		"MEGTYP2",
+		"GARVAG",
+		"BVAB3",
+		"BLANK"
+	]
+}

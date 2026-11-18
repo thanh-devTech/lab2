@@ -1,0 +1,21 @@
+{
+	"name":"PCR -384(61patients) Nail",
+	"lab":"northstar-dx.com",
+	"type":384,
+	"rack":384,
+	"rackabc":1,
+	"wellperpatient":6,
+	"nextwellbycol":6,
+	"nextwellbyrow":1,
+	"nextblankbyrow":0,
+	"nextblankbycol":0,
+	"subwellsplate":0,
+	"max": 62,
+	"ntc": 32,
+	"ntc_text":"NC",
+	"pos": 31,
+	"pos_text":"PC",
+	"nec": 0,
+	"blank":0,
+	"target":1
+}

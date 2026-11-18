@@ -1,0 +1,121 @@
+# Ephemeral, egress-denied E2E environment for the Ignite Medical LIS.
+# Mounts the REAL repo (/Users/andrei/work/lab) as the WordPress root.
+#
+# SAFETY (D014-D018): `internal: true` means this network has no route off the
+# host. The app makes unsolicited outbound calls at plugin-load file scope and
+# self-registers against the PRODUCTION hub. Do not remove `internal: true`.
+
+name: lis-e2e
+
+# IMAGE PINS (D156): every base image is pinned by @sha256 digest. Without them
+# `docker compose build`/`pull` re-resolves the tag every run, so the build is
+# not reproducible and a silently-changed base image reads as a product failure.
+# Renovate/dependabot bumps these (see .github/dependabot.yml, npm+docker).
+
+services:
+  db:
+    image: mariadb:11.4@sha256:1b46b73d4b629022dfa29e6db3bb0d63b5df714fc3bfbe5057d63d76d8f6054b
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --max_allowed_packet=256M
+      --innodb_buffer_pool_size=512M
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: lab
+      MARIADB_USER: lab
+      MARIADB_PASSWORD: lab
+    volumes:
+      # Seed = the repo's OWN dump (schema + reference data, zero patient rows).
+      # Read-only: the original is never modified.
+      - ../../../wp-content/default.sql:/docker-entrypoint-initdb.d/10-seed.sql:ro
+      - ./sql/20-domains.sql:/docker-entrypoint-initdb.d/20-domains.sql:ro
+    networks: [lis]
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 3s
+      timeout: 5s
+      retries: 60
+      start_period: 10s
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1@sha256:8d76a3d4ffa32a3661311944007a415332c4bb855657f4f6c57996405c009bea
+    networks: [lis]
+
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: lab
+      WORDPRESS_DB_USER: lab
+      WORDPRESS_DB_PASSWORD: lab
+      E2E_DOMAIN: localhost
+      # W7 mitigation: sink the overridable hub host at an in-network address so
+      # the 90 %-case client path has somewhere harmless to go. The
+      # non-overridable ci_lab_client.php:64 constant is app code (constraint 3)
+      # and is contained by `internal: true`, not by this.
+      HUB_API_URL: http://mailhog:8025/sink/
+    # D128 + R4/D165: the webroot is the real git checkout, so anything the app
+    # writes under wp-content lands in the working tree. tmpfs makes those three
+    # directories ephemeral. `:mode=1777` is MANDATORY -- a bare tmpfs mounts
+    # root:root 0755, www-data cannot write it, and display_errors is off so the
+    # failure is completely silent.
+    #
+    # wp-content/uploads is NOT tmpfs'd, deviating from design §2.5: it holds 47
+    # git-TRACKED files, and masking them changes the behaviour of the app under
+    # test. Measured: a full prototype run leaves uploads clean, so it is not
+    # part of the write surface this fix exists for.
+    tmpfs:
+      - /var/www/html/wp-content/cache:mode=1777
+      - /var/www/html/wp-content/log:mode=1777
+      - /var/www/html/wp-content/tmp:mode=1777
+      # D220/D128: report release writes an HTML snapshot into
+      # wp-content/results/html/<assen>/, i.e. into the git-tracked webroot,
+      # whenever final_results > 0. `git ls-files wp-content/results` is EMPTY
+      # -- the three subdirectories (html, ref, uploads) hold nothing tracked --
+      # and the app recreates each of them on demand with wp_mkdir_p
+      # (functions_file.php:338/:1460/:1584), so masking the whole directory
+      # loses nothing and costs nothing. This replaces the per-spec `afterAll`
+      # cleanup rev.spec.ts used to carry.
+      - /var/www/html/wp-content/results:mode=1777
+      - /tmp:mode=1777
+    volumes:
+      # The real repo, as the WordPress root.
+      - ../../../:/var/www/html
+      # Test wp-config overlaid on top; the repo's own file is untouched on disk.
+      - ./wp-config.php:/var/www/html/wp-config.php:ro
+      - ./apache-e2e.conf:/etc/apache2/conf-enabled/zz-e2e.conf:ro
+    # The wordpress image entrypoint wants to install/patch WordPress. The repo
+    # already IS WordPress, so bypass it.
+    entrypoint: ["apache2-foreground"]
+    networks: [lis]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -o /dev/null http://127.0.0.1/wp-login.php || exit 1"]
+      interval: 3s
+      timeout: 5s
+      retries: 40
+      start_period: 5s
+
+  # Docker will not publish a host port from an `internal: true` network
+  # (measured: connection refused). This proxy is the only container on both
+  # networks, so the host can reach the app while the app keeps no route out.
+  proxy:
+    image: nginx:1.25-alpine@sha256:516475cc129da42866742567714ddc681e5eed7b9ee0b9e9c015e464b4221a00
+    depends_on:
+      wordpress:
+        condition: service_healthy
+    volumes:
+      - ./proxy.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "127.0.0.1:80:80"
+    networks: [lis, edge]
+
+networks:
+  lis:
+    internal: true   # <-- the egress boundary. Do not remove.
+  edge: {}

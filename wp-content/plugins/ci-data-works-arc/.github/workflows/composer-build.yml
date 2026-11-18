@@ -1,0 +1,45 @@
+name: Build vendor
+
+on:
+  push:
+    branches:
+      - master
+      - mainphp7
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check composer.json exists
+        id: check
+        run: |
+          if [ -f composer.json ]; then
+            echo "has_composer=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_composer=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup PHP
+        if: steps.check.outputs.has_composer == 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+
+      - name: Composer install
+        if: steps.check.outputs.has_composer == 'true'
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Push built branch
+        if: steps.check.outputs.has_composer == 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -f vendor
+          git commit -m "chore: build vendor [skip ci]" || echo "nothing to commit"
+          git push origin HEAD:${{ github.ref_name }}-built --force

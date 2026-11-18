@@ -1,0 +1,19 @@
+version: 2
+updates:
+  # Monitor GitHub Actions versions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "ci"
+
+  # Monitor JS linting dependencies
+  - package-ecosystem: "npm"
+    directory: "/linting"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "linting"

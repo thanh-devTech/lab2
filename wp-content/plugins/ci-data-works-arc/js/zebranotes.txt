@@ -1,0 +1,5 @@
+https://community.servicenow.com/community?id=community_article&sys_id=0824229cdb09ef8067a72926ca96190d
+
+https://support.zebra.com/cpws/docs/zpl/code_128.htm#Sample%20ZPL%20and%20printout%20in%20Subset%20A
+
+https://www.zebra.com/content/dam/zebra/manuals/printers/common/programming/zpl-zbi2-pm-en.pdf

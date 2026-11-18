@@ -1,0 +1,11 @@
+MSH|^~\&|PV|7072|IGNITELIS|IGNITELIS|20260315204018||ORM^O01^ORM_O01|IMZ-20260315204018|P|2.5.1
+PID|1|7034356|||AVILA^BENTLEY||20150825|M||X|824 JOHNSON CT^^BELVIDERE^IL^61008||7792071807|||||||||^
+IN1|1|1993761||IL - BCBS COMMERCIAL - SB621|PO BOX 805107^^CHICAGO^IL^60680-4112|||263995||||||||AVILA^NANCY|3||824 JOHNSON CT^^BELVIDERE^IL^61008||||||||||||N|||||XOX805231409
+GT1|1||AVILA^BENTLEY||824 JOHNSON CT^^BELVIDERE^IL^61008|||20150825|||1|||||
+DG1|1||R50.9^Fever, unspecified^I10
+DG1|2||J10.1^Influenza due to other identified influenza virus with other respiratory manifestations^I10
+DG1|3||H66.91^Otitis media, unspecified, right ear^I10
+DG1|4||R00.0^Tachycardia, unspecified^I10
+ORC|NW|102361591|||||^^^^^^||202603152040|||123456789^Doctor^Doctor^^^^^^^^^^^^NPI||||||||
+OBR|1|102361591||UTIABX^2 UTI Tract Lite Panel^HQ|||202603152040|||||||||123456789^Doctor^Doctor^^^^^^^NPI|||C||||||||^^^^^^R
+OBX|1|ST|SPECIMEN^Specimen Source||Clean Catch Urine Specimen in Gray top

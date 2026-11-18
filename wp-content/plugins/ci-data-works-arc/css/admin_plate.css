@@ -1,0 +1,446 @@
+.plateblock .dashicons-flag {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    color: blue;
+    z-index: 1;
+}
+
+.plateblock .dashicons-flag.flag-high {
+    color: red;
+}
+
+.plateblock .dashicons-flag.flag-med {
+    color: orange;
+}
+
+.plateblock {
+    float: left;
+    width: 260px;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 0px;
+    margin: 10px;
+    position: relative;
+}
+
+.list_plate_96 {
+    margin: 15px 0;
+}
+
+.list_plate_96 .plateblock {
+    width: 100%;
+    min-width: 1200px;
+    float: none;
+    margin: 0;
+    border: none;
+}
+
+.combinedblock {
+    float: left;
+    width: 3000px;
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 0px;
+    margin: 10px;
+    position: relative;
+}
+
+.combinedblock.combinecol_12 {
+    width: 1500px;
+}
+
+.combinedblock table th {
+    width: 4%
+}
+
+.combinedblock table th:first-child {
+    width: 1% !important;
+}
+
+.combinedblock.plate_96h table th {
+    width: 3%;
+}
+
+.combinedblock.plate_96h table th:first-child,
+.combinedblock.plate_96h table td:first-child {
+    width: 1% !important;
+}
+
+.plateblock.combined .ccontent:after,
+.plateblock.combined .header:after,
+.plateblock.locked .ccontent:after {
+    content: '';
+    display: block;
+    background: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.plateblock.combined .header:after {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.plateblock .header,
+.plateblock .ccontent,
+.combinedblock .header,
+.combinedblock .ccontent {
+    padding: 10px;
+    position: relative;
+}
+
+.plateblock .header {
+    min-height: 64px;
+}
+
+.plateblock .cfooter {
+    text-align: center;
+}
+
+.plateblock .cfooter,
+.combinedblock .cfooter {
+
+    background: #888;
+    padding: 2px;
+}
+
+.plateblock .title,
+.combinedblock .title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 2px auto;
+}
+
+.plateblock .stitle,
+.combinedblock .stitle {
+    text-align: center;
+    margin: 2px auto;
+}
+
+table.platetbl {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.platetbl tr td,
+table.platetbl tr th {
+    padding: 3px;
+    border: 1px solid #ddd;
+}
+
+table.platetbl tr td.position {
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+table.platetbl tr td.assen {
+    padding: 0;
+}
+
+table.platetbl tr td.assen .tooltip {
+    display: none;
+    position: absolute;
+}
+
+table.platetbl tr td.assen:hover .tooltip {
+    min-width: 200px;
+    height: 30px;
+    z-index: 999;
+    display: block;
+    background: #666;
+    color: #fff;
+    padding: 5px;
+    line-height: 30px;
+}
+
+table.platetbl tr td.assen.assentxt {
+    padding: 0 2px;
+}
+
+table.platetbl tr td.well {
+    width: 40px;
+    text-align: center;
+}
+
+table.platetbl tr td input {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: none;
+    font-size: 12px;
+    padding: 0 5px;
+}
+
+tr.blank1 td,
+tr.blank2 td {
+    background: #cfcfcf;
+}
+
+tr.ntc1 td,
+tr.ntc3 td,
+tr.negative td,
+td.negative,
+.plate_96h table.platetbl tr td.negative {
+    background: #ffc522;
+}
+
+tr.ntc2 td,
+tr.ntc4 td,
+.combinedblock tr td.color_orange,
+tr.positive td,
+td.positive,
+.plate_96h table.platetbl tr td.positive {
+    background: darkorange;
+}
+
+.combinedblock tr td.color_yellow,
+tr.rtcontrol td {
+    background: yellow;
+}
+
+.combinedblock tr td.color_green {
+    background-color: #0cae0cc9;
+}
+
+.aleft {
+    text-align: left !important;
+}
+
+.ui-dialog-buttonset .ui-button:first-child {
+    background: #ffc522 !important;
+}
+
+.ui-dialog-buttonset .ui-button:nth-child(2n) {
+    background: darkorange !important;
+}
+
+.well .scircle {
+    font-size: 11px !important;
+    width: 15px !important;
+    height: 15px !important;
+    line-height: 15px !important;
+}
+
+.emptyc .header,
+.combinedblock td.emptyc {
+    background: #fff !important;
+}
+
+.plate_384 tr:nth-child(2n+2) {
+    background: #efefef;
+}
+
+.plate_96h tr.color_3,
+.plate_96h tr.color_4 {
+    background: #efefef;
+}
+
+.plate_96h tr.bgsubtype_v {
+    background: #e3fcdf;
+}
+
+.plate_96h tr.bgsubtype_p {
+    background: #ffe9e9;
+}
+
+.plate_96h tr td,
+.plate_96h tr th {
+    text-align: center;
+}
+
+.plate_96h .s_num {
+    font-style: italic;
+}
+
+tr .exclude_bg {
+    background: lightyellow !important;
+}
+
+tr .cracked_bg {
+    background: rgb(235, 193, 193) !important
+}
+
+tr .noflows_bg {
+    background: rgb(203, 241, 203) !important;
+}
+
+tr .aggregates_bg {
+    background: rgb(237, 205, 238) !important;
+}
+
+tr .other_bg {
+    background: rgb(203, 230, 241) !important;
+}
+
+.fright {
+    float: right;
+}
+
+.button.small {
+    font-size: 10px;
+    min-height: 16px;
+    padding: 0 2px;
+}
+
+.aleft {
+    text-align: left !important;
+}
+
+.pleft200 {
+    padding-left: 400px;
+    box-sizing: border-box;
+}
+
+.plate_96h table.platetbl tr td {
+    background: transparent;
+}
+
+.plate_96h tr.color_3,
+.plate_96h tr.color_4 {
+    background: #efefef;
+}
+
+.plate_96h tr td,
+.plate_96h tr th {
+    text-align: center;
+}
+
+.plate_96h .s_num {
+    font-style: italic;
+}
+
+.cell_bg_p1 {
+    background: rgb(242, 202, 201) !important;
+}
+
+.cell_bg_p2 {
+    background: rgb(254, 231, 209) !important;
+}
+
+.cell_bg_p3 {
+    background: rgb(255, 255, 150) !important;
+}
+
+.cell_bg_p4 {
+    background: rgb(224, 235, 214) !important;
+}
+
+.cell_bg_p5 {
+    background: rgb(213, 223, 241) !important;
+}
+
+.cell_bg_p6 {
+    background: rgb(231, 200, 252) !important;
+}
+
+.cell_bg_p7 {
+    background: #ff806d !important;
+}
+
+.cell_bg_p8 {
+    background: rgb(251, 188, 36) !important;
+}
+
+.cell_bg_p9 {
+    background: rgb(255, 255, 49) !important;
+}
+
+.cell_bg_p10 {
+    background: rgb(144, 201, 80) !important;
+}
+
+.cell_bg_p11 {
+    background: #529df1 !important;
+}
+
+.cell_bg_p12 {
+    background: #be7bff !important;
+}
+
+.cell_bg_p13 {
+    background: rgb(244, 183, 217) !important;
+}
+
+.cell_bg_p14 {
+    background: rgb(244, 189, 148) !important;
+}
+
+.cell_bg_p15 {
+    background: rgb(249, 220, 126) !important;
+}
+
+.cell_bg_p16 {
+    background: rgb(177, 209, 148) !important;
+}
+
+.vp_typet {
+    font-size: 9px;
+}
+
+.whitetxt {
+    color: #fff;
+}
+
+tr.dx11_fail td,
+tr.dx11_fail td input,
+tr td.dx11_fail {
+    background: #ff7070 !important;
+}
+
+td.reason input {
+    background: #fff !important;
+}
+
+tr.dx11_fail td.reason input {
+    background: #fff !important;
+}
+
+.plateblock.plate_hascolcomment .maincolheader {
+    float: left;
+    width: 260px;
+    position: relative;
+}
+
+.plateblock.platecommentcol1 {
+    width: 430px;
+}
+.plateblock.platecommentcol2 {
+    width: 586px;
+}
+.plateblock.platecommentcol3 {
+    width: 742px;
+}
+.plateblock.platecommentcol4 {
+    width: 898px;
+}
+.columncomment {
+    float: left;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 25px;
+}
+
+table tr td.commentcol {
+    width: 150px;
+    background: none !important;
+    vertical-align: top;
+    font-size:10px;
+    line-height:12px;
+}
+
+table tr td.commentcol .button {
+    background: #ff7070;
+    border: 0;
+    color: #000;
+    padding: 0 5px;
+    min-height: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 10px;
+}

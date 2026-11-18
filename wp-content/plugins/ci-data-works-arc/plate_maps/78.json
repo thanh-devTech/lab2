@@ -1,0 +1,31 @@
+{
+	"name": "PCR - 384(45 patients) Nail",
+	"lab": "medcentris",
+	"type": 384,
+	"rack": 96,
+	"rackabc": 1,
+	"noplaterack": 1,
+	"wellperpatient": 4,
+	"nextwellbycol": 4,
+	"nextwellbyrow": 1,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"odd_even": 1,
+	"parts": [],
+	"max": 45,
+	"ntc": 0,
+	"ntc_text": "NTC",
+	"pos": 0,
+	"pos_text": "PC",
+	"nec": 0,
+	"blank": 0,
+	"target": 1,
+	"ntctarget": 0,
+	"targets": [
+		"CANALB",
+		"ASPTER",
+		"PSEAER",
+		"BLANK"
+	]
+}

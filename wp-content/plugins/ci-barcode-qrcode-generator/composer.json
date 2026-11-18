@@ -1,0 +1,25 @@
+{
+    "name": "ignite-medical/ci-barcode-qrcode-generator",
+    "description": "Managed external dependencies for the ci-barcode-qrcode-generator plugin (replaces hard-copied phpqrcode.php and Image/Barcode2).",
+    "require": {
+        "php": ">=8.1",
+        "endroid/qr-code": "^5.1"
+    },
+    "autoload": {
+        "files": [
+            "qrcode-compat.php"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        }
+    },
+    "extra": {
+        "imt-dependency-notes": {
+            "_status": "endroid/qr-code replaces the bundled phpqrcode.php (via qrcode-compat.php shim). Image_Barcode2 (Image/) stays bundled — not Composer-managed.",
+            "endroid/qr-code": "Provides QR generation. Replaced the bundled phpqrcode.php; a compat shim (qrcode-compat.php, files-autoloaded) provides the legacy QRcode::png() so the shortcode handler is unchanged.",
+            "Image_Barcode2": "Bundled PEAR barcode library (Image/), not Composer-managed. Used by image.php / barcode-qrcode-generator.php for 1D barcodes with human-readable text and optional rotation."
+        }
+    }
+}

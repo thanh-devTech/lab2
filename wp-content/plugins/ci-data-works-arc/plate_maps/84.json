@@ -1,0 +1,31 @@
+{
+	"name": "PCR - 384(93 patients) STI",
+	"lab": "thepremierprimarycare",
+	"type": 384,
+	"rack": 96,
+	"rackabc": 1,
+	"notmoventc": 1,
+	"noplaterack": 1,
+	"wellperpatient": 4,
+	"nextwellbycol": 4,
+	"nextwellbyrow": 1,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 93,
+	"ntc": -2,
+	"ntc_text": "NEGATIVE CONTROL",
+	"pos": -3,
+	"pos_text": "POSITIVE CONTROL",
+	"nec": 0,
+	"nec_text": "",
+	"blank": -1,
+	"target": 1,
+	"ntctarget": 1,
+	"targets": [
+		"HSV-1",
+		"T. pallidum",
+		"N. gonorrhoeae",
+		"H. ducreyi"
+	]
+}

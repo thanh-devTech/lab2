@@ -1,0 +1,19 @@
+{
+    "name": "ignite-medical/ci-lab-client",
+    "description": "Managed external dependencies for the ci-lab-client plugin (replaces the hard-copied phpseclib/ tree).",
+    "require": {
+        "php": ">=8.1",
+        "phpseclib/phpseclib": "^3.0"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        }
+    },
+    "extra": {
+        "imt-dependency-notes": {
+            "_status": "MIGRATED 2026-06-30 — vendored phpseclib 1.x deleted; sole consumer (inc/init.php) rewired to phpseclib3 via vendor/autoload.php.",
+            "phpseclib/phpseclib": "3.x (namespaced phpseclib3\\). Replaced vendored 1.x (whole 1.0 line under unfixed advisory). Used only in inc/init.php for PuTTY-PPK -> OpenSSH key conversion (PublicKeyLoader::load + toString('OpenSSH'))."
+        }
+    }
+}

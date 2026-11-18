@@ -1,0 +1,71 @@
+= 1.8.32 - 2026-06-19 =
+* Update - Chore: auto-generate changelog.
+* Update - Dont auto logout for supperadmin.
+* Fix - Tr_action.
+* Update - Tr_client.php.
+* Update - Redirect to home.
+* Add - Log for Login Security form.
+* Fix - Log page.
+* Update - Author redirect for not lab site.
+* Fix - Whitelist ip.
+* Update - Disable two_factor_auth.
+* Fix - Ban page.
+
+= 1.8.30 - 2026-04-01 =
+* Fix - Msg login security.
+* Fix - Hide link lost password.
+* Fix - IP lockout tracking.
+* Add - Action git auto create log.txt file.
+
+= 1.8.29 - 2026-03-20 =
+* Fix - Cron page.
+* Fix - Auto logout.
+
+= 1.8.28 - 2026-03-11 =
+* Fix - Auto logout.
+* Update - V 1.8.28.
+
+= 1.8.27 - 2026-02-06 =
+* Fix - Warning session timeout.
+* Update - V 1.8.27.
+
+= 1.8.26 - 2026-02-05 =
+* Add - Session timeout warning.
+* Add - New style.
+* Fix - Admin-dashboard css.
+
+= 1.8.24 - 2026-02-05 =
+* Update - Session timeout default to 20.
+* Update - Session timeout default to 20 in ban page.
+* Fix - Whitelist.
+* Update - Max outtime when log.
+* Fix - Upgrade.
+
+= 1.8.23 - 2026-02-04 =
+* Update - Internal maintenance.
+
+= 1.8.22 - 2026-02-04 =
+* Add - 2FA section to user edit page.
+* Update - ReCAPTCHA gg.
+* Fix - Recaptcha google v3.
+* Add - Session timeout.
+* Add - Cron.
+
+= 1.8.19 - 2026-02-02 =
+* Update - Style Login Security.
+* Update - V 1.8.19.
+
+= 1.8.17 - 2026-02-01 =
+* Update - Admin menu.
+* Fix - Menu.
+
+= 1.8.16 - 2026-01-31 =
+* Fix - Security ban.
+* Fix - Warning.
+* Fix - Security menu.
+
+= 1.8.13 - 2026-01-09 =
+* Fix - Clear cache.
+* Update - Blocking the user endpoint.
+* Fix - Position.
+* Fix - Cron page.

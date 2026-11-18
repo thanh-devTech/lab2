@@ -1,0 +1,173 @@
+.tab-main {
+    margin-top:12px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    gap: 5px;
+}
+
+.tab-main a {
+    padding: 6px 13px;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    border-bottom: none;
+    background: #f8fafc;
+    color: #1e293b;
+    border-radius: 6px 6px 0 0;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.tab-main a:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.tab-main a.active {
+    background: #fff;
+    border-color: #cbd5e1;
+    border-bottom: 2px solid #fff;
+    color: #0f172a;
+    font-weight: 600;
+    position: relative;
+    top: 2px;
+}
+
+.wp-db-table-list {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 18px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.wp-db-table-list thead {
+  background: linear-gradient(90deg, #0ea5a4, #06b6d4);
+  color: #fff;
+}
+.wp-db-table-list th, .wp-db-table-list td {
+  padding: 3px 14px;
+  text-align: left;
+  font-size: 14px;
+}
+.wp-db-table-list tbody tr {
+  background: #fff;
+  transition: background 0.12s ease;
+}
+.wp-db-table-list tbody tr:nth-child(even) { background-color: #ddf2fd;}
+.wp-db-table-list.tlist tbody tr:nth-child(4n+1),
+.wp-db-table-list.tlist tbody tr:nth-child(4n+2) {
+  background-color: #ddf2fd;
+}
+.wp-db-table-list tbody tr:hover { background: #f0f9fb; }
+
+.badge {
+  display:inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color:#0f172a;
+  background:#e6fffa;
+  border: 1px solid rgba(6,95,70,0.08);
+}
+
+.db-search {
+  margin: 12px 0 6px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.db-search input[type="search"] {
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid #e6eef2;
+  min-width:220px;
+  box-shadow:none;
+}
+
+.create-row{
+    display: none;
+}
+.toggle-create {
+  cursor:pointer;
+  color:#0369a1;
+  text-decoration:underline;
+  font-size:13px;
+  background:transparent;
+  border:0;
+  padding:0;
+}
+
+.create-sql {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace;
+  background:#0f172a;
+  color:#e6f6ff;
+  padding:12px;
+  margin:10px 0 20px;
+  border-radius:6px;
+  overflow:auto;
+  font-size:13px;
+  line-height:1.45;
+}
+.meta small { color: #6b7280; }
+
+.db-stats {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  margin-top: 20px;
+}
+
+.db-stats h2, 
+.db-stats h3 {
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.db-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.db-stats-info {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.db-stats-chart {
+  flex: 0 0 300px;
+}
+
+     .form-row {
+       display: flex;
+       align-items: center;
+       gap: 10px;
+       /* spacing between items */
+       margin-bottom: 15px;
+     }
+  
+     .form-row label {
+       margin: 0 5px 0 0;
+       font-weight: bold;
+     }
+  
+     .form-row input[type="text"] {
+       flex: 1;
+       /* take available space */
+       min-width: 250px;
+     }
+  
+     .form-row select {
+       min-width: 100px;
+     }
+
+@media (max-width:720px){
+  .wp-db-table-list th:nth-child(5),
+  .wp-db-table-list td:nth-child(5) { display:none; }
+}

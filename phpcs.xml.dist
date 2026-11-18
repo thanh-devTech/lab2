@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset name="CI Plugins Coding Standards">
+    <description>PHPCS configuration for Ignite Medical Tech WordPress plugins</description>
+
+    <!-- Scan only our custom plugins -->
+    <file>wp-content/plugins/ci-barcode-qrcode-generator</file>
+    <file>wp-content/plugins/ci-billing-indep</file>
+    <file>wp-content/plugins/ci-cache-and-security</file>
+    <file>wp-content/plugins/ci-data-works-arc</file>
+    <file>wp-content/plugins/ci-dompdf</file>
+    <file>wp-content/plugins/ci-lab-client</file>
+    <file>wp-content/plugins/ci-otp-authenticator</file>
+    <file>wp-content/plugins/ci_patients</file>
+
+    <!-- Exclude third-party code -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/libraries/*</exclude-pattern>
+    <exclude-pattern>*/dompdf/*</exclude-pattern>
+    <exclude-pattern>*/dompdf8/*</exclude-pattern>
+    <exclude-pattern>*/phpqrcode.php</exclude-pattern>
+
+    <!-- WordPress Coding Standards -->
+    <rule ref="WordPress">
+        <!-- Relax filename rules for existing plugin structure -->
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+    </rule>
+
+    <!-- WordPress-specific security sniffs are included in the WordPress standard:
+         - WordPress.Security.EscapeOutput
+         - WordPress.Security.NonceVerification
+         - WordPress.Security.ValidatedSanitizedInput
+         - WordPress.DB.PreparedSQL
+         - WordPress.DB.DirectDatabaseQuery
+    -->
+
+    <!-- PHP Compatibility -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- Security Audit (phpcs-security-audit) -->
+    <rule ref="Security"/>
+
+    <!-- Configuration -->
+    <config name="minimum_wp_version" value="6.0"/>
+    <config name="testVersion" value="7.4-"/>
+
+    <!-- Output options -->
+    <arg name="colors"/>
+    <arg value="sp"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="8"/>
+</ruleset>

@@ -1,0 +1,72 @@
+this will put to paid field in  batch table
+-1: patient portal
+-2: elink
+-3:CI_Api_CTEH
+-4:CI_Api_Hl7_Athena_WEB_API
+-5:CI_Api_Solv
+-6:CI_Api_Noah
+-7:CI_Api_Meenta
+-8:CI_Api_Hl7_Athena
+-9:CI_Api_Hl7_Ellkay
+-10:CI_Api_Sftp_Hl7
+-11:CI_Api_sftp_experity
+-12:prefill covid
+-13: Ci_Api_VitalAxis
+-14: Centaur
+-15: Dimension
+-16: Phoresis :
+-17: Openlabs api
+-18: billing sftp
+-18: opentxt pcc
+-19: Medhiwa
+-20: au680: firstratelab
+-21: Lifetime : qitek
+-22: Evident : oneidahospital
+-23: Provista: medriteurgentcare
+-24: API Server
+-25: Access2
+-26: Sysmex XN 530
+-27: Indiko
+-28: DXC700
+-29: Cell DYN Ruby
+-30: MD connection
+-31: CI_Api_Hl7_Athena_sftp2
+-32: CI_Api_ERM_Sftp
+-33: Solana
+-35: Afinion
+-36: Coriell
+-37: Ins pictus 500
+-38: Ins pictus 700
+-41: api seacoast
+-42: api Mako
+-43: ins au400
+-44: ins vitros
+-45: ins Clinitek
+-46: DCA advantage
+-47: Billing
+-48: DigiChart
+-50: Greenway
+-51: Dxc500AU
+-52: Roche E411
+-53: Roche c311
+-54: Horiba
+-55: Sysmexn430
+-56: DZ-Lite c270
+-57: api server
+-58: Cynergy
+-59: XYGene
+-60: Gene ins
+-61: AEGIS
+-62: Genxys
+-63: insurance api
+-64: Genetica json
+-65: Iflow
+-66: Athena Intralab
+-80: ModMed
+-81: Immtox 120
+-82: CI_Api_centrallab_orchard
+-83: EXC200
+-88: Genovation
+-89: LIS
+-90: Tebra
+-91: Biomic PCR

@@ -1,0 +1,74 @@
+<req>
+    <accession_number>HLX001922</accession_number>
+    <ref_accession>REF001922</ref_accession>
+    <lab>HLX</lab>
+    <date_of_collection>2015-12-23 11:00:00</date_of_collection>
+    <spec_received>2015-12-23 18:00:00</spec_received>
+    <clinic>Ergo Sum Health</clinic>
+    <doctor>Sayeed,Faisal a.</doctor>
+    <doctor_npi>1234567890</doctor_npi>
+    <doctor_phone>410-676-1463</doctor_phone>
+    <collector>Michelle Waldman</collector>
+    <col_phone>410-676-1463</col_phone>
+    <primary_dagnostic_code>CYP2C19</primary_dagnostic_code>
+    <type_of_specimen>Blood</type_of_specimen>
+    <fasting>1 or 0</fasting>
+    <panel_tests_requested>Amylase,B12,CEA,FSH,Albumin</panel_tests_requested>
+    <notes>notes here</notes>
+    <billing_notes>notes here</billing_notes>
+    <patient_signature>base64 image</patient_signature>
+    <provider_signature>base64 image</provider_signature>
+    <ins_card_front>base64 image</ins_card_front>
+    <ins_card_back>base64 image</ins_card_back>
+    <patient_id_front>base64 image</patient_id_front>
+    <patient_id_back>base64 image</patient_id_back>
+    <patient>
+        <pa_patient_id>patient ID</pa_patient_id>
+        <pa_first>Genese</pa_first>
+        <pa_last>Mackie</pa_last>
+        <pa_middle>A</pa_middle>
+        <pa_dob>1960-04-09</pa_dob>
+        <pa_phone>Phone number</pa_phone>
+        <pa_gender>M or F</pa_gender>
+        <pa_address>Address</pa_address>
+        <pa_city>City</pa_city>
+        <pa_state>State Code</pa_state>
+        <pa_zip>Zip code</pa_zip>
+        <pa_ssn>ssn</pa_ssn>
+        <pa_mrn>Medical Record Number</pa_mrn>
+        <pa_apt>apt</pa_apt>
+        <pa_passport>Passport number</pa_passport>
+        <pa_email>email@email.com</pa_email>
+        <pa_race>race</pa_race>
+        <pa_ethnicity>ethnicity</pa_ethnicity>
+    </patient>
+    <primary_insurance>
+        <ins_first>first name</ins_first>
+        <ins_last>last name</ins_last>
+        <ins_company>Medicare</ins_company>
+        <ins_relation>Self (or) Parent (or) Spouse</ins_relation>
+        <ins_email>email@domain.com</ins_email>
+        <ins_address>Address</ins_address>
+        <ins_city>City</ins_city>
+        <ins_state>State code</ins_state>
+        <ins_zip>Zip code</ins_zip>
+        <ins_phone>phone number</ins_phone>
+        <ins_member_id>member id</ins_member_id>
+        <ins_group_id>Group id</ins_group_id>
+    </primary_insurance>
+    <second_insurance>
+        <ins_first>first name</ins_first>
+        <ins_last>last name</ins_last>
+        <ins_company>Medicare</ins_company>
+        <ins_relation>Self (or) Parent (or) Spouse</ins_relation>
+        <ins_email>email@domain.com</ins_email>
+        <ins_address>Address</ins_address>
+        <ins_city>City</ins_city>
+        <ins_state>State code</ins_state>
+        <ins_zip>Zip code</ins_zip>
+        <ins_phone>phone number</ins_phone>
+        <ins_member_id>member id</ins_member_id>
+        <ins_group_id>Group id</ins_group_id>
+    </second_insurance>
+
+</req>

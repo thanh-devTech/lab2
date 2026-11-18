@@ -1,0 +1,89 @@
+<req>
+    <accession_number>HLX001922</accession_number>
+    <lab>HLX</lab>
+    <spec_received>2016-01-06 10:30:00</spec_received>
+    <date_of_collection>2016-01-05 11:00:00</date_of_collection>
+    <clinic>Nova Interventional Pain Management-FMT</clinic>
+    <doctor>Sayeed,Faisal a.</doctor>
+    <doctor_phone>phone number</doctor_phone>
+    <doctor_npi>doctor npi</doctor_npi>
+    <collector>Collector Name here</collector>
+    <col_phone>Collector Phone here</col_phone>
+    <primary_dagnostic_code>G89.29</primary_dagnostic_code>
+    <type_of_specimen>Urine</type_of_specimen>
+    <temperature>0</temperature>
+    <actual_temperature></actual_temperature>
+    <poc_performed>1 or 0</poc_performed>
+    <medication_or_drug>+Amphetamine, -Barbiturate (Results of POC performed in office)</medication_or_drug>
+    <panel_tests_requested>Alprazolam,Diazepam,Flurazepam,Lorazepam,Temazepam,Oxazepam,Clonazepam,Buprenorphine,Meperidine,Methadone,EDDP,Tapentadol,Tramadol,Fentanyl,Hydrocodone,Hydromorphone,Oxycodone,Oxymorphone,Codeine,Morphine,Amobarbital Pentobarbital,Butabarbital,Butalbital,Phenobarbital,Secobarbital,Carisoprodol,Meprobamate,THC-COOH,MDA,MDEA,MDMA,Flunitrazepam,6-MAM,Methamphetamine,BENZOYLECGONINE-COCAINE METABOLITE,PCP,Amphetamine,Methylphenidate,Gabapentin,Pregabalin</panel_tests_requested>
+    <notes>notes</notes>
+    <medications>Oxycodone, Xanax</medications>
+    <patient_signature>base64 image</patient_signature>
+    <provider_signature>base64 image</provider_signature>
+    <ins_card_front>base64 image</ins_card_front>
+    <ins_card_back>base64 image</ins_card_back>
+    <patient_id_front>base64 image</patient_id_front>
+    <patient_id_back>base64 image</patient_id_back>
+    <patient>
+        <pa_patient_id>patient ID</pa_patient_id>
+        <pa_first>Genese</pa_first>
+        <pa_last>Mackie</pa_last>
+        <pa_middle></pa_middle>
+        <pa_dob>1960-04-09</pa_dob>
+        <pa_phone>Phone number</pa_phone>
+        <pa_gender>F</pa_gender>
+        <pa_address>Address</pa_address>
+        <pa_city>City</pa_city>
+        <pa_state>State Code</pa_state>
+        <pa_zip>Zip code</pa_zip>
+        <pa_ssn>ssn</pa_ssn>
+        <pa_mrn>Medical Record Number</pa_mrn>
+        <pa_apt>apt</pa_apt>
+        <pa_passport>Passport number</pa_passport>
+        <pa_email>email@email.com</pa_email>
+        <pa_race>race</pa_race>
+        <pa_ethnicity>ethnicity</pa_ethnicity>
+    </patient>
+    <primary_insurance>
+        <ins_first>first name</ins_first>
+        <ins_last>last name</ins_last>
+        <ins_company>Medicare</ins_company>
+        <ins_relation>Self (or) Parent (or) Spouse</ins_relation>
+        <ins_email>email@domain.com</ins_email>
+        <ins_address>Address</ins_address>
+        <ins_city>City</ins_city>
+        <ins_state>State code</ins_state>
+        <ins_zip>Zip code</ins_zip>
+        <ins_phone>phone number</ins_phone>
+        <ins_member_id>member id</ins_member_id>
+        <ins_group_id>Group id</ins_group_id>
+    </primary_insurance>
+    <second_insurance>
+        <ins_first>first name</ins_first>
+        <ins_last>last name</ins_last>
+        <ins_company>Medicare</ins_company>
+        <ins_relation>Self/Parent/Spouse</ins_relation>
+        <ins_email>email@domain.com</ins_email>
+        <ins_address>Address</ins_address>
+        <ins_city>City</ins_city>
+        <ins_state>State code</ins_state>
+        <ins_zip>Zip code</ins_zip>
+        <ins_phone>phone number</ins_phone>
+        <ins_member_id>member id</ins_member_id>
+        <ins_group_id>Group id</ins_group_id>
+    </second_insurance>
+    <worker_auto>
+        <name></name>
+        <date_of_injury></date_of_injury>
+        <address_of_claim></address_of_claim>
+        <zip></zip>
+        <insurance_name></insurance_name>
+        <subscriber_wc></subscriber_wc>
+        <attorney_name></attorney_name>
+        <attorney_phone></attorney_phone>
+        <adjuster_name></adjuster_name>
+        <adjuster_phone></adjuster_phone>
+        <claim_number></claim_number>
+        <claim_under_litigation>0</claim_under_litigation>
+    </worker_auto>
+</req>

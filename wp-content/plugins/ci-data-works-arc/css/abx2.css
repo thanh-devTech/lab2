@@ -1,0 +1,1127 @@
+table {
+    width: 100%;
+}
+
+.iconpill {
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+}
+
+.iconpill.notactive,
+.charicon.notactive {
+    opacity: 0.24;
+}
+
+.aleft {
+    text-align: left;
+}
+
+.vtop {
+    vertical-align: top;
+}
+
+.vmiddle {
+    vertical-align: middle;
+}
+
+table.reportabx_tbl {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.reportabx_tbl th {
+    background: #ddd;
+    line-height: 32px;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.reportabx_tbl th:last-child {
+    border: none;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td {
+    background: #eee;
+    border-color: #ddd;
+}
+
+.reportabx_tbl tbody tr.rowbg_grey td {
+    background: #f3f3f3;
+    border-bottom: 1px solid #eee;
+    color: #777;
+    font-size: 8.4px;
+    line-height: 8.4px;
+    height: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.reportabx_tbl tbody tr.rowbg_grey.bgwhite td {
+    background: #fafafa;
+}
+
+.reportabx_tbl tbody tr.rowbg_grey.bgyellow td {
+    background: #fefaea;
+}
+
+.reportabx_tbl td {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-size: 11px;
+}
+
+.reportabx_tbl td:last-child {
+    border: none;
+}
+
+.reportabx_tbl .noborder {
+    border: none;
+}
+
+.reportabx_tbl .noborderleft {
+    border-left: none;
+}
+
+.reportabx_tbl .pathogencity th {
+    background: #e5e5e5;
+    padding: 0;
+    line-height: 8px;
+    height: 8px;
+    font-size: 8px;
+    line-height: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.reportabx_tbl th.ricktext {
+    background: #e5e5e5;
+}
+
+table {
+    font-size: 12px;
+}
+
+.background_red {
+    background: #EE311A !important;
+}
+
+.riskbg.background_red {
+    border-color: #EE311A !important;
+}
+
+.background_orange {
+    background: #E9913F !important;
+}
+
+.riskbg.background_orange {
+    border-color: #E9913F !important;
+}
+
+.background_yellow {
+    background: #F8C747 !important;
+}
+
+.riskbg.background_yellow {
+    border-color: #F8C747 !important;
+}
+
+.background_yellow_dask {
+    background: #F8C747 !important;
+}
+
+.riskbg.background_yellow_dask {
+    border-color: #F8C747 !important;
+}
+
+.background_yellow_light {
+    background: #F6E3A4 !important;
+}
+
+.riskbg.background_yellow_light {
+    border-color: #F6E3A4 !important;
+}
+
+.background_grey {
+    background: #f3efd6 !important;
+}
+
+.abx_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.legend {
+    padding: 5px 0;
+    margin-top: 5px;
+    page-break-inside: avoid;
+}
+
+.legend img {
+    padding: 0px;
+}
+
+.legend .legenditem {
+    color: #666;
+}
+
+.legend .legendtitle {
+    font-size: 9px;
+}
+
+.legend .legenditem.legendtitle {
+    margin-left: 0 !important;
+}
+
+.legend .legen_dna_red .legendtitle {
+    padding-right: 40px;
+}
+
+.legend .legen_dna_orange .legendtitle {
+    padding-right: 39px;
+}
+
+.bold,
+b,
+strong {
+    font-weight: normal;
+}
+
+.pathogenicity_desc strong {
+    font-weight: bold;
+}
+
+.leitemboxs td,
+.leitemboxs td b {
+    vertical-align: top;
+    padding: 0;
+    color: #666;
+    font-size: 9px;
+}
+
+.leitemboxs .colleitembox {
+    width: 14px;
+    padding-top: 2px;
+}
+
+.leitemboxs .colleitembox .leitembox {
+    position: relative;
+    top: 1px;
+}
+
+.leitemboxs .leitembox {
+    width: 9px;
+    height: 9px;
+}
+
+.leitemtt {
+    font-weight: bold;
+    font-size: 10px;
+    color: #444;
+}
+
+.pairicon {
+    width: 6px;
+    height: 6px;
+    display: block;
+    border-radius: 3px;
+    background: #ddd;
+    margin-left: 1px;
+    margin-top: 3px;
+    float: right;
+}
+
+.pairicon_1 {
+    background: #4994cb;
+}
+
+.pairicon_2 {
+    background: #b286c6;
+}
+
+.pairicon_3 {
+    background: #c3bf62;
+}
+
+.abxheader th {
+    line-height: 9px;
+}
+
+.smalltext1 {
+    font-size: 9px;
+    color: #666;
+}
+
+.dompdf_new .rotate:after {
+    margin-left: 3px;
+}
+
+.dompdf_new .legend img {
+    float: left;
+}
+
+.dompdf_new .legend .legendtitle {
+    margin-left: 20px;
+}
+
+.topabxtbl ul li {
+    position: relative;
+}
+
+.thawngicon {
+    color: #EE311A;
+}
+
+.thawngicongreen {
+    color: green;
+}
+
+.reporttblstyle2 h2 {
+    margin: 4px 0;
+}
+
+.reporttblstyle2 td {
+    border: 3px solid #efefef;
+}
+
+.reporttblstyle2 .header td {
+    background: #efefef;
+    height: 16px;
+    line-height: 14px;
+    padding-left: 8px;
+}
+
+.reporttblstyle2 .header2 td {
+    background: #f5f5f5;
+    border-bottom-color: #f5f5f5;
+    height: 18px;
+    line-height: 14px;
+    padding-left: 8px;
+}
+
+.reporttblstyle2 .header3 td {
+    background: #d9d7d8;
+    border-bottom-color: #efefef;
+    height: 14px;
+    font-size: 9px;
+    line-height: 11px;
+    padding-left: 8px;
+}
+
+.reporttblstyle2 .content td {
+    padding: 2px 5px;
+    border-bottom: none;
+}
+
+.reporttblstyle2 .content td * {
+    font-size: 9px;
+    line-height: 9px;
+}
+
+.reporttblstyle2 .footertext td {
+    padding: 3px 8px;
+    border-top: none;
+    background: #f6f6f6;
+}
+
+.reporttblstyle2 .footertext td * {
+    font-size: 9px;
+}
+
+.reporttblstyle2 .footertext td .squareicon {
+    position: relative;
+    top: 1px;
+}
+
+td.isexclude {
+    opacity: 0.6;
+    background: #e0e0e0;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td.isexclude {
+    background: #d0d0d0;
+}
+
+body table th.rotate {
+    text-align: left !important;
+    position: relative;
+    vertical-align: bottom;
+    padding: 0;
+}
+
+.rotate span {
+    display: none;
+}
+
+.rotate:after {
+    width: 8px;
+    font-size: 8px;
+    line-height: 9px;
+    margin-left: -3px;
+    margin-top: 15px;
+    position: absolute;
+    content: attr(title);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.legend_notes {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.legend_notes .note_item {
+    font-size: 9px;
+    color: #555;
+}
+
+h2 {
+    color: #333;
+}
+
+h2.pdf_title {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid #555;
+}
+
+.arrowdown2wrap {
+    position: relative;
+    z-index: 9999;
+    margin: 5px auto 0
+}
+
+.arrow-down2 {
+    width: 22px;
+}
+
+.arrow-down2 img {
+    width: 22px;
+    height: auto;
+    position: relative;
+    margin-left: -3px;
+    margin-bottom: -4px;
+    z-index: 99;
+}
+
+img.infectionslide {
+    position: relative;
+    z-index: 0;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.nopadding table td {
+    border: none;
+}
+
+.clinic2lines body {
+    margin-top: 3.4cm !important;
+}
+
+.warningrisk6 {
+    position: absolute;
+    height: 100%;
+    top: 38px;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.warningrisk6 img {
+    max-width: 70%;
+    width: 40px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.warningrisk6 div {
+    line-height: 18px;
+}
+
+td.isexclude.batrisk_6 {
+    opacity: 1;
+    background: #fff;
+}
+
+.reportabx_tbl tbody tr.rowbg_0 td.isexclude.batrisk_6 {
+    background: #eee;
+
+}
+
+.overtableabxmain {
+    position: relative;
+    overflow: hidden;
+    page-break-inside: avoid;
+}
+
+.textgrey {
+    color: #555;
+}
+
+.legendorphan {
+    padding-top: 5px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    border-top: 3px solid #dedede;
+    text-align: left;
+}
+
+.legendorphan span {
+    margin-right: 20px;
+    font-size: 9px;
+    color: #666;
+}
+
+table.noborder td,
+table.noborder th {
+    border: none;
+}
+
+.groupicons {
+    margin: 0 2px;
+    display: inline-block;
+    letter-spacing: -2px;
+}
+
+.groupicons .iconpill {
+    margin-right: 0;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    position: relative;
+}
+
+.aricons .charicon,
+.dlicons .charicon {
+    font-size: 10px;
+}
+
+.groupicons .charicon {
+    display: inline;
+    margin: 0;
+}
+
+.qicons {
+    margin-top: 4px;
+}
+
+
+.abxtoptbl {
+    width: auto;
+}
+
+.abxtoptbl td {
+    border: 3px solid #efefef;
+    width: 186.7px;
+    text-align: center;
+    height: 16px;
+}
+
+.abxtoptbl .header td {
+    background: #ddd;
+    text-align: center;
+    height: 26px;
+    padding: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-top: none;
+    border-bottom: none;
+    vertical-align: middle;
+}
+
+.abxtoptbl .header td:first-child {
+    border-left-color: #ddd;
+}
+
+.abxtoptbl .header td:last-child {
+    border-right-color: #ddd;
+}
+
+.abxtoptbl .estimated td {
+    background: #f6f6f6;
+    border-top: none;
+    border-bottom: none;
+    color: #666;
+    font-size: 9px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+    height: 20px;
+}
+
+.headerestimated {
+    line-height: 14px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.abxtoptbl .chart td {
+    border-top: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.abxtoptbl .dose td {
+    vertical-align: middle;
+}
+
+.abxtoptbl .dose div,
+.abxtoptbl .dose2 div {
+    font-size: 10px;
+}
+
+.abxtoptbl .pediatric_comment td {
+    font-size: 9px;
+    line-height: 10px;
+}
+
+.chart .pairedtext {
+    padding-top: 5px;
+}
+
+.abxtoptbl .icon td,
+.abxtoptbl .notes td {
+    background: #f6f6f6;
+    vertical-align: middle;
+}
+
+.abxtoptbl .notes td {
+    text-align: center;
+    font-size: 9px;
+}
+
+.gaugediv {
+    width: 140px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.gaugediv .gauge {
+    width: 140px;
+}
+
+.gauge-indicator {
+    width: 10px;
+    position: absolute;
+    left: 64px;
+    top: 0;
+    margin-top: 25px;
+    transform-origin: 5px 42px;
+    transform: rotate(-90deg);
+}
+
+.addingrm {
+    font-size: 18px;
+    color: #aaa;
+    display: inline;
+    margin: 0 10px;
+}
+
+.infection_tbl {
+    border: none !important;
+    margin-top: -4px;
+}
+
+.infection_tbl td {
+    border: none !important;
+    color: #888;
+    font-size: 8px;
+    padding: 0;
+    text-align: center;
+}
+
+.infectionlevel {
+    margin: 12px 20px 4px 20px;
+    font-size: 10px;
+    color: #555;
+}
+
+table.infectionlevel {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.infectionlevel span,
+.infectionlevel div {
+    font-size: 10px;
+}
+
+.infectionlevel .mleveltext {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.pathogenicity_desc * {
+    color: #555;
+}
+
+.pathogentbl {
+    page-break-inside: avoid;
+}
+
+.pathogentbl td {
+    width: 50%;
+}
+
+.toptable3bpx {
+    background: #f6f6f6;
+}
+
+.red {
+    color: red;
+}
+
+.footertext .squareicon {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+}
+
+.legendicons {
+    vertical-align: middle;
+    background: #fefefe;
+    color: #666;
+}
+
+.legendicons span {
+    font-size: 9px;
+}
+
+.legendicons .iconpill {
+    top: 4px;
+    display: inline-block;
+    position: relative;
+    opacity: 0.6;
+}
+
+.legendicons .spliticon {
+    display: inline-block;
+    padding: 0 11px;
+    font-size: 9px;
+    position: relative;
+    top: 1px;
+    opacity: 0.6;
+}
+
+.reporttblstyle2 .header2 td {
+    padding-left: 8px;
+}
+
+.top_pathogens {
+    color: #000;
+}
+
+.top_pathogens .item {
+    font-size: 11px;
+    line-height: 13px;
+    position: relative;
+}
+
+.legend_notes {
+    padding-top: 10px;
+}
+
+table.reporttblstyle2 tr.header {
+    border-bottom: 4px solid #D1D0D6;
+}
+
+.quantitynotes {
+    font-size: 9px;
+    background: #f6f6f6;
+    margin-bottom: 10px;
+    padding: 5px 4px;
+}
+
+.quantitynotes span {
+    font-size: 9px;
+}
+
+.overarrowdown {
+    position: relative;
+    overflow: hidden;
+    page-break-inside: avoid;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.overarrowdown .arrowtext {
+    padding-bottom: 24px;
+}
+
+.overarrowdown img {
+    width: 30px !important;
+    height: auto;
+}
+
+.reporttblstyle2 .header1 td,
+.reporttblstyle2 div.header1 {
+    background: #D9D7D8;
+    border-bottom-color: #f5f5f5;
+    color: #3D3A56;
+    font-size: 10px;
+    height: 22px;
+    line-height: 14px;
+    padding: 0 8px 0 8px;
+}
+
+.reporttblstyle2 .header2 td,
+.reporttblstyle2 div.header2 {
+    background: #f5f5f5;
+    border-bottom-color: #f5f5f5;
+    color: #66667A;
+    height: 20px;
+    font-size: 9px;
+    line-height: 13px;
+    padding: 0 0 0 10px;
+}
+
+.reporttblstyle2.pathogentbl .header2 td {
+    font-size: 11px;
+}
+
+.pathogens_notes {
+    font-size: 9px;
+    color: #888;
+}
+
+.shownoteinbottom {
+    padding-top: 10px;
+}
+
+.detectedblock {
+    background: #f6f6f6;
+    vertical-align: top;
+}
+
+.reporttblstyle2 .detectedblock div.header1 {
+    background: #E5E5E5;
+    font-size: 9px;
+    height: 16px;
+    line-height: 11px;
+    border-bottom: 0px solid #D1D0D8;
+}
+
+.abxclassestbl tr td {
+    width: 25%;
+}
+
+.abxclassestbl tr td.item {
+    width: 25%;
+    font-size: 10px;
+}
+
+.abxclassestbl tr td {
+    background: #f6f6f6
+}
+
+.abxclassestbl tr .abxlmh_high,
+.abxclassestbl tr .abxlmh_paired,
+.abxclassestbl tr .item[class*="_v.high"] {
+    background: #e25523;
+    color: #fff;
+}
+
+.abxclassestbl tr .abxlmh_medium,
+.abxclassestbl tr .abxlmh_med {
+    background: #e08213;
+    color: #fff;
+}
+
+.abxclassestbl tr .abxlmh_low,
+.abxclassestbl tr .abxlmh_excluded,
+.abxclassestbl tr .item[class*="_v.low"] {
+    background: #deb92c;
+    color: #fff;
+}
+
+.abxclassestbl tr .abxlmh_orphan,
+.abxclassestbl tr .abxlmh_unpaired {
+    background: #aba9aa;
+    color: #fff;
+}
+
+.abxcllmh {
+    font-size: 9px;
+}
+
+.abxcllmh_label {
+    margin-left: 5px;
+}
+
+.abxcllmh::before {
+    display: inline-block;
+    content: "";
+    width: 5px;
+}
+
+.abxcllmh span {
+    width: 20px;
+    height: 9px;
+    display: inline-block;
+    top: 1.2px;
+    position: relative;
+}
+
+.biofilmareatd {
+    position: relative;
+}
+
+.biofilmrow td {
+    border: 0;
+    padding: 0;
+    height: 0;
+    position: relative;
+}
+
+.biofilmspace {
+    height: 18px;
+}
+
+.biofilm_risk {
+    background: #efefef;
+    padding: 4px 0;
+    text-align: center;
+    font-size: 10px;
+    height: 14px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    margin-top: -24px;
+}
+
+.biofilm_risk img.biofilmicon {
+    width: 16px;
+    display: inline-block;
+    position: relative;
+    top: 3.5px;
+    margin-right: 8px;
+}
+
+.biofilm_risk .biofilmtxt {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #555;
+}
+
+.reportabx_tbl .pathogencity th.bgbiofilmcolhd {
+    background: #e04e13;
+    color: #fff;
+}
+
+td.biobg_yellow {
+    background: #e7d468 !important;
+}
+
+td.biobg_green {
+    background: #89d682 !important;
+}
+
+
+.reportabx_tbl td.bioficon,
+.reportabx_tbl td.bioficon span {
+    font-size: 8px;
+    color: #696969;
+}
+
+.reportabx_tbl td.bioficon span.biominus {
+    font-size: 10px;
+}
+
+.bgbiofilmcolhd.rotate:after {
+    margin-top: 31px;
+    margin-left: 0px;
+    padding-top: 2px;
+}
+
+.abxestimatedtbl .baicon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    margin-top: 5px;
+    margin-right: 2px;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+    line-height: 11px;
+    text-transform: none;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 8px;
+}
+
+.abxestimatedtbl .psicons .baicon {
+    width: 14px;
+    height: 14px;
+    line-height: 9px;
+    background: #eee;
+    float: none;
+    display: inline-block;
+    margin-right: 1px;
+    margin-top: -2px;
+    position: relative;
+    top: 3px;
+}
+
+.abxestimatedtbl.hasbaicon .spliticon {
+    padding: 0 7px;
+}
+
+.abxestimatedtbl.hasbaicon tr.header td {
+    font-size: 10px;
+    position: relative;
+}
+
+.abxestimatedtbl.hasbaicon .headertext {
+    display: block;
+    padding-right: 10px;
+    font-size: 10px;
+}
+
+.trimester_item {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 12px;
+    background: #61b95a;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 6px;
+    margin-bottom: -2px;
+}
+
+.reportabx_tbl .trimester_item {
+    width: 12px;
+    height: 12px;
+    margin-left: -1px;
+    line-height: 10px;
+}
+
+.trimester_item.trimester_2 {
+    background: #e7ae1c;
+}
+
+.trimester_item.trimester_3 {
+    background: #f55742;
+}
+
+.trimester_item.trimester_4 {
+    background: #b7b6b5;
+}
+
+th.hpregnancy {
+    font-size: 8px !important;
+    min-width: 55px;
+}
+
+.reportabx_tbl .pathogencity th.bgpregnancy {
+    background: #e171c9 !important;
+    color: #fff;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.abxtoptbl .pregnancy_note td,
+.abxtoptbl .trimester td {
+    font-size: 9px;
+    background: #EBE3E9;
+}
+
+
+.abxtoptbl .pregnancy_note td p {
+    font-size: 9px;
+    margin: 0;
+    padding: 0;
+}
+
+.legend_pregnancy {
+    background: #f5f5f5;
+    padding: 10px 10px 8px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.legend_pregnancy * {
+    font-size: 9px;
+    color: #666;
+
+}
+
+.legtitle {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.legitem {
+    padding-left: 30px;
+}
+
+.legrow2 {
+    padding-left: 60px;
+    padding-top: 4px;
+}
+
+.legtitle2 {
+    display: inline-block;
+}
+
+.legkeyitem {
+    padding-left: 26px;
+    display: inline-block;
+}
+
+.legkeyitem .trimester_item {
+    width: 9px;
+    height: 9px;
+}
+
+.thawngabx {
+    font-weight: bold;
+    font-size: 25px !important;
+    font-family: smooth;
+    vertical-align: middle;
+    padding: 0 4px;
+}
+
+.thawngabxtbl td {
+    font-size: 10px;
+    color: #555;
+}
+
+h2.pdf_title {
+    font-size: 15px;
+}
+
+.hide_infection_complexity img {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 50px;
+}
+
+.hide_infection_complexity_text {
+    color: #555;
+    font-size: 10px;
+}

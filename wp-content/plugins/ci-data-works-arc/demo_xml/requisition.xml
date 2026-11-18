@@ -1,0 +1,36 @@
+<req>
+    <accession_number>DEM001922</accession_number>
+    <lab>DEM</lab>
+    <panel_tests_requested>Diabetes Detect</panel_tests_requested>
+    <fasting>Yes or No</fasting>
+    <patient>
+        <pa_patient_id>patient ID</pa_patient_id>
+        <pa_first>Genese</pa_first>
+        <pa_last>Mackie</pa_last>
+        <pa_middle>A</pa_middle>
+        <pa_dob>1960-04-09</pa_dob>
+        <pa_phone>Phone number</pa_phone>
+        <pa_gender>M or F</pa_gender>
+        <pa_address>Address</pa_address>
+        <pa_city>City</pa_city>
+        <pa_state>State Code</pa_state>
+        <pa_zip>Zip code</pa_zip>
+        <pa_apt>apt</pa_apt>
+        <pa_passport>Passport number</pa_passport>
+        <pa_email>email@email.com</pa_email>
+        <pa_race>race</pa_race>
+        <pa_ethnicity>ethnicity</pa_ethnicity>
+    </patient>
+    <aoe_answers></aoe_answers>
+    <logistics>
+        <collection_agency_name>Name here</collection_agency_name>
+        <collection_agency_address>Address here</collection_agency_address>
+        <collection_agency_city>City here</collection_agency_city>
+        <collection_agency_state>State here</collection_agency_state>
+        <collection_agency_zip>Zip here</collection_agency_zip>
+        <collection_agency_phone>Phone here</collection_agency_phone>
+        <collection_datetime>2024-01-01 11:11:11</collection_datetime>
+        <shipment_picked_up_datetime>2024-01-01 11:11:11</shipment_picked_up_datetime>
+    </logistics>
+    
+</req>

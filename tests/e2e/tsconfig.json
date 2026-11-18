@@ -1,0 +1,25 @@
+{
+  // TYPE-CHECK ONLY. Playwright transpiles with esbuild and never type-checks
+  // (D394): a missing export resolves to `undefined` at runtime, so
+  // `{ timeout: BEFORE_BOUNCE_MS }` silently became `{ timeout: undefined }`
+  // and fell back to the 5 s default -- reopening the very race D392 closes.
+  // Three CI runs reported 99 passed / 0 failed against that build. This file
+  // exists so `tsc --noEmit` can catch that class before CI reports a green.
+  //
+  // noEmit is not optional here: emitting JS next to the specs would put
+  // compiled duplicates in testDir and Playwright would collect them twice.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "types": ["node"],
+    "strict": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "test-results", "playwright-report"]
+}

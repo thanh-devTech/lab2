@@ -1,0 +1,40 @@
+= 2.8.13 - 2026-06-16 =
+* Update - Chore: auto-generate changelog.
+* Fix - Export Request log.
+* Add - Role billbyreflab.
+
+= 2.8.12 - 2026-06-01 =
+* Add - User log.
+* Update - Hipaa Export.
+* Add - Chunked AJAX export with progress for closed lab data.
+* Add - Detailed diagnostics for export AJAX failures.
+* Update - Split closed lab export into cursor-based type batches.
+* Update - Prefilter export batches by indexed record cursor.
+* Update - Allow active export sessions after close lab flag changes.
+* Update - Patient testing export into Admin Tools export tab.
+* Update - Hipaa Export Update.
+* Update - Hipaa Export - Fix style.
+* Update - Hippa Export - Fix style page.
+* Update - Hipaa Export - Add cancel button.
+* Update - Hipaa Export - fix cancel response.
+* Update - Hipaa Export -Remove Data log and export limit 100.
+* Update - Chore: auto-generate changelog.
+* Update - Billing class.
+
+= 2.8.11 - 2026-05-30 =
+* Add - Log.txt.
+* Add - Action git auto create log.txt file.
+* Update - Billing classes.
+* Fix - Import medicare.
+* Fix - Ui.
+* Update - Group in bold.
+
+= 2.8.10 - 2026-05-19 =
+* Fix - Rejected query.
+* Fix - Bill type.
+* Add - New field for bc_medicare.
+* Add - Maximum field for all billing type.
+
+= 2.8.09 - 2026-04-29 =
+* Add - Test type for ref lab.
+* Fix - Init core.

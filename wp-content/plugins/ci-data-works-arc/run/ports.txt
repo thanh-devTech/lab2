@@ -1,0 +1,28 @@
+Au680: 8688
+Au680 Blood: 8637
+Access2: 8684
+Phoresis: 8681
+architect: 8689
+Sysmex XN 530: 8530
+Indiko+: 8682
+Dxc 700: 8700 (au680 old)
+Diatron Pictus500:8500
+CELL-DYN Ruby: 8683
+Solana: 8633
+Afinion: 8647
+Biomic: 8634
+Liaison: 8635
+Thunderbolt: 8636
+DXH560: 8560
+AU400: 8400
+Vitros: 8321
+Clinitek: 8531
+dca_advantage: 8545
+DxC500AU: 8686
+Roche E411: 8652
+Roche c311 : 8653
+Horiba: 8654
+Sysmex 430: 8543
+DZ-Lite c270: 8270
+Gene: 8612
+Immtox 120: 8120

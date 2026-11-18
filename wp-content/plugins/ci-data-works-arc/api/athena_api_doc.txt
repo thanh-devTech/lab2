@@ -1,0 +1,55 @@
+1, GET orders/signedoff -> patientid, orderid, deptid, encounterid
+2. GET /patients/{patientid}/documents/labresult -> match the orderid to the correct labresultid
+3, PUT /patients/{patientid}/documents/labresult/{labresultid}
+4, Sample analyte JSON:
+[{
+"analytename":"Covid-19", //this analytename can be whatever BetterMed decides – the passed name will overwrite the template name
+"abnormalflag":"ABNORMAL", //cap-sensitive - should be in all caps
+"resultstatus":"Final", //cap-sensitive - first letter capitalized, rest lower
+"value":"Positive"
+}],
+**see documentation for possible abnormalflags and resultstatuses if needed**
+5. PUT /documents/labresult/{documentid}/dataentrycompleted //documentid in this call is going to be the labresultid from the previous calls
+ 
+Please go back to the code we had just prior to adding all the extra steps.
+Then we need to do this:
+
+https://docs.athenahealth.com/api/workflows/appointment-based-claim-creation
+claimcharges= [{
+   "procedurecode" : "99213",    <---- trying to figure out what this is
+   "units" : "1",
+   "icd10code1" : "Z0000"    <---- this are the diagnostic codes from req
+}]
+
+
+
+1. Order is retrieved by Ignite using the GET orders/signedoff subscription
+
+A 2nd result call will be sent in order to include the PDF attachment – see below for more details on this workflow
+GET orders/signedoff -> patientid, orderid, deptid, encounterid
+
+GET /patients/{patientid}/documents/labresult -> match the orderid to the correct labresultid
+
+PUT /patients/{patientid}/documents/labresult/{labresultid}
+Sample analyte JSON:
+[{
+
+"analytename":"Covid-19", //this analytename can be whatever BetterMed decides – the passed name will overwrite the template name
+
+"abnormalflag":"ABNORMAL", //cap-sensitive - should be in all caps
+
+"resultstatus":"Final", //cap-sensitive - first letter capitalized, rest lower
+
+"value":"Positive"
+
+}],
+
+*see documentation for possible abnormalflags and resultstatuses if needed*
+
+PUT /documents/labresult/{documentid}/dataentrycompleted //documentid
+in this call is going to be the labresultid from the previous calls
+
+POST /documents/labresult //this will be the duplicate result which will include the PDF attachment payload
+If the result is NORMAL, this document should have the autoclose parameter set to “true”
+
+If the result is ABNORMAL, this document should NOT autoclose

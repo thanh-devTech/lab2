@@ -1,0 +1,7 @@
+node_modules/
+test-results/
+playwright-report/
+# state/ no longer exists: storageState + baseline.sql live in
+# ${E2E_STATE_DIR:-$TMPDIR/lis-e2e-state}, genuinely outside the checkout and
+# therefore outside the ../../../:/var/www/html bind mount (R12/R18).
+state/

@@ -1,0 +1,290 @@
+name: JavaScript Analysis
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, develop]
+    paths:
+      - '**.js'
+      - 'linting/**'
+      - '.semgrep/**'
+      - '.github/workflows/js-analysis.yml'
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: js-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ──────────────────────────────────────────
+  # ESLint - Security-focused linting
+  # ──────────────────────────────────────────
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: linting/node_modules
+          key: eslint-${{ hashFiles('linting/package.json') }}
+          restore-keys: eslint-
+
+      - name: Install linting dependencies
+        working-directory: linting
+        run: npm install
+
+      - name: Run ESLint
+        working-directory: linting
+        run: |
+          npx eslint \
+            --config eslint.config.mjs \
+            --format json \
+            --output-file ../eslint-results.json \
+            || true
+
+      - name: Setup reviewdog
+        if: github.event_name == 'pull_request'
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: ESLint inline annotations (PR only)
+        if: github.event_name == 'pull_request'
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: linting
+        run: |
+          npx eslint \
+            --config eslint.config.mjs \
+            --format stylish \
+            2>&1 | reviewdog \
+              -f=eslint \
+              -name="ESLint" \
+              -reporter=github-pr-review \
+              -level=warning \
+              -fail-on-error=false \
+            || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-results
+          path: eslint-results.json
+
+  # ──────────────────────────────────────────
+  # Retire.js - Known vulnerable JS libraries
+  # ──────────────────────────────────────────
+  retirejs:
+    name: Retire.js
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GH_PAT }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install and run Retire.js
+        run: |
+          npm install -g retire
+          retire \
+            --path wp-content/plugins/ \
+            --outputformat json \
+            --outputpath retire-results.json \
+            --severity medium \
+            --ignore wp-content/plugins/*/vendor \
+            --ignore wp-content/plugins/*/node_modules \
+            || true
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retirejs-results
+          path: retire-results.json
+
+  # ──────────────────────────────────────────
+  # Report
+  # ──────────────────────────────────────────
+  report:
+    name: Report
+    if: always()
+    needs: [eslint, retirejs]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: results
+
+      - name: Generate report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            function readJSON(p) {
+              try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }
+            }
+
+            function icon(count) {
+              if (count === 0) return '✅';
+              return '⚠️';
+            }
+
+            // ── Parse ESLint ──
+            const eslintData = readJSON('results/eslint-results/eslint-results.json') || [];
+            const eslintErrors = eslintData.reduce((s, f) => s + f.errorCount, 0);
+            const eslintWarnings = eslintData.reduce((s, f) => s + f.warningCount, 0);
+
+            // Files with issues
+            const filesWithIssues = eslintData
+              .filter(f => f.errorCount + f.warningCount > 0)
+              .sort((a, b) => (b.errorCount + b.warningCount) - (a.errorCount + a.warningCount));
+
+            // Group by rule
+            const ruleCount = {};
+            eslintData.forEach(f => {
+              f.messages.forEach(m => {
+                const rule = m.ruleId || 'unknown';
+                ruleCount[rule] = (ruleCount[rule] || 0) + 1;
+              });
+            });
+            const topEslintRules = Object.entries(ruleCount)
+              .sort((a, b) => b[1] - a[1])
+              .slice(0, 10);
+
+            // ── Parse Retire.js ──
+            const retireData = readJSON('results/retirejs-results/retire-results.json');
+            const vulns = [];
+            if (Array.isArray(retireData)) {
+              retireData.forEach(item => {
+                if (!item.results) return;
+                item.results.forEach(r => {
+                  (r.vulnerabilities || []).forEach(v => {
+                    vulns.push({
+                      lib: r.component || 'unknown',
+                      version: r.version || '?',
+                      severity: (v.severity || 'unknown').toUpperCase(),
+                      cve: (v.identifiers?.CVE || []).join(', ') || (v.identifiers?.summary || ''),
+                      info: (v.info || []).slice(0, 1).join('')
+                    });
+                  });
+                });
+              });
+            }
+
+            // ── Build Report ──
+            let report = '';
+            report += '# JavaScript Analysis Report\n\n';
+
+            // Overview
+            report += '## Overview\n\n';
+            report += '| Check | Status | Findings |\n';
+            report += '|-------|--------|----------|\n';
+            report += `| ESLint | ${icon(eslintErrors + eslintWarnings)} | ${eslintErrors} errors, ${eslintWarnings} warnings |\n`;
+            report += `| Retire.js | ${icon(vulns.length)} | ${vulns.length} vulnerable libraries |\n`;
+            report += '\n';
+
+            // ESLint details
+            if (eslintErrors + eslintWarnings > 0) {
+              report += '---\n\n';
+              report += '## ESLint — Issues by Rule\n\n';
+              report += '| Rule | Count |\n';
+              report += '|------|-------|\n';
+              topEslintRules.forEach(([rule, count]) => {
+                report += `| \`${rule}\` | ${count} |\n`;
+              });
+              report += '\n';
+
+              if (filesWithIssues.length > 0) {
+                report += '<details><summary><b>Files with Issues (' + filesWithIssues.length + ')</b></summary>\n\n';
+                report += '| File | Errors | Warnings |\n';
+                report += '|------|--------|----------|\n';
+                filesWithIssues.slice(0, 30).forEach(f => {
+                  const name = f.filePath.split('/').slice(-3).join('/');
+                  report += `| ${name} | ${f.errorCount} | ${f.warningCount} |\n`;
+                });
+                if (filesWithIssues.length > 30) {
+                  report += `| *...and ${filesWithIssues.length - 30} more* | | |\n`;
+                }
+                report += '\n</details>\n\n';
+              }
+            } else {
+              report += '\n> No ESLint issues found.\n\n';
+            }
+
+            // Retire.js details
+            report += '---\n\n';
+            report += '## Retire.js — Vulnerable Libraries\n\n';
+            if (vulns.length > 0) {
+              report += '| Library | Version | Severity | CVE |\n';
+              report += '|---------|---------|----------|-----|\n';
+              vulns.forEach(v => {
+                report += `| ${v.lib} | ${v.version} | **${v.severity}** | ${v.cve} |\n`;
+              });
+            } else {
+              report += '> No known vulnerabilities detected in bundled JS libraries.\n';
+            }
+            report += '\n';
+
+            // ── Write Job Summary ──
+            core.summary.addRaw(report);
+            await core.summary.write();
+
+            // ── PR Comment ──
+            if (context.eventName === 'pull_request') {
+              let comment = '## JavaScript Analysis Results\n\n';
+              comment += '| Check | Status | Findings |\n';
+              comment += '|-------|--------|----------|\n';
+              comment += `| ESLint | ${icon(eslintErrors + eslintWarnings)} | ${eslintErrors} errors, ${eslintWarnings} warnings |\n`;
+              comment += `| Retire.js | ${icon(vulns.length)} | ${vulns.length === 0 ? 'Clean' : vulns.length + ' vulnerable libs'} |\n`;
+              comment += '\n';
+
+              if (topEslintRules.length > 0) {
+                comment += '**Top ESLint rules triggered:**\n';
+                topEslintRules.slice(0, 5).forEach(([rule, count], i) => {
+                  comment += `${i + 1}. \`${rule}\` — ${count}\n`;
+                });
+                comment += '\n';
+              }
+
+              if (vulns.length > 0) {
+                comment += '**Vulnerable libraries:**\n';
+                vulns.forEach(v => {
+                  comment += `- ⚠️ **${v.lib}** ${v.version} — ${v.severity} ${v.cve ? '(' + v.cve + ')' : ''}\n`;
+                });
+                comment += '\n';
+              }
+
+              comment += `> 📋 [Full report](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) · `;
+              comment += `Inline ESLint annotations on changed files\n`;
+
+              fs.writeFileSync('pr-comment.md', comment);
+            }
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: js-analysis
+          path: pr-comment.md

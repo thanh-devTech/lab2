@@ -1,0 +1,18 @@
+{
+	"name": "PCR -96(93patients) - 384(26patients)(UTI)",
+	"lab": "labprecisely.com",
+	"type": 384,
+	"rack": 96,
+	"rackabc": 1,
+	"wellperpatient": 12,
+	"nextwellbycol": 1,
+	"nextwellbyrow": 1,
+	"subwellsplate": 29,
+	"subnextwellbycol": 12,
+	"max": 93,
+	"ntc": 2,
+	"pos": 1,
+	"nec": 3,
+	"blank": 0,
+	"target": 1
+}

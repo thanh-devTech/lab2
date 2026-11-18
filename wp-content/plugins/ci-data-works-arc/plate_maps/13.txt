@@ -1,0 +1,1 @@
+10 patients, 20 columns(384 - Wound-ABR)

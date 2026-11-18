@@ -1,0 +1,1133 @@
+/* OncoSure Oxygen CSS - Corrected for 10px rem base */
+/* All rem values adjusted from 16px base to 10px base (multiply by 1.6) */
+
+.oncosure-form-container {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  background-color: #f9fafb !important;
+  min-height: 100vh !important;
+  padding: 1.6rem !important;
+  box-sizing: border-box !important;
+  line-height: 1.4 !important;
+}
+
+/* Fix for 70/30 layout - Force flex layout */
+.oncosure-main-wrapper {
+  max-width: 120rem !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  gap: 2.4rem !important;
+  align-items: flex-start !important;
+}
+
+.oncosure-form-section {
+  flex: 1 1 70% !important;
+  max-width: 70% !important;
+  background: white !important;
+  border-radius: 0.8rem !important;
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 3.2rem !important;
+}
+
+.oncosure-sidebar {
+  flex: 0 0 30% !important;
+  width: 30% !important;
+  max-width: 30% !important;
+}
+
+/* Font size fixes - Proper rem scaling */
+.oncosure-header h1 {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 0.4rem 0 !important;
+}
+
+.oncosure-header p {
+  color: #6b7280 !important;
+  font-size: 1.3rem !important;
+  margin: 0 0 2.4rem 0 !important;
+}
+
+/* Step Indicators - Fixed sizing */
+.oncosure-step-indicators {
+  background-color: #f9fafb !important;
+  border-radius: 1.6rem !important;
+  padding: 1.2rem 2.4rem 1rem !important;
+  margin-bottom: 2.4rem !important;
+}
+
+.oncosure-steps-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  max-width: 51.2rem !important;
+  margin: 0 auto !important;
+}
+
+.oncosure-step {
+  position: relative !important;
+  color: #d6e8e7 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.oncosure-step:hover {
+  background-color: white !important;
+  box-shadow: 0 0.4rem 0.6rem -0.1rem rgba(0, 0, 0, 0.1) !important;
+  border-radius: 1.6rem !important;
+}
+
+.oncosure-step.active {
+  background-color: white !important;
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1) !important;
+  border-radius: 1.6rem !important;
+}
+
+.oncosure-step-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 0.6rem 1rem !important;
+  border-radius: 1.6rem !important;
+}
+
+.oncosure-step-number-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.oncosure-step-number {
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: #4b5563 !important;
+  background-color: #d5e8e7 !important;
+  transition: all 0.15s ease !important;
+}
+
+.oncosure-step:hover .oncosure-step-number {
+  transform: scale(1.05) !important;
+}
+
+.oncosure-step-icon {
+  color: #4b5563 !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+}
+
+.oncosure-step-title {
+  font-size: 1.2rem !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  white-space: nowrap !important;
+}
+
+/* Tooltips - Fixed positioning */
+.oncosure-tooltip {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-top: 0.8rem !important;
+  background-color: #d6e8e7 !important;
+  color: #374151 !important;
+  font-size: 1.2rem !important;
+  border-radius: 0.6rem !important;
+  padding: 0.8rem 1.2rem !important;
+  z-index: 10 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 1rem 1.5rem -0.3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.oncosure-tooltip::before {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border: 0.4rem solid transparent !important;
+  border-bottom-color: #d6e8e7 !important;
+}
+
+.oncosure-button-tooltip {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 100% !important;
+  margin-bottom: 0.8rem !important;
+  background-color: #d6e8e7 !important;
+  color: #374151 !important;
+  font-size: 1.2rem !important;
+  border-radius: 0.6rem !important;
+  padding: 0.8rem 1.2rem !important;
+  z-index: 10 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 1rem 1.5rem -0.3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.oncosure-button-tooltip::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 100% !important;
+  right: 1.6rem !important;
+  border: 0.4rem solid transparent !important;
+  border-top-color: #d6e8e7 !important;
+}
+
+/* Step Content - Fixed spacing */
+.oncosure-step-section {
+  margin-bottom: 2.4rem !important;
+}
+
+.oncosure-step-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.oncosure-step-icon-circle {
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+  border-radius: 50% !important;
+  background-color: #d5e8e7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #4a4a4a !important;
+}
+
+.oncosure-step-icon-circle svg {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
+
+.oncosure-step-title-section h3 {
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+.oncosure-step-title-section p {
+  color: #606e79 !important;
+  font-size: 1.3rem !important;
+  line-height: 2rem !important;
+  margin: 0 !important;
+}
+
+/* Test Selection - Fixed card styling */
+.oncosure-tests-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.6rem !important;
+  margin: 0.4rem 0 1.6rem 0 !important;
+}
+
+.oncosure-test-card {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 1.6rem !important;
+  padding: 1.6rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  position: relative !important;
+}
+
+.oncosure-test-card:hover {
+  border-color: #d1d5db !important;
+}
+
+.oncosure-test-card.selected {
+  background-color: rgba(214, 232, 231, 0.4) !important;
+  border-color: rgba(235, 235, 235, 1) !important;
+  box-shadow: 0.1rem 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.23) !important;
+}
+
+.oncosure-test-content {
+  flex: 1 !important;
+}
+
+.oncosure-test-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.oncosure-test-header h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+.oncosure-badge {
+  background-color: #b15098 !important;
+  color: white !important;
+  border-radius: 1.6rem !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  padding: 0.3rem 1.6rem !important;
+  margin-left: 1.6rem !important;
+  margin-right: 1.6rem !important;
+}
+
+.oncosure-test-description {
+  color: #6b7583 !important;
+  font-size: 1.3rem !important;
+  line-height: 2rem !important;
+  margin: 0.8rem 0 0 0 !important;
+}
+
+.oncosure-test-pricing {
+  text-align: right !important;
+  margin-left: 1.2rem !important;
+}
+
+.oncosure-price-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.oncosure-original-price {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  text-decoration: line-through !important;
+}
+
+.oncosure-sale-price {
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  background-color: rgba(107, 179, 148, 0.17) !important;
+  color: #b15098 !important;
+  padding: 0 1.6rem !important;
+  border-radius: 1.2rem !important;
+  margin-left: 1.6rem !important;
+}
+
+.oncosure-duration {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  line-height: 2.4rem !important;
+  margin: 0 !important;
+}
+
+/* Rush Processing - Fixed styling */
+.oncosure-rush-processing {
+  background-color: rgba(250, 247, 249, 1) !important;
+  border: 1px solid #f3e8ff !important;
+  border-radius: 0.8rem !important;
+  padding: 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-rush-processing input[type="checkbox"] {
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  accent-color: #b15098 !important;
+  margin: 0 !important;
+}
+
+.oncosure-rush-processing label {
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+}
+
+/* Special Instructions - FIXED STYLING */
+.oncosure-special-instructions {
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-special-instructions textarea {
+  width: 100% !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.6rem !important;
+  padding: 0.8rem !important;
+  font-size: 1.2rem !important;
+  font-family: Inter, sans-serif !important;
+  resize: vertical !important;
+  min-height: 7.2rem !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+
+.oncosure-special-instructions textarea:focus {
+  outline: none !important;
+  border-color: #b15098 !important;
+  box-shadow: 0 0 0 0.1rem #b15098 !important;
+}
+
+.oncosure-special-instructions textarea::placeholder {
+  color: #9ca3af !important;
+  font-size: 1.2rem !important;
+}
+
+/* Form Elements - Fixed sizing */
+.oncosure-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2.4rem !important;
+  margin-bottom: 2.4rem !important;
+}
+
+.oncosure-form-group {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.oncosure-form-group.full-width {
+  grid-column: 1 / -1 !important;
+}
+
+.oncosure-form-group label {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #606e79 !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.oncosure-form-group input,
+.oncosure-form-group select {
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.6rem !important;
+  padding: 0.8rem !important;
+  font-size: 1.3rem !important;
+  line-height: 2rem !important;
+  font-family: Inter, sans-serif !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.oncosure-form-group input:focus,
+.oncosure-form-group select:focus {
+  outline: none !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 0.1rem #3b82f6 !important;
+}
+
+.oncosure-form-group input.error,
+.oncosure-form-group select.error {
+  border-color: #ef4444 !important;
+}
+
+/* Agreements - Fixed text sizing */
+.oncosure-agreements-section {
+  background-color: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.8rem !important;
+  padding: 2rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-agreements-section h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  margin: 0 0 1.6rem 0 !important;
+}
+
+.oncosure-agreement-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+  font-size: 1.3rem !important;
+  color: rgba(96, 110, 121, 1) !important;
+}
+
+.oncosure-agreement-item {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+.oncosure-agreement-number {
+  font-weight: 500 !important;
+  margin-right: 0.8rem !important;
+  font-size: 1.3rem !important;
+}
+
+.oncosure-agreement-content {
+  font-size: 1.3rem !important;
+}
+
+.oncosure-agreement-content strong {
+  font-size: 1.3rem !important;
+  color: rgba(74, 74, 74, 1) !important;
+  font-weight: 700 !important;
+}
+
+.oncosure-link {
+  color: #2563eb !important;
+  text-decoration: none !important;
+  padding: 0 0.4rem !important;
+  font-size: 1.3rem !important;
+}
+
+.oncosure-link:hover {
+  text-decoration: underline !important;
+}
+
+.oncosure-final-agreement {
+  background-color: #fdf2f8 !important;
+  border: 1px solid #b15098 !important;
+  border-radius: 0.8rem !important;
+  padding: 1.6rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-final-agreement input[type="checkbox"] {
+  width: 2rem !important;
+  height: 2rem !important;
+  accent-color: #b15098 !important;
+  margin: 0 !important;
+}
+
+.oncosure-final-agreement label {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  cursor: pointer !important;
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+/* Payment - Fixed styling */
+.oncosure-payment-section {
+  margin-bottom: 2.4rem !important;
+}
+
+.oncosure-payment-section h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  margin: 0 0 1.2rem 0 !important;
+}
+
+.oncosure-payment-methods {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.8rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-payment-option {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+  padding: 1.2rem !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.8rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.oncosure-payment-option.selected {
+  border-color: rgba(235, 235, 235, 1) !important;
+  background-color: rgba(214, 232, 231, 0.4) !important;
+  box-shadow: 0.1rem 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.23) !important;
+}
+
+.oncosure-payment-option input[type="radio"] {
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  accent-color: #b15098 !important;
+  margin: 0 !important;
+}
+
+.oncosure-payment-option label {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+.oncosure-payment-option label svg {
+  margin-right: 0.8rem !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.oncosure-payment-note {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  margin-left: 0.8rem !important;
+}
+
+.oncosure-card-details {
+  background-color: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.8rem !important;
+  padding: 1.6rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-card-details h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  margin: 0 0 1.6rem 0 !important;
+}
+
+.oncosure-billing-section {
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-billing-section h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  margin: 0 0 1.2rem 0 !important;
+}
+
+.oncosure-same-address {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-same-address input[type="checkbox"] {
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  accent-color: #b15098 !important;
+  margin: 0 !important;
+}
+
+.oncosure-same-address label {
+  font-size: 1.4rem !important;
+  color: #374151 !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+}
+
+/* Order Total */
+.oncosure-order-total {
+  background-color: #fdf2f8 !important;
+  border: 1px solid #b15098 !important;
+  border-radius: 0.8rem !important;
+  padding: 1.6rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-total-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.oncosure-total-header h4 {
+  font-size: 1.6rem !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+.oncosure-total-amount {
+  font-size: 2.4rem !important;
+  font-weight: 700 !important;
+  color: #b15098 !important;
+}
+
+.oncosure-special-notes {
+  margin-top: 1.2rem !important;
+  padding-top: 1.2rem !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+.oncosure-special-notes span {
+  font-size: 1.4rem !important;
+  color: #6b7280 !important;
+}
+
+.oncosure-special-notes p {
+  font-size: 1.4rem !important;
+  color: #374151 !important;
+  margin: 0.4rem 0 0 0 !important;
+}
+
+/* Navigation Buttons - FIXED STYLING */
+.oncosure-step-navigation {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  position: relative !important;
+  margin-top: 2.4rem !important;
+}
+
+.oncosure-action-buttons {
+  display: flex !important;
+  gap: 1.2rem !important;
+}
+
+.oncosure-btn {
+  border: none !important;
+  border-radius: 1.6rem !important;
+  padding: 0.6rem 1.2rem !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  line-height: 2rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  font-family: Inter, sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+.oncosure-btn svg {
+  margin-right: 0.8rem !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+}
+
+.oncosure-btn-primary {
+  background-color: #b15098 !important;
+  color: white !important;
+  min-width: 14rem !important;
+}
+
+.oncosure-btn-primary:hover {
+  box-shadow: 0 0.4rem 0.6rem -0.1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.oncosure-btn-primary.disabled {
+  background-color: #d1d5db !important;
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+.oncosure-btn-secondary {
+  background-color: #d6e8e7 !important;
+  color: #4b5563 !important;
+  min-width: 8rem !important;
+}
+
+.oncosure-btn-secondary:hover {
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.oncosure-btn-outline {
+  background-color: white !important;
+  color: #4b5563 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.oncosure-btn-outline:hover {
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Order Summary Sidebar - Fixed layout */
+.oncosure-order-summary {
+  background: white !important;
+  border-radius: 0.8rem !important;
+  box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e5e7eb !important;
+  padding: 1.6rem !important;
+  position: sticky !important;
+  top: 3.2rem !important;
+}
+
+.oncosure-summary-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.oncosure-summary-header svg {
+  color: #4b5563 !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+}
+
+.oncosure-summary-header h3 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+.oncosure-empty-summary {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 2.4rem 0 !important;
+}
+
+.oncosure-empty-summary svg {
+  color: #d1d5db !important;
+  margin-bottom: 1.2rem !important;
+  width: 4.8rem !important;
+  height: 4.8rem !important;
+}
+
+.oncosure-empty-summary p {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+.oncosure-summary-items {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+}
+
+.oncosure-summary-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  font-size: 1.4rem !important;
+}
+
+.oncosure-summary-item:first-child span:first-child {
+  color: #6b7280 !important;
+}
+
+.oncosure-summary-item span:last-child {
+  font-weight: 600 !important;
+}
+
+.oncosure-summary-total {
+  border-top: 1px solid #e5e7eb !important;
+  padding-top: 1.2rem !important;
+  font-weight: 700 !important;
+}
+
+.oncosure-summary-total span:last-child {
+  color: #b15098 !important;
+}
+
+/* Step 5 (Your Order) - Missing Styling */
+.oncosure-order-sections {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.6rem !important;
+}
+
+.oncosure-order-section {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.8rem !important;
+  padding: 1.6rem !important;
+  background-color: white !important;
+}
+
+.oncosure-order-section h4 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  margin: 0 0 1.2rem 0 !important;
+}
+
+.oncosure-selected-tests {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+}
+
+.oncosure-test-summary {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  padding-bottom: 1.2rem !important;
+}
+
+.oncosure-test-summary:last-child {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.oncosure-test-details {
+  flex: 1 !important;
+}
+
+.oncosure-test-name-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.oncosure-test-name-row h5 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+.oncosure-test-details p {
+  color: #6b7583 !important;
+  font-size: 1.3rem !important;
+  line-height: 2rem !important;
+  margin: 0 !important;
+}
+
+.oncosure-test-price {
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 0.4rem !important;
+}
+
+.oncosure-test-price p {
+  font-size: 1rem !important;
+  color: #6b7280 !important;
+  margin: 0 !important;
+}
+
+.oncosure-info-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.8rem !important;
+  font-size: 1.2rem !important;
+}
+
+.oncosure-info-grid>div {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.oncosure-info-grid span:first-child {
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+  min-width: 6.4rem !important;
+}
+
+.oncosure-info-grid span:last-child {
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+.oncosure-agreement-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+}
+
+.oncosure-agreement-status svg {
+  color: #10b981 !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+}
+
+.oncosure-agreement-status span {
+  font-size: 1.2rem !important;
+  color: #374151 !important;
+}
+
+.oncosure-payment-summary {
+  font-size: 1.2rem !important;
+}
+
+.oncosure-payment-summary div {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.4rem !important;
+}
+
+.oncosure-payment-summary span {
+  color: #374151 !important;
+}
+
+.oncosure-payment-summary svg {
+  display: inline !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  margin-right: 0.4rem !important;
+  vertical-align: middle !important;
+}
+
+/* Fix Button Colors - Make buttons visible */
+.oncosure-btn-primary {
+  background-color: #b15098 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.oncosure-btn-secondary {
+  background-color: #d6e8e7 !important;
+  color: #4b5563 !important;
+  border: none !important;
+}
+
+.oncosure-btn-outline {
+  background-color: white !important;
+  color: #4b5563 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+/* Force button visibility */
+.oncosure-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Step 5 specific button styling */
+.oncosure-step-navigation .oncosure-action-buttons {
+  display: flex !important;
+  gap: 1.2rem !important;
+}
+
+.oncosure-step-navigation .oncosure-action-buttons .oncosure-btn {
+  padding: 0.8rem 1.6rem !important;
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  border-radius: 1.6rem !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.oncosure-step-navigation .oncosure-action-buttons .oncosure-btn:hover {
+  box-shadow: 0 0.4rem 0.6rem -0.1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Force proper step 5 layout */
+.oncosure-step-navigation {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 2.4rem !important;
+}
+
+/* Force responsive behavior */
+@media (max-width: 80rem) {
+  .oncosure-main-wrapper {
+    flex-direction: column !important;
+  }
+
+  .oncosure-form-section {
+    flex: none !important;
+    max-width: 100% !important;
+  }
+
+  .oncosure-sidebar {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 76.8rem) {
+  .oncosure-form-container {
+    padding: 0.8rem !important;
+  }
+
+  .oncosure-form-section {
+    padding: 1.6rem !important;
+  }
+
+  .oncosure-steps-wrapper {
+    flex-wrap: wrap !important;
+    gap: 0.8rem !important;
+  }
+
+  .oncosure-step-title {
+    font-size: 1rem !important;
+  }
+
+  .oncosure-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .oncosure-test-card {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+  }
+
+  .oncosure-test-pricing {
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+
+  .oncosure-step-navigation {
+    flex-direction: column !important;
+    gap: 1.6rem !important;
+  }
+
+  .oncosure-action-buttons {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Force override any WordPress/theme styles */
+.oncosure-form-container * {
+  box-sizing: border-box !important;
+}
+
+.oncosure-form-container input,
+.oncosure-form-container select,
+.oncosure-form-container textarea,
+.oncosure-form-container button {
+  font-family: Inter, sans-serif !important;
+  margin: 0 !important;
+}
+
+.oncosure-form-container h1,
+.oncosure-form-container h2,
+.oncosure-form-container h3,
+.oncosure-form-container h4,
+.oncosure-form-container h5,
+.oncosure-form-container p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.oncosure-form-container a {
+  text-decoration: none !important;
+}
+
+
+/* Ensure proper display */
+.oncosure-form-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.coupon_div{
+  margin-top:15px;
+}
+#coupon_code {
+  width: 150px;
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.6rem !important;
+  padding: 0.8rem !important;
+  font-size: 1.3rem !important;
+  line-height: 2rem !important;
+  box-sizing: border-box !important;
+}
+.accordion-section{
+  display:none;
+}
+.accordion-section.active{
+  display:block !important;
+}

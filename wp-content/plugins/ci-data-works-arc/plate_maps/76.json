@@ -1,0 +1,25 @@
+{
+	"name": "PCR - 96(95 patients) CT/NG/TV(new)",
+	"lab": "wellnow",
+	"type": 96,
+	"rack": 96,
+	"rackabc": 1,
+	"wellperpatient": 1,
+	"nextwellbycol": 1,
+	"nextwellbyrow": 1,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 95,
+	"ntc": 0,
+	"ntc_text": "Negative Control",
+	"pos": 0,
+	"pos_text": "Positive Control",
+	"nec": 0,
+	"blank": 1,
+	"target": 1,
+	"ntctarget": 0,
+	"targets": [
+		"T vaginalis (CFO) / C. trachomatis (CFR610) / N. gonorrhoeae (Q670)"
+	]
+}

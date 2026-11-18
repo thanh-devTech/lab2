@@ -1,0 +1,48 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# macOS
+.DS_Store
+*.pem
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs
+*.log
+
+
+# Dependencies
+node_modules/
+
+# Temporary folders
+tmp/
+temp/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+
+# WordPress core — not committed. Installed/refreshed via scripts/install-wp-core.sh
+# (version pinned in that script). wp-config.php and wp-content/ are NOT core and stay tracked.
+# See DEPENDENCIES.md.
+/wp-admin/
+/wp-includes/
+/wp-*.php
+!/wp-config.php
+/index.php
+/xmlrpc.php
+/readme.html
+/license.txt
+
+# PHPUnit dependency tree and run artifact -- committed by accident once,
+# stripped from history; these stop it returning.
+tests/vendor/
+tests/.phpunit.result.cache
+
+# Research artifacts and analysis output stay local -- never committed.
+claudedocs/

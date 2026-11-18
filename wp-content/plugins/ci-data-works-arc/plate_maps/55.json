@@ -1,0 +1,16 @@
+{
+	"name":"PCR -96(6patients) UTI",
+	"lab":"howardmemorial.com",
+	"type":96,
+	"rack":96,
+	"wellperpatient":12,
+	"nextwellbycol":6,
+	"nextwellbyrow":2,
+	"subwellsplate":0,
+	"max": 6,
+	"pos":7,
+	"ntc": 8,
+	"nec":0,
+	"blank":0,
+	"target":0
+}

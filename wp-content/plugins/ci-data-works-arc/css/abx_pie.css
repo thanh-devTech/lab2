@@ -1,0 +1,230 @@
+.healthy_bar .indicator_wrap {
+	padding-top: 14px;
+	position: relative;
+	margin: 0 auto;
+	width: 340px;
+}
+
+.healthy_bar .bar_image {
+	width: 360px;
+	margin: 0 auto;
+}
+
+.indicator {
+	text-align: left;
+	position: absolute;
+	top: 0px;
+	z-index: 999;
+}
+
+.indicator img {
+	width: 16px;
+	height: auto;
+	position: relative;
+}
+
+.wrap_infection {
+	padding: 6px 0;
+	background: #f6f6f6;
+}
+
+.bv_bar_tbl {
+	width: 360px;
+	margin: 0 auto;
+}
+
+.bv_bar_tbl td {
+	width: 7.1428%;
+	border-left: 1px solid transparent !important;
+	border-right: 1px solid transparent !important;
+	font-size: 9px;
+}
+
+.bv_bar_tbl .bg1 {
+	background: #59b53e;
+	height: 18px;
+}
+
+.bv_bar_tbl .bg2 {
+	background: #75bf44;
+}
+
+.bv_bar_tbl .bg3 {
+	background: #9bcb41;
+}
+
+.bv_bar_tbl .bg4 {
+	background: #bbd53e;
+}
+
+.bv_bar_tbl .bg5 {
+	background: #dfdf31;
+}
+
+.bv_bar_tbl .bg6 {
+	background: #ebeb30;
+}
+
+.bv_bar_tbl .bg7 {
+	background: #f4da2b;
+}
+
+.bv_bar_tbl .bg8 {
+	background: #fecf29;
+}
+
+.bv_bar_tbl .bg9 {
+	background: #fbb927;
+}
+
+.bv_bar_tbl .bg10 {
+	background: #fba22a;
+}
+
+.bv_bar_tbl .bg11 {
+	background: #fa952b;
+}
+
+.bv_bar_tbl .bg12 {
+	background: #f5812a;
+}
+
+.bv_bar_tbl .bg13 {
+	background: #f26225;
+}
+
+.bv_bar_tbl .bg14 {
+	background: #f04726;
+}
+
+.wrap_load_composition {
+	position: relative;
+	width: 180px;
+	margin: 0 auto;
+	z-index: 9;
+}
+
+.load_composition {
+	border: 1px dotted #dcdcef;
+	position: absolute;
+	border-radius: 50%;
+	background: none transparent !important;
+}
+
+.load_composition .text {
+	color: #464552;
+	font-size: 6px;
+	position: relative;
+	padding-top: 2px;
+	text-align: center;
+}
+
+.load_composition.very_low .text {
+	top: 6px;
+}
+
+.load_composition.very_high {
+	left: 0;
+	top: 0;
+	width: 178px;
+	height: 178px;
+}
+
+.load_composition.high {
+	left: 17px;
+	top: 17px;
+	width: 144px;
+	height: 144px;
+}
+
+.load_composition.medium,
+.load_composition.med {
+	left: 34px;
+	top: 34px;
+	width: 110px;
+	height: 110px;
+}
+
+.load_composition.low {
+	left: 51px;
+	top: 51px;
+	width: 76px;
+	height: 76px;
+}
+
+.load_composition.very_low {
+	left: 69px;
+	top: 69px;
+	width: 40px;
+	height: 40px;
+}
+
+.top_pathogens {
+	padding: 8px;
+}
+
+.top_pathogens.top_pathogens_bac .item {
+	position: relative;
+	padding-right: 8px;
+	font-size: 10px;
+
+}
+
+.top_pathogens.top_pathogens_mkr .item {
+	font-size: 10px;
+}
+
+.abxroundcic {
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border-radius: 5px;
+	background: #9ccb40;
+	top: 1px;
+	margin-right: 3px;
+	position: relative;
+}
+
+.abxroundcic.fright {
+	float: right;
+	top: 6px;
+	margin-right: 5px;
+}
+
+.top_pathogens .abxroundcic.fright {
+	margin-right: 0px;
+	position: absolute;
+	right: -2px;
+	top: 7px;
+	float: none;
+}
+
+.top_pathogens.p2cols .item {
+	width: 49%;
+	display: inline-block;
+}
+
+.top_pathogens.p2cols:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.top_pathogens.pinlinelist .item {
+	display: inline-block;
+	font-size: 8px;
+	line-height: 8px;
+}
+
+.top_pathogens .smalltext1 {
+	font-size: 8px;
+}
+
+.top_pathogens.pinlinelist .smalltext1 {
+	font-size: 7px;
+}
+
+
+td.piechartarea {
+	background: #f6f6f6;
+}

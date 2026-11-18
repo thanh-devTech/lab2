@@ -1,0 +1,17 @@
+{
+	"name":"PCR -96(46patients) Covid",
+	"lab":"prdxlab.com",
+	"type":96,
+	"rack":96,
+	"rackabc":1,
+	"wellperpatient":2,
+	"nextwellbycol":1,
+	"nextwellbyrow":2,
+	"subwellsplate":0,
+	"max": 46,
+	"ntc": 41,
+	"pos":45,
+	"nec":0,
+	"blank":0,
+	"target":1
+}

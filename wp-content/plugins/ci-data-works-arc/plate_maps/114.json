@@ -1,0 +1,44 @@
+{
+	"name": "PCR - 384(43 patients) Wound",
+	"lab": "lab.microsurelabs.com",
+	"type": 384,
+	"rack": 384,
+	"rackabc": 1,
+	"notmoventc": 1,
+	"noplaterack": 1,
+	"wellperpatient": 8,
+	"nextwellbycol": 0,
+	"nextwellbyrow": 0,
+	"nextblankbyrow": 0,
+	"nextblankbycol": 0,
+	"subwellsplate": 0,
+	"max": 43,
+	"ntc": 0,
+	"ntc_text": "NTC",
+	"pos": 0,
+	"pos_text": "Positive Control",
+	"nec": 0,
+	"nec_text": "Negative Control",
+	"blank": 0,
+	"target": 1,
+	"ntctarget": 1,
+	"sample_blocks": [
+		{"start": 1, "end": 24, "row": 1, "col_offset": 0},
+		{"start": 25, "end": 43, "row": 9, "col_offset": -24}
+	],
+	"control_blocks": [
+		{"type": "pos", "text": "Positive Control", "row": 9, "columns": [20, 21], "class": "positive"},
+		{"type": "nec", "text": "Negative Control", "row": 9, "columns": [22, 23], "class": "negative"},
+		{"type": "ntc", "text": "NTC", "row": 9, "columns": [24], "class": "negative"}
+	],
+	"targets": [
+		"Enterobacter cloacae",
+		"Kleb aerogenes",
+		"MTB",
+		"Proteus mirabilis",
+		"Strep pneumoniae",
+		"Strep Group B",
+		"Anaerococcus vaginalis",
+		""
+	]
+}
