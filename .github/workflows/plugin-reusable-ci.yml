@@ -92,7 +92,7 @@ jobs:
           coverage: none
 
       - name: Cache PHPCS tools
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: /tmp/phpcs-tools/vendor
           key: phpcs-tools-${{ runner.os }}
